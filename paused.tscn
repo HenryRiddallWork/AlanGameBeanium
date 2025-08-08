@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq51m1y834vvg"]
+
+[ext_resource type="Script" uid="uid://cyfus40j5s46b" path="res://scripts/paused.gd" id="1_87m1a"]
+[ext_resource type="Texture2D" uid="uid://bx70glaekxydg" path="res://assets/non-animations/background_placeholder.png" id="2_k1ab1"]
+[ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="3_jiyaf"]
+
+[node name="Paused" type="Node2D"]
+visible = false
+script = ExtResource("1_87m1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(578, 325)
+texture = ExtResource("2_k1ab1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 204.0
+offset_right = 691.0
+offset_bottom = 340.0
+theme_override_fonts/font = ExtResource("3_jiyaf")
+theme_override_font_sizes/font_size = 100
+text = "KONK PAUSED"
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+offset_left = 544.0
+offset_top = 329.0
+offset_right = 628.0
+offset_bottom = 383.0
+text = "Resume"

@@ -13,6 +13,8 @@ func _physics_process(delta: float) -> void:
 	if Globals.gamestate != Globals.GAMESTATES.PLAYING:
 		get_tree().paused = true
 		return
+	if Input.is_action_just_pressed("Paused"):
+		Globals.pause()
 	
 	_update_directional_hook()
 
