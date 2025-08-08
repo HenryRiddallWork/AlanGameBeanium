@@ -33,9 +33,11 @@ func start():
 func pause():
 	gamestate = GAMESTATES.PAUSED
 	pause_game.emit()
+	get_tree().paused = true
 	print("pausing game")
 	
 func resume():
+	get_tree().paused = false
 	gamestate = GAMESTATES.PLAYING
 	resume_game.emit()
 	print("resuming game")

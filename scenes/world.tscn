@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=14 format=4 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://clm86oa1ajfnu" path="res://scripts/globals.gd" id="1_i7141"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://djgx60mo6uv1k" path="res://tileset.png" id="5_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://bbhmhgaa3g7o" path="res://clouds.png" id="6_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 friction = 0.0
@@ -304,6 +305,11 @@ offset_bottom = 669.0
 texture = ExtResource("6_e3hyu")
 stretch_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="StartLayer" type="CanvasLayer" parent="."]
 
-[node name="Start" parent="CanvasLayer" instance=ExtResource("8_4mrxx")]
+[node name="Start" parent="StartLayer" instance=ExtResource("8_4mrxx")]
+
+[node name="PausedLayer" type="CanvasLayer" parent="."]
+
+[node name="Paused" parent="PausedLayer" instance=ExtResource("9_7r4gi")]
+visible = false

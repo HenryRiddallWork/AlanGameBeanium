@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu2qmhl5lasj1"]
+
+[ext_resource type="Script" uid="uid://cka1uqlkfo3je" path="res://scenes/paused.gd" id="1_r8o1p"]
+[ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="3_j5rf4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4kqd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1qn1x"]
+
+[node name="Paused" type="Node2D"]
+script = ExtResource("1_r8o1p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.160784, 0.160784, 0.160784, 0.419608)
+material = SubResource("ShaderMaterial_f4kqd")
+position = Vector2(574, 322.25)
+scale = Vector2(1156, 645.5)
+texture = SubResource("CanvasTexture_1qn1x")
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+offset_left = 512.0
+offset_top = 339.0
+offset_right = 658.0
+offset_bottom = 398.0
+theme_override_fonts/font = ExtResource("3_j5rf4")
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 448.0
+offset_top = 219.0
+offset_right = 711.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("3_j5rf4")
+theme_override_font_sizes/font_size = 100
+text = "Paused"

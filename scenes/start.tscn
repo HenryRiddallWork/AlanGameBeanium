@@ -22,8 +22,19 @@ text = "KONK"
 
 [node name="Button" type="Button" parent="."]
 process_mode = 3
-offset_left = 544.0
-offset_top = 329.0
-offset_right = 628.0
-offset_bottom = 383.0
+offset_left = 528.0
+offset_top = 384.0
+offset_right = 639.0
+offset_bottom = 443.0
+theme_override_fonts/font = ExtResource("3_0auqf")
+theme_override_font_sizes/font_size = 50
 text = "Start"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 463.0
+offset_top = 312.0
+offset_right = 704.0
+offset_bottom = 363.0
+theme_override_fonts/font = ExtResource("3_0auqf")
+theme_override_font_sizes/font_size = 50
+text = "[p] to pause"
