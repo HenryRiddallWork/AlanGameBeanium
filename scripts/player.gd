@@ -9,6 +9,10 @@ var hooked = false
 @onready var line_end = hook.get_node("Marker2D")
 
 func _process(delta: float) -> void:
+	if Globals.gamestate != Globals.GAMESTATES.PLAYING:
+		get_tree().paused = true
+		return
+	
 	if Input.is_action_just_pressed("shoot") and not hooked:
 		
 		ray_cast_2d.target_position = to_local(get_global_mouse_position())
