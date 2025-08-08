@@ -260,7 +260,7 @@ softness = 16.0
 motor_target_velocity = 1.39626
 
 [node name="Player" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
-position = Vector2(360, 198)
+position = Vector2(239, 188)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
 lock_rotation = false
