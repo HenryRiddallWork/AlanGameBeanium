@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://8nnhaiuf5taq"]
 
-[ext_resource type="Script" uid="uid://clm86oa1ajfnu" path="res://globals.gd" id="1_i7141"]
+[ext_resource type="Script" path="res://globals.gd" id="1_i7141"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://ca2mjl3kgpx36" path="res://scenes/player.tscn" id="2_i7141"]
 [ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="3_4mrxx"]
@@ -259,7 +259,7 @@ softness = 16.0
 motor_target_velocity = 1.39626
 
 [node name="Player" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
-position = Vector2(360, 198)
+position = Vector2(239, 188)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
 lock_rotation = false
