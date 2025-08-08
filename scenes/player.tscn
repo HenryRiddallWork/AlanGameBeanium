@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=5 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://b8v117whkq6l7" path="res://icon.svg" id="1_lnhqd"]
+[ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oxxb"]
 
 [node name="Player" type="RigidBody2D"]
 lock_rotation = true
 script = ExtResource("1_2kdwn")
+
+[node name="DirectionHook" type="Sprite2D" parent="."]
+rotation = 2.35619
+texture = ExtResource("2_qhqgy")
+offset = Vector2(1, -10)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.140625, 0.140625)

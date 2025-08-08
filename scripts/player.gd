@@ -7,12 +7,15 @@ extends RigidBody2D
 @onready var line = $Line2D
 var hooked = false
 @onready var line_end = hook.get_node("Marker2D")
+@onready var directionHook: Sprite2D = $DirectionHook
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Globals.gamestate != Globals.GAMESTATES.PLAYING:
 		get_tree().paused = true
 		return
 	
+	_update_directional_hook()
+
 	if Input.is_action_just_pressed("shoot") and not hooked:
 		
 		ray_cast_2d.target_position = to_local(get_global_mouse_position())
@@ -54,3 +57,40 @@ func _process(delta: float) -> void:
 		apply_central_impulse(Vector2.LEFT * speed)
 	if Input.is_action_just_pressed("jump") and grounded:
 		apply_central_impulse(Vector2.UP * 100)
+
+func _update_directional_hook() -> void:
+	# NE
+	if Input.is_action_pressed("joycon-up") and Input.is_action_pressed("joycon-right"):
+		directionHook.visible = true
+		directionHook.rotation = PI / 4
+	# SE
+	elif Input.is_action_pressed("joycon-down") and Input.is_action_pressed("joycon-right"):
+		directionHook.visible = true
+		directionHook.rotation = 3 * PI / 4
+	# SW
+	elif Input.is_action_pressed("joycon-down") and Input.is_action_pressed("joycon-left"):
+		directionHook.visible = true
+		directionHook.rotation = 5 * PI / 4
+	# NW
+	elif Input.is_action_pressed("joycon-up") and Input.is_action_pressed("joycon-left"):
+		directionHook.visible = true
+		directionHook.rotation = 7 * PI / 4
+	# N
+	elif Input.is_action_pressed("joycon-up"):
+		directionHook.visible = true
+		directionHook.rotation = 0
+	# E
+	elif Input.is_action_pressed("joycon-right"):
+		directionHook.visible = true
+		directionHook.rotation = PI / 2
+	# S
+	elif Input.is_action_pressed("joycon-down"):
+		directionHook.visible = true
+		directionHook.rotation = PI
+	# W
+	elif Input.is_action_pressed("joycon-left"):
+		directionHook.visible = true
+		directionHook.rotation = 3 * PI / 2
+	# Hide if no joycon input
+	else:
+		directionHook.visible = false
