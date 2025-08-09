@@ -1,6 +1,5 @@
 extends Node2D
 
-
 func _ready():
 	Globals.pause_game.connect(paused)
 	$Button.pressed.connect(_resume_game)

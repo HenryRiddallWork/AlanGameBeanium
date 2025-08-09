@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=9 format=3 uid="uid://ca2mjl3kgpx36"]
 
-[ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player.gd" id="1_2kdwn"]
+[ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://b8v117whkq6l7" path="res://icon.svg" id="1_lnhqd"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://7ur74s2qji2d" path="res://scripts/player/state_machine.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://vwf0hw7scwoa" path="res://scripts/player/states/on_ground.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oxxb"]
 
@@ -23,3 +27,16 @@ texture = ExtResource("1_lnhqd")
 shape = SubResource("CircleShape2D_6oxxb")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="State" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_dqkch")
+initial_state = NodePath("OnGround")
+
+[node name="OnGround" type="Node" parent="State"]
+script = ExtResource("5_qlg0r")
+
+[node name="InAir" type="Node" parent="State"]
+script = ExtResource("6_tuyoq")
+
+[node name="Hooked" type="Node" parent="State"]
+script = ExtResource("7_fjrip")
