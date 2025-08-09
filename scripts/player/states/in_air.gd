@@ -21,7 +21,6 @@ func physics_update(delta: float) -> void:
 						var hook_pos = player.ray_cast_2d.get_collision_point()
 						var collider = player.ray_cast_2d.get_collider()
 						if collider.is_in_group("Hookable"):
-							print("Found collision point:", hook_pos)
 							return hook_pos
 						else:
 							return null
