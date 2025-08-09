@@ -21,7 +21,7 @@ func physics_update(delta: float) -> void:
 						var hook_pos = player.ray_cast_2d.get_collision_point()
 						var collider = player.ray_cast_2d.get_collider()
 						if collider.is_in_group("Hookable"):
-							return hook_pos
+							return [hook_pos, collider]
 						else:
 							return null
 					else:
@@ -29,10 +29,10 @@ func physics_update(delta: float) -> void:
 			)
 			
 			collision_points = collision_points.filter(func(v): return v != null)
-			collision_points.sort_custom(func(v1, v2): return v1.distance_to(player.global_position) < v2.distance_to(player.global_position))
+			collision_points.sort_custom(func(v1, v2): return v1[0].distance_to(player.global_position) < v2[0].distance_to(player.global_position))
 			
 			if collision_points.size() > 0:
-				finished.emit(HOOKED, {"hook_global_pos": collision_points[0]})
+				finished.emit(HOOKED, {"hook_global_pos": collision_points[0][0], "collision_node": collision_points[0][1]})
 				return
 	else:
 		player.direction_hook.visible = false

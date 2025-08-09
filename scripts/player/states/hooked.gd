@@ -3,8 +3,10 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	var hook_pos = data["hook_global_pos"]
+	var collision_node = data["collision_node"]
 	player.pinjoint.global_position = hook_pos
 	player.hook.global_position = hook_pos
+	player.hook.reparent(collision_node, true)
 	player.pinjoint.node_b = player.get_path_to(player.hook)
 	#rotate the hook so it is the right angle
 	var direction = hook_pos - player.global_position
