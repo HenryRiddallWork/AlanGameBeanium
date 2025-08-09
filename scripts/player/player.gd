@@ -6,6 +6,7 @@ class_name Player extends RigidBody2D
 @export var swing_speed = 3
 @export var hook_range = 500
 @export var raycast_count = 10
+@export var player: String = "1"
 
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var line = $Line2D
