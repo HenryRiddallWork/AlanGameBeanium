@@ -8,6 +8,9 @@ class_name Player extends RigidBody2D
 @export var raycast_count = 10
 @export var player: String = "1"
 
+# The factor by which the hook selection will prefer central angles to outside options
+@export var hook_selection_factor: float = 1.5
+
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var line = $Line2D
 @onready var line_end = hook.get_node("Marker2D")

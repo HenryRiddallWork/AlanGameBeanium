@@ -3,10 +3,8 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	var hook_pos = data["hook_global_pos"]
-	var collision_node = data["collision_node"]
 	player.pinjoint.global_position = hook_pos
 	player.hook.global_position = hook_pos
-	player.hook.reparent(collision_node, true)
 	player.pinjoint.node_b = player.get_path_to(player.hook)
 	#rotate the hook so it is the right angle
 	var direction = hook_pos - player.global_position
@@ -35,7 +33,6 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("retract_"+player.player):
 		player.pinjoint.node_b = NodePath("")
 		player.pinjoint.node_b = player.get_path_to(player.hook)
-
 	
 	player.line.clear_points()
 	player.line.add_point(Vector2.ZERO)

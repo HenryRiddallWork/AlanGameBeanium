@@ -1,8 +1,6 @@
 extends PlayerState
 
 func physics_update(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot_"+player.player):
-			print("pew"+player.player)
 	if (player.get_contact_count() > 0):
 		finished.emit(ON_GROUND)
 		return
@@ -14,14 +12,16 @@ func physics_update(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("shoot_"+player.player):
 			var collision_points = _get_raycast_angles_for_arc(joystickDirection).map(
-				func(angle):
+				func(angle_and_scale_factor):
+					var angle = angle_and_scale_factor[0]
+					var scale_factor = angle_and_scale_factor[1]
 					player.ray_cast_2d.target_position = player.to_local(player.global_position + (Vector2.from_angle(angle - (PI / 2)) * player.hook_range))
 					player.ray_cast_2d.force_raycast_update()
 					if player.ray_cast_2d.is_colliding():
 						var hook_pos = player.ray_cast_2d.get_collision_point()
 						var collider = player.ray_cast_2d.get_collider()
 						if collider.is_in_group("Hookable"):
-							return [hook_pos, collider]
+							return [hook_pos, scale_factor]
 						else:
 							return null
 					else:
@@ -29,10 +29,13 @@ func physics_update(delta: float) -> void:
 			)
 			
 			collision_points = collision_points.filter(func(v): return v != null)
-			collision_points.sort_custom(func(v1, v2): return v1[0].distance_to(player.global_position) < v2[0].distance_to(player.global_position))
+			collision_points.sort_custom(
+				func(v1, v2):
+					return (v1[0].distance_to(player.global_position) * v1[1]) < (v2[0].distance_to(player.global_position) * v2[1])
+			)
 			
 			if collision_points.size() > 0:
-				finished.emit(HOOKED, {"hook_global_pos": collision_points[0][0], "collision_node": collision_points[0][1]})
+				finished.emit(HOOKED, {"hook_global_pos": collision_points[0][0]})
 				return
 	else:
 		player.direction_hook.visible = false
@@ -73,14 +76,28 @@ func _is_joystick_in_use() -> bool:
 	return Input.is_action_pressed("up_"+player.player) or Input.is_action_pressed("right_"+player.player) or Input.is_action_pressed("down_"+player.player) or Input.is_action_pressed("left_"+player.player)
 
 
-func _get_raycast_angles_for_arc(angle: float) -> Array[float]:
+func _get_raycast_angles_for_arc(angle: float) -> Array[Array]:
 	# PI / 4 arc around direction
 	var min_angle = angle - (PI / 8)
 	var max_angle = angle + (PI / 8)
 	var step = PI / (4 * player.raycast_count)
 	
-	var out_arr: Array[float] = []
+	var out_arr: Array[Array] = []
 	for i in range(0, player.raycast_count):
-		out_arr.append(min_angle + (step * i))
+		var angle_value = min_angle + (step * i)
+		out_arr.append([angle_value, _triangle_weighting_function(min_angle, max_angle, angle_value)])
 	
 	return out_arr
+
+
+func _triangle_weighting_function(min: float, max: float, value: float) -> float:
+	assert(value >= min)
+	assert(value <= max)
+	var mid_point_of_range = (min + max) / 2
+	var scaling_factor: float
+	if value < mid_point_of_range:
+		scaling_factor = (value - min) / (mid_point_of_range - min)
+	else:
+		scaling_factor = (value - mid_point_of_range) / (max - mid_point_of_range)
+	
+	return scaling_factor * player.hook_selection_factor
