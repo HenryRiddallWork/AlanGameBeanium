@@ -253,26 +253,33 @@ stretch_mode = 1
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 327)
 
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
-position = Vector2(117, 37)
-node_a = NodePath("../Player")
+[node name="Player2PinJoint" type="PinJoint2D" parent="."]
+position = Vector2(234, 74)
+node_a = NodePath("../Player2")
 bias = 0.05
 disable_collision = false
 softness = 16.0
 motor_target_velocity = 1.39626
 
-[node name="Player" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
+[node name="Player1PinJoint" type="PinJoint2D" parent="."]
+position = Vector2(117, 37)
+node_a = NodePath("../Player1")
+bias = 0.05
+disable_collision = false
+softness = 16.0
+motor_target_velocity = 1.39626
+
+[node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
 position = Vector2(239, 188)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
 lock_rotation = false
-contact_monitor = true
 max_contacts_reported = 2
-hook = NodePath("../HookPoint")
-pinjoint = NodePath("../PinJoint2D")
+hook = NodePath("../Player1HookPoint")
+pinjoint = NodePath("../Player1PinJoint")
 metadata/_edit_group_ = true
 
-[node name="Line2D" type="Line2D" parent="Player"]
+[node name="Line2D" type="Line2D" parent="Player1"]
 texture_repeat = 2
 position = Vector2(0.175957, 0.301231)
 scale = Vector2(1.0176, 1.03012)
@@ -281,17 +288,51 @@ width = 5.71
 texture = ExtResource("3_4mrxx")
 texture_mode = 1
 
-[node name="HookPoint" type="StaticBody2D" parent="."]
+[node name="Player2" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
+position = Vector2(92, 188)
+physics_material_override = SubResource("PhysicsMaterial_bolhf")
+gravity_scale = 2.0
+lock_rotation = false
+contact_monitor = true
+max_contacts_reported = 2
+hook = NodePath("../Player2HookPoint")
+pinjoint = NodePath("../Player2PinJoint")
+player = "2"
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HookPoint"]
+[node name="Line2D" type="Line2D" parent="Player2"]
+texture_repeat = 2
+position = Vector2(0.175957, 0.301231)
+scale = Vector2(1.0176, 1.03012)
+points = PackedVector2Array(0, 0, 130.527, 20.0935)
+width = 5.71
+texture = ExtResource("3_4mrxx")
+texture_mode = 1
+
+[node name="Player2HookPoint" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2HookPoint"]
 shape = SubResource("CircleShape2D_ceco4")
 
-[node name="Sprite2D" type="Sprite2D" parent="HookPoint"]
+[node name="Sprite2D" type="Sprite2D" parent="Player2HookPoint"]
 position = Vector2(-11, 1)
 rotation = 1.5708
 texture = ExtResource("4_7r4gi")
 
-[node name="Marker2D" type="Marker2D" parent="HookPoint"]
+[node name="Marker2D" type="Marker2D" parent="Player2HookPoint"]
+position = Vector2(-21, 0)
+
+[node name="Player1HookPoint" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1HookPoint"]
+shape = SubResource("CircleShape2D_ceco4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1HookPoint"]
+position = Vector2(-11, 1)
+rotation = 1.5708
+texture = ExtResource("4_7r4gi")
+
+[node name="Marker2D" type="Marker2D" parent="Player1HookPoint"]
 position = Vector2(-21, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Hookable"]]
@@ -309,6 +350,7 @@ stretch_mode = 1
 [node name="StartLayer" type="CanvasLayer" parent="."]
 
 [node name="Start" parent="StartLayer" instance=ExtResource("8_4mrxx")]
+visible = false
 
 [node name="PausedLayer" type="CanvasLayer" parent="."]
 

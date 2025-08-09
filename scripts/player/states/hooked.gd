@@ -17,20 +17,20 @@ func exit() -> void:
 
 
 func physics_update(delta: float) -> void:
-	if not Input.is_action_pressed("shoot"):
+	if not Input.is_action_pressed("shoot_"+player.player):
 		if player.get_contact_count() > 0:
 			finished.emit(ON_GROUND)
 		else:
 			finished.emit(IN_AIR)
 		return
 	
-	if Input.is_action_just_pressed("retract"):
+	if Input.is_action_just_pressed("retract_"+player.player):
 		var old_pos = player.global_position
 		player.global_position = player.hook.global_position
 		player.pinjoint.node_b = NodePath("")
 		player.pinjoint.node_b = player.get_path_to(player.hook)
 		player.global_position = old_pos
-	if Input.is_action_just_released("retract"):
+	if Input.is_action_just_released("retract_"+player.player):
 		player.pinjoint.node_b = NodePath("")
 		player.pinjoint.node_b = player.get_path_to(player.hook)
 
@@ -39,11 +39,11 @@ func physics_update(delta: float) -> void:
 	player.line.add_point(Vector2.ZERO)
 	player.line.add_point(player.to_local(player.line_end.global_position))
 	
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right_"+player.player):
 		player.apply_central_impulse(Vector2.RIGHT * player.swing_speed)
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left_"+player.player):
 		player.apply_central_impulse(Vector2.LEFT * player.swing_speed)
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("up_"+player.player):
 		player.apply_central_impulse(Vector2.UP * player.swing_speed)
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("down_"+player.player):
 		player.apply_central_impulse(Vector2.DOWN * player.swing_speed)

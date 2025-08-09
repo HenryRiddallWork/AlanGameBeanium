@@ -1,6 +1,8 @@
 extends PlayerState
 
 func physics_update(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot_"+player.player):
+			print("pew"+player.player)
 	if (player.get_contact_count() > 0):
 		finished.emit(ON_GROUND)
 		return
@@ -10,7 +12,7 @@ func physics_update(delta: float) -> void:
 		var joystickDirection = _get_joystick_direction()
 		player.direction_hook.global_rotation = joystickDirection
 		
-		if Input.is_action_just_pressed("shoot"):
+		if Input.is_action_just_pressed("shoot_"+player.player):
 			var collision_points = _get_raycast_angles_for_arc(joystickDirection).map(
 				func(angle):
 					player.ray_cast_2d.target_position = player.to_local(player.global_position + (Vector2.from_angle(angle - (PI / 2)) * player.hook_range))
@@ -43,25 +45,25 @@ func exit() -> void:
 
 func _get_joystick_direction() -> float:
 	# NE
-	if Input.is_action_pressed("up") and Input.is_action_pressed("right"):
+	if Input.is_action_pressed("up_"+player.player) and Input.is_action_pressed("right_"+player.player):
 		return PI / 4
 	# SE
-	elif Input.is_action_pressed("down") and Input.is_action_pressed("right"):
+	elif Input.is_action_pressed("down_"+player.player) and Input.is_action_pressed("right_"+player.player):
 		return 3 * PI / 4
 	# SW
-	elif Input.is_action_pressed("down") and Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("down_"+player.player) and Input.is_action_pressed("left_"+player.player):
 		return 5 * PI / 4
 	# NW
-	elif Input.is_action_pressed("up") and Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("up_"+player.player) and Input.is_action_pressed("left_"+player.player):
 		return 7 * PI / 4
 	# E
-	elif Input.is_action_pressed("right"):
+	elif Input.is_action_pressed("right_"+player.player):
 		return PI / 2
 	# S
-	elif Input.is_action_pressed("down"):
+	elif Input.is_action_pressed("down_"+player.player):
 		return PI
 	# W
-	elif Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("left_"+player.player):
 		return 3 * PI / 2
 	# N
 	else:
@@ -69,7 +71,7 @@ func _get_joystick_direction() -> float:
 
 
 func _is_joystick_in_use() -> bool:
-	return Input.is_action_pressed("up") or Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left")
+	return Input.is_action_pressed("up_"+player.player) or Input.is_action_pressed("right_"+player.player) or Input.is_action_pressed("down_"+player.player) or Input.is_action_pressed("left_"+player.player)
 
 
 func _get_raycast_angles_for_arc(angle: float) -> Array[float]:
