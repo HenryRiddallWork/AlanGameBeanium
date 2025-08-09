@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=4 uid="uid://8nnhaiuf5taq"]
 
-[ext_resource type="Script" uid="uid://clm86oa1ajfnu" path="res://scripts/globals.gd" id="1_i7141"]
+[ext_resource type="Script" path="res://scripts/globals.gd" id="1_i7141"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://ca2mjl3kgpx36" path="res://scenes/player.tscn" id="2_i7141"]
 [ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="3_4mrxx"]
@@ -256,6 +256,7 @@ position = Vector2(577, 327)
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 position = Vector2(117, 37)
 node_a = NodePath("../Player")
+bias = 0.05
 disable_collision = false
 softness = 16.0
 motor_target_velocity = 1.39626

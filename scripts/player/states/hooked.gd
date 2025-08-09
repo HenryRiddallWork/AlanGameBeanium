@@ -24,6 +24,17 @@ func physics_update(delta: float) -> void:
 			finished.emit(IN_AIR)
 		return
 	
+	if Input.is_action_just_pressed("retract"):
+		var old_pos = player.global_position
+		player.global_position = player.hook.global_position
+		player.pinjoint.node_b = NodePath("")
+		player.pinjoint.node_b = player.get_path_to(player.hook)
+		player.global_position = old_pos
+	if Input.is_action_just_released("retract"):
+		player.pinjoint.node_b = NodePath("")
+		player.pinjoint.node_b = player.get_path_to(player.hook)
+
+	
 	player.line.clear_points()
 	player.line.add_point(Vector2.ZERO)
 	player.line.add_point(player.to_local(player.line_end.global_position))
