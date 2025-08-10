@@ -5,7 +5,7 @@ class_name Player extends RigidBody2D
 @export var speed: int = 10
 @export var swing_speed: int = 5
 @export var hook_range: int = 1000
-@export var raycast_count: int = 10
+@export var raycast_count: int = 30
 
 # If changing this enum, also change the player IDs in globals
 @export_enum("1", "2") var player_id: String
