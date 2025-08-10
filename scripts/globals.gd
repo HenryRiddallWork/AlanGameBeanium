@@ -18,7 +18,7 @@ const PLAYER_1_ID = "1"
 const PLAYER_2_ID = "2"
 
 class PlayerData:
-	var health: int = 3
+	var health: int = 10
 
 var player_data: Dictionary = {
 	PLAYER_1_ID: PlayerData.new(),
