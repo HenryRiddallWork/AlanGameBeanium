@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ydkdscbtc8e" path="res://assets/non-animations/cannopy.png" id="11_e3hyu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
-friction = 0.0
+rough = true
 bounce = 0.17
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ceco4"]
@@ -124,27 +124,6 @@ texture = ExtResource("4_7r4gi")
 
 [node name="Marker2D" type="Marker2D" parent="Player1HookPoint"]
 position = Vector2(-21, 0)
-
-[node name="Player1Health" type="Label" parent="."]
-offset_left = 17.0
-offset_top = 16.0
-offset_right = 174.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0.933333, 0.643137, 0.105882, 1)
-theme_override_fonts/font = ExtResource("7_w7kh3")
-theme_override_font_sizes/font_size = 37
-text = "0"
-
-[node name="Player2Health" type="Label" parent="."]
-offset_left = 975.0
-offset_top = 16.0
-offset_right = 1132.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0.933333, 0.643137, 0.105882, 1)
-theme_override_fonts/font = ExtResource("7_w7kh3")
-theme_override_font_sizes/font_size = 37
-text = "0"
-horizontal_alignment = 2
 
 [node name="platforms" type="CanvasGroup" parent="."]
 position = Vector2(261, 43)
@@ -283,3 +262,24 @@ texture = ExtResource("11_e3hyu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="canopy"]
 polygon = PackedVector2Array(84, 166, 92, 130, 115, 121, 149, 121, 166, 113, 174, 99, 177, 75, 191, 74, 202, 64, 213, 65, 227, 54, 238, 66, 248, 72, 261, 71, 272, 67, 286, 73, 296, 70, 302, 64, 333, 77, 363, 68, 406, 66, 432, 58, 478, 56, 513, 47, 500, 35, 520, 35, 548, 40, 573, 48, 597, 55, 611, 71, 635, 60, 667, 59, 688, 43, 709, 53, 744, 41, 788, 41, 820, 44, 818, 57, 850, 43, 891, 48, 915, 41, 1023, 51, 1047, 96, 1074, 125, 1116, 136, 1153, 146, 1150, 1, 9, 2, 5, 154, 5, 175, 42, 182, 69, 184)
+
+[node name="Player1Health" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 174.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_w7kh3")
+theme_override_font_sizes/font_size = 37
+text = "0"
+
+[node name="Player2Health" type="Label" parent="."]
+offset_left = 975.0
+offset_top = 16.0
+offset_right = 1132.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_w7kh3")
+theme_override_font_sizes/font_size = 37
+text = "0"
+horizontal_alignment = 2
