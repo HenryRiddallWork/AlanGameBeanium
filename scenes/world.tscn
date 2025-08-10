@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=13 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://ca2mjl3kgpx36" path="res://scenes/player.tscn" id="2_i7141"]
 [ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="3_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="3_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="4_7r4gi"]
-[ext_resource type="Texture2D" uid="uid://djgx60mo6uv1k" path="res://tileset.png" id="5_w7kh3"]
+[ext_resource type="Texture2D" uid="uid://dgndupctbky6f" path="res://assets/non-animations/platform.png" id="7_e3hyu"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="7_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
@@ -16,234 +17,6 @@ bounce = 0.17
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ceco4"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i7141"]
-rough = true
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k4lu0"]
-texture = ExtResource("5_w7kh3")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, 16, -16, 16, 16, 8, 16)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 8, -8, -16, -16, -16)
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-14:1/0 = 0
-15:1/0 = 0
-16:1/0 = 0
-17:1/0 = 0
-18:1/0 = 0
-19:1/0 = 0
-20:1/0 = 0
-21:1/0 = 0
-22:1/0 = 0
-23:1/0 = 0
-24:1/0 = 0
-26:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -16, 16, -16, 16, -8)
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, -8, 16, 8, 16, -16)
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 8, 16, -8, 16, -16, -16, -16)
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-11:2/0 = 0
-12:2/0 = 0
-13:2/0 = 0
-14:2/0 = 0
-15:2/0 = 0
-16:2/0 = 0
-17:2/0 = 0
-18:2/0 = 0
-19:2/0 = 0
-20:2/0 = 0
-21:2/0 = 0
-22:2/0 = 0
-23:2/0 = 0
-24:2/0 = 0
-26:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-8:3/0 = 0
-9:3/0 = 0
-10:3/0 = 0
-11:3/0 = 0
-12:3/0 = 0
-13:3/0 = 0
-14:3/0 = 0
-15:3/0 = 0
-16:3/0 = 0
-17:3/0 = 0
-18:3/0 = 0
-21:3/0 = 0
-22:3/0 = 0
-24:3/0 = 0
-25:3/0 = 0
-26:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-11:4/0 = 0
-12:4/0 = 0
-13:4/0 = 0
-14:4/0 = 0
-16:4/0 = 0
-17:4/0 = 0
-18:4/0 = 0
-22:4/0 = 0
-23:4/0 = 0
-24:4/0 = 0
-26:4/0 = 0
-27:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-10:5/0 = 0
-11:5/0 = 0
-12:5/0 = 0
-13:5/0 = 0
-14:5/0 = 0
-15:5/0 = 0
-16:5/0 = 0
-17:5/0 = 0
-18:5/0 = 0
-19:5/0 = 0
-20:5/0 = 0
-21:5/0 = 0
-22:5/0 = 0
-23:5/0 = 0
-24:5/0 = 0
-26:5/0 = 0
-27:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-9:6/0 = 0
-10:6/0 = 0
-11:6/0 = 0
-12:6/0 = 0
-13:6/0 = 0
-14:6/0 = 0
-15:6/0 = 0
-16:6/0 = 0
-17:6/0 = 0
-18:6/0 = 0
-19:6/0 = 0
-20:6/0 = 0
-21:6/0 = 0
-22:6/0 = 0
-23:6/0 = 0
-24:6/0 = 0
-25:6/0 = 0
-26:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-9:7/0 = 0
-10:7/0 = 0
-11:7/0 = 0
-12:7/0 = 0
-13:7/0 = 0
-14:7/0 = 0
-15:7/0 = 0
-16:7/0 = 0
-17:7/0 = 0
-18:7/0 = 0
-19:7/0 = 0
-20:7/0 = 0
-21:7/0 = 0
-23:7/0 = 0
-24:7/0 = 0
-25:7/0 = 0
-26:7/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-6:8/0 = 0
-7:8/0 = 0
-8:8/0 = 0
-9:8/0 = 0
-10:8/0 = 0
-11:8/0 = 0
-12:8/0 = 0
-13:8/0 = 0
-14:8/0 = 0
-15:8/0 = 0
-16:8/0 = 0
-17:8/0 = 0
-18:8/0 = 0
-19:8/0 = 0
-20:8/0 = 0
-21:8/0 = 0
-23:8/0 = 0
-24:8/0 = 0
-25:8/0 = 0
-26:8/0 = 0
-0:9/0 = 0
-6:9/0 = 0
-23:9/0 = 0
-24:9/0 = 0
-25:9/0 = 0
-26:9/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_dxqkr"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_i7141")
-sources/3 = SubResource("TileSetAtlasSource_k4lu0")
-
 [node name="main" type="Node2D"]
 script = ExtResource("1_7r4gi")
 
@@ -253,6 +26,11 @@ offset_bottom = 304.0
 scale = Vector2(2.16, 2.16)
 texture = ExtResource("1_qfnet")
 stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(576, 323)
+texture = ExtResource("3_w7kh3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 327)
@@ -273,8 +51,13 @@ disable_collision = false
 softness = 16.0
 motor_target_velocity = 1.39626
 
-[node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") groups=["Players"] instance=ExtResource("2_i7141")]
-position = Vector2(239, 188)
+[node name="StartLayer" type="CanvasLayer" parent="."]
+
+[node name="Start" parent="StartLayer" instance=ExtResource("8_4mrxx")]
+visible = false
+
+[node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
+position = Vector2(261, 43)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
 lock_rotation = false
@@ -341,10 +124,6 @@ texture = ExtResource("4_7r4gi")
 [node name="Marker2D" type="Marker2D" parent="Player1HookPoint"]
 position = Vector2(-21, 0)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Hookable"]]
-tile_map_data = PackedByteArray("AAAGAAYAAwABAAAAAAACAAcAAwACAAEAAAABAAcAAwABAAEAAAABAAYAAwABAAAAAAACAAYAAwACAAAAAAADAAcAAwADAAEAAAADAAYAAwADAAAAAAAEAAcAAwAEAAEAAAAEAAYAAwAEAAAAAAADAAgAAwADAAIAAAACAAgAAwACAAIAAAABAAgAAwABAAIAAAAGAAcAAwABAAEAAAAGAAgAAwABAAIAAAAHAAgAAwACAAIAAAAIAAgAAwADAAIAAAAHAAcAAwACAAEAAAAIAAcAAwADAAEAAAAIAAYAAwADAAAAAAAHAAYAAwACAAAAAAAJAAYAAwAEAAAAAAAJAAcAAwAEAAEAAAANAAEAAwABAAAAAAANAAIAAwABAAEAAAANAAMAAwABAAIAAAAOAAEAAwACAAAAAAAOAAIAAwACAAEAAAAOAAMAAwACAAIAAAAPAAEAAwADAAAAAAAPAAIAAwADAAEAAAAPAAMAAwADAAIAAAAQAAEAAwAEAAAAAAAQAAIAAwAEAAEAAAAPAAoAAwABAAAAAAAPAAsAAwABAAEAAAAPAAwAAwABAAIAAAAQAAoAAwACAAAAAAAQAAsAAwACAAEAAAAQAAwAAwACAAIAAAARAAoAAwADAAAAAAARAAsAAwADAAEAAAARAAwAAwADAAIAAAASAAoAAwAEAAAAAAASAAsAAwAEAAEAAAAWAAUAAwABAAAAAAAWAAYAAwABAAEAAAAWAAcAAwABAAIAAAAXAAUAAwACAAAAAAAXAAYAAwACAAEAAAAXAAcAAwACAAIAAAAYAAUAAwADAAAAAAAYAAYAAwADAAEAAAAYAAcAAwADAAIAAAAZAAUAAwAEAAAAAAAZAAYAAwAEAAEAAAAgAAoAAwABAAAAAAAgAAsAAwABAAEAAAAgAAwAAwABAAIAAAAhAAoAAwACAAAAAAAhAAsAAwACAAEAAAAhAAwAAwACAAIAAAAiAAoAAwADAAAAAAAiAAsAAwADAAEAAAAiAAwAAwADAAIAAAAjAAoAAwAEAAAAAAAjAAsAAwAEAAEAAAAfAAMAAwABAAAAAAAfAAQAAwABAAEAAAAfAAUAAwABAAIAAAAgAAMAAwACAAAAAAAgAAQAAwACAAEAAAAgAAUAAwACAAIAAAAhAAMAAwADAAAAAAAhAAQAAwADAAEAAAAhAAUAAwADAAIAAAAiAAMAAwAEAAAAAAAiAAQAAwAEAAEAAAAXABAAAwABAAAAAAAXABEAAwABAAEAAAAXABIAAwABAAIAAAAYABAAAwACAAAAAAAYABEAAwACAAEAAAAYABIAAwACAAIAAAAZABAAAwADAAAAAAAZABEAAwADAAEAAAAZABIAAwADAAIAAAAaABAAAwAEAAAAAAAaABEAAwAEAAEAAAAFAA0AAwACAAAAAAAGAA0AAwADAAAAAAAHAA0AAwAEAAAAAAAEAA0AAwABAAAAAAAEAA4AAwABAAEAAAAEAA8AAwABAAIAAAAFAA4AAwACAAEAAAAFAA8AAwACAAIAAAAGAA4AAwADAAEAAAAGAA8AAwADAAIAAAAHAA4AAwAEAAEAAAA=")
-tile_set = SubResource("TileSet_dxqkr")
-
 [node name="Player1Health" type="Label" parent="."]
 offset_left = 17.0
 offset_top = 16.0
@@ -366,10 +145,128 @@ theme_override_font_sizes/font_size = 37
 text = "0"
 horizontal_alignment = 2
 
-[node name="StartLayer" type="CanvasLayer" parent="."]
+[node name="platforms" type="CanvasGroup" parent="."]
+position = Vector2(261, 43)
 
-[node name="Start" parent="StartLayer" instance=ExtResource("8_4mrxx")]
-visible = false
+[node name="platform" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(-261, -43)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform2" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(-421, 141)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform2"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform2"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform3" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(191, 50)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform3"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform3"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform4" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(382, 100)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform4"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform4"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform5" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(-220, 241)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform5"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform5"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform6" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(-388, 378)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform6"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform6"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform7" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(270, 340)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform7"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform7"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform8" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(516, -54)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform8"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform8"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform9" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(-154, 69)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform9"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform9"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform10" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(542, 297)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform10"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform10"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="PausedLayer" type="CanvasLayer" parent="."]
 
