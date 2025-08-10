@@ -1,40 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://k2h4f3dx462v"]
+[gd_scene load_steps=5 format=3 uid="uid://k2h4f3dx462v"]
 
-[ext_resource type="Script" path="res://scripts/start.gd" id="1_bodal"]
-[ext_resource type="Texture2D" uid="uid://bx70glaekxydg" path="res://assets/non-animations/background_placeholder.png" id="2_kdmts"]
+[ext_resource type="Script" uid="uid://cv0itvsmcq71s" path="res://scripts/start.gd" id="1_bodal"]
+[ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="2_bodal"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="3_0auqf"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kdmts"]
 
 [node name="Start" type="Node2D"]
 script = ExtResource("1_bodal")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(578, 325)
-texture = ExtResource("2_kdmts")
+position = Vector2(576, 324)
+texture = ExtResource("2_bodal")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.443137)
+position = Vector2(571.75, 219.75)
+scale = Vector2(410.5, 156.5)
+texture = SubResource("CanvasTexture_kdmts")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 499.0
-offset_top = 204.0
-offset_right = 691.0
-offset_bottom = 340.0
+offset_left = 397.0
+offset_top = 115.0
+offset_right = 747.0
+offset_bottom = 316.0
+theme_override_colors/font_shadow_color = Color(0.507244, 5.95618e-07, 2.88785e-07, 1)
+theme_override_constants/shadow_offset_x = 6
 theme_override_fonts/font = ExtResource("3_0auqf")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 200
 text = "KONK"
 
 [node name="Button" type="Button" parent="."]
 process_mode = 3
-offset_left = 528.0
-offset_top = 384.0
-offset_right = 639.0
-offset_bottom = 443.0
+offset_left = 462.0
+offset_top = 383.0
+offset_right = 689.0
+offset_bottom = 492.0
 theme_override_fonts/font = ExtResource("3_0auqf")
-theme_override_font_sizes/font_size = 50
-text = "Start"
+theme_override_font_sizes/font_size = 100
+text = "START"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 463.0
-offset_top = 312.0
-offset_right = 704.0
-offset_bottom = 363.0
+offset_left = 914.0
+offset_top = 601.0
+offset_right = 1155.0
+offset_bottom = 652.0
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 50
 text = "[p] to pause"
