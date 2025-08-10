@@ -1,5 +1,9 @@
 extends PlayerState
 
+# Want to avoid "just_pressed" for retracting so that you can enter hooked with
+# retracted pressed and it work as expected, so use this flag to toggle on/off
+var retracting: bool = false
+
 
 func enter(previous_state_path: String, data := {}) -> void:
 	var hook_pos = data["hook_global_pos"]
@@ -9,11 +13,13 @@ func enter(previous_state_path: String, data := {}) -> void:
 	#rotate the hook so it is the right angle
 	var direction = hook_pos - player.global_position
 	player.hook.rotation = direction.angle()
+	retracting = false
 
 
 func exit() -> void:
 	player.line.clear_points()
 	player.pinjoint.node_b = NodePath("")
+	retracting = false
 
 
 func physics_update(delta: float) -> void:
@@ -24,15 +30,17 @@ func physics_update(delta: float) -> void:
 			finished.emit(IN_AIR)
 		return
 	
-	if Input.is_action_just_pressed("retract_"+player.player_id):
+	if Input.is_action_pressed("retract_"+player.player_id) and not retracting:
 		var old_pos = player.global_position
 		player.global_position = player.hook.global_position
 		player.pinjoint.node_b = NodePath("")
 		player.pinjoint.node_b = player.get_path_to(player.hook)
 		player.global_position = old_pos
+		retracting = true
 	if Input.is_action_just_released("retract_"+player.player_id):
 		player.pinjoint.node_b = NodePath("")
 		player.pinjoint.node_b = player.get_path_to(player.hook)
+		retracting = false
 	
 	player.line.clear_points()
 	player.line.add_point(Vector2.ZERO)
