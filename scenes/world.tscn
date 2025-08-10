@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=14 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="7_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://d0ydkdscbtc8e" path="res://assets/non-animations/cannopy.png" id="11_e3hyu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 friction = 0.0
@@ -29,7 +30,7 @@ stretch_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(576, 323)
+position = Vector2(576, 327)
 texture = ExtResource("3_w7kh3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -57,7 +58,7 @@ motor_target_velocity = 1.39626
 visible = false
 
 [node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
-position = Vector2(261, 43)
+position = Vector2(348, 140)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
 lock_rotation = false
@@ -149,7 +150,7 @@ horizontal_alignment = 2
 position = Vector2(261, 43)
 
 [node name="platform" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(-261, -43)
+position = Vector2(-242, 356)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform"]
 position = Vector2(267, 122)
@@ -233,7 +234,7 @@ scale = Vector2(0.719109, 0.536184)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform8" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(516, -54)
+position = Vector2(334, 208)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform8"]
 position = Vector2(267, 122)
@@ -272,3 +273,13 @@ polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209,
 
 [node name="Paused" parent="PausedLayer" instance=ExtResource("9_7r4gi")]
 visible = false
+
+[node name="canopy" type="StaticBody2D" parent="." groups=["Hookable"]]
+position = Vector2(-2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="canopy"]
+position = Vector2(579, 324)
+texture = ExtResource("11_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="canopy"]
+polygon = PackedVector2Array(84, 166, 92, 130, 115, 121, 149, 121, 166, 113, 174, 99, 177, 75, 191, 74, 202, 64, 213, 65, 227, 54, 238, 66, 248, 72, 261, 71, 272, 67, 286, 73, 296, 70, 302, 64, 333, 77, 363, 68, 406, 66, 432, 58, 478, 56, 513, 47, 500, 35, 520, 35, 548, 40, 573, 48, 597, 55, 611, 71, 635, 60, 667, 59, 688, 43, 709, 53, 744, 41, 788, 41, 820, 44, 818, 57, 850, 43, 891, 48, 915, 41, 1023, 51, 1047, 96, 1074, 125, 1116, 136, 1153, 146, 1150, 1, 9, 2, 5, 154, 5, 175, 42, 182, 69, 184)
