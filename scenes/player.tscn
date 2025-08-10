@@ -19,9 +19,9 @@ lock_rotation = true
 script = ExtResource("1_2kdwn")
 
 [node name="DirectionHook" type="Sprite2D" parent="."]
-rotation = 2.35619
+rotation = 3.12763
 texture = ExtResource("2_qhqgy")
-offset = Vector2(1, -10)
+offset = Vector2(1, -15)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.140625, 0.140625)
