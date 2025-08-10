@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=4 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=13 format=4 uid="uid://8nnhaiuf5taq"]
 
-[ext_resource type="Script" uid="uid://clm86oa1ajfnu" path="res://scripts/globals.gd" id="1_i7141"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://ca2mjl3kgpx36" path="res://scenes/player.tscn" id="2_i7141"]
 [ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="3_4mrxx"]
@@ -241,7 +240,6 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_k4lu0")
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_i7141")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 556.0
@@ -277,6 +275,7 @@ lock_rotation = false
 max_contacts_reported = 2
 hook = NodePath("../Player1HookPoint")
 pinjoint = NodePath("../Player1PinJoint")
+player_id = "1"
 metadata/_edit_group_ = true
 
 [node name="Line2D" type="Line2D" parent="Player1"]
@@ -297,7 +296,7 @@ contact_monitor = true
 max_contacts_reported = 2
 hook = NodePath("../Player2HookPoint")
 pinjoint = NodePath("../Player2PinJoint")
-player = "2"
+player_id = "2"
 metadata/_edit_group_ = true
 
 [node name="Line2D" type="Line2D" parent="Player2"]

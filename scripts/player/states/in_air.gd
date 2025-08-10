@@ -10,7 +10,7 @@ func physics_update(delta: float) -> void:
 		var joystickDirection = _get_joystick_direction()
 		player.direction_hook.global_rotation = joystickDirection
 		
-		if Input.is_action_just_pressed("shoot_"+player.player):
+		if Input.is_action_just_pressed("shoot_"+player.player_id):
 			var collision_points = _get_raycast_angles_for_arc(joystickDirection).map(
 				func(angle_and_scale_factor):
 					var angle = angle_and_scale_factor[0]
@@ -47,25 +47,25 @@ func exit() -> void:
 
 func _get_joystick_direction() -> float:
 	# NE
-	if Input.is_action_pressed("up_"+player.player) and Input.is_action_pressed("right_"+player.player):
+	if Input.is_action_pressed("up_"+player.player_id) and Input.is_action_pressed("right_"+player.player_id):
 		return PI / 4
 	# SE
-	elif Input.is_action_pressed("down_"+player.player) and Input.is_action_pressed("right_"+player.player):
+	elif Input.is_action_pressed("down_"+player.player_id) and Input.is_action_pressed("right_"+player.player_id):
 		return 3 * PI / 4
 	# SW
-	elif Input.is_action_pressed("down_"+player.player) and Input.is_action_pressed("left_"+player.player):
+	elif Input.is_action_pressed("down_"+player.player_id) and Input.is_action_pressed("left_"+player.player_id):
 		return 5 * PI / 4
 	# NW
-	elif Input.is_action_pressed("up_"+player.player) and Input.is_action_pressed("left_"+player.player):
+	elif Input.is_action_pressed("up_"+player.player_id) and Input.is_action_pressed("left_"+player.player_id):
 		return 7 * PI / 4
 	# E
-	elif Input.is_action_pressed("right_"+player.player):
+	elif Input.is_action_pressed("right_"+player.player_id):
 		return PI / 2
 	# S
-	elif Input.is_action_pressed("down_"+player.player):
+	elif Input.is_action_pressed("down_"+player.player_id):
 		return PI
 	# W
-	elif Input.is_action_pressed("left_"+player.player):
+	elif Input.is_action_pressed("left_"+player.player_id):
 		return 3 * PI / 2
 	# N
 	else:
@@ -73,7 +73,7 @@ func _get_joystick_direction() -> float:
 
 
 func _is_joystick_in_use() -> bool:
-	return Input.is_action_pressed("up_"+player.player) or Input.is_action_pressed("right_"+player.player) or Input.is_action_pressed("down_"+player.player) or Input.is_action_pressed("left_"+player.player)
+	return Input.is_action_pressed("up_"+player.player_id) or Input.is_action_pressed("right_"+player.player_id) or Input.is_action_pressed("down_"+player.player_id) or Input.is_action_pressed("left_"+player.player_id)
 
 
 func _get_raycast_angles_for_arc(angle: float) -> Array[Array]:

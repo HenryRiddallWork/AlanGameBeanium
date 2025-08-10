@@ -13,9 +13,19 @@ signal start_game
 signal pause_game
 signal resume_game
 
+# player state
+const PLAYER_1_ID = "1"
+const PLAYER_2_ID = "2"
+
+class PlayerData:
+	var health: int = 3
+
+var player_data: Dictionary = {
+	PLAYER_1_ID: PlayerData.new(),
+	PLAYER_2_ID: PlayerData.new(),
+}
 
 # counters
-var player_health: int = 3
 var time_elapsed: float = 0
 
 
@@ -26,7 +36,6 @@ func start():
 	gamestate = GAMESTATES.PLAYING
 	start_game.emit()
 	get_tree().paused = false
-	## kill mobs
 	print("starting game")
 	resume()
 	
