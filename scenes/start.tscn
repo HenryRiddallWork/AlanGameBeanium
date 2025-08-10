@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://k2h4f3dx462v"]
 
-[ext_resource type="Script" uid="uid://cv0itvsmcq71s" path="res://scripts/start.gd" id="1_bodal"]
+[ext_resource type="Script" path="res://scripts/start.gd" id="1_bodal"]
 [ext_resource type="Texture2D" uid="uid://bx70glaekxydg" path="res://assets/non-animations/background_placeholder.png" id="2_kdmts"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="3_0auqf"]
 

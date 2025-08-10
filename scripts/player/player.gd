@@ -18,11 +18,13 @@ class_name Player extends RigidBody2D
 @onready var line_end = hook.get_node("Marker2D")
 @onready var direction_hook: Sprite2D = $DirectionHook
 
+signal player_collision(player_speeds: Dictionary)
+
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
+	body_entered.connect(_on_body_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +35,9 @@ func _physics_process(delta: float) -> void:
 		Globals.pause()
 
 
-func _on_body_entered(body: Node):
+func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Players"):
-		print("Player ", player_id, ": This player speed: ", linear_velocity.length(), ", other speed: ", body.linear_velocity.length())
+		player_collision.emit({
+			player_id: linear_velocity.length(),
+			body.player_id: body.linear_velocity.length(),
+		})
