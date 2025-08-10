@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=15 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://d0ydkdscbtc8e" path="res://assets/non-animations/cannopy.png" id="11_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://dmfhvmr4l7pgs" path="res://scenes/ui.tscn" id="12_q5onr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 rough = true
@@ -51,11 +52,6 @@ bias = 0.05
 disable_collision = false
 softness = 16.0
 motor_target_velocity = 1.39626
-
-[node name="StartLayer" type="CanvasLayer" parent="."]
-
-[node name="Start" parent="StartLayer" instance=ExtResource("8_4mrxx")]
-visible = false
 
 [node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
 position = Vector2(348, 140)
@@ -283,3 +279,12 @@ theme_override_fonts/font = ExtResource("7_w7kh3")
 theme_override_font_sizes/font_size = 37
 text = "0"
 horizontal_alignment = 2
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="Ui" parent="Ui" instance=ExtResource("12_q5onr")]
+
+[node name="StartLayer" type="CanvasLayer" parent="."]
+
+[node name="Start" parent="StartLayer" instance=ExtResource("8_4mrxx")]
+visible = false
