@@ -1,11 +1,11 @@
 class_name Player extends RigidBody2D
 
 @export var hook: StaticBody2D
-@export var pinjoint : PinJoint2D
-@export var speed = 5
-@export var swing_speed = 3
-@export var hook_range = 1000
-@export var raycast_count = 10
+@export var pinjoint: PinJoint2D
+@export var speed: int = 10
+@export var swing_speed: int = 5
+@export var hook_range: int = 1000
+@export var raycast_count: int = 10
 
 # If changing this enum, also change the player IDs in globals
 @export_enum("1", "2") var player_id: String
@@ -20,7 +20,7 @@ class_name Player extends RigidBody2D
 
 
 func _ready() -> void:
-	direction_hook.visible = false
+	body_entered.connect(_on_body_entered)
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
 
@@ -31,3 +31,8 @@ func _physics_process(delta: float) -> void:
 		return
 	if Input.is_action_just_pressed("Paused"):
 		Globals.pause()
+
+
+func _on_body_entered(body: Node):
+	if body.is_in_group("Players"):
+		print("Player ", player_id, ": This player speed: ", linear_velocity.length(), ", other speed: ", body.linear_velocity.length())

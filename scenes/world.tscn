@@ -273,12 +273,13 @@ disable_collision = false
 softness = 16.0
 motor_target_velocity = 1.39626
 
-[node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
+[node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") groups=["Players"] instance=ExtResource("2_i7141")]
 position = Vector2(239, 188)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
 lock_rotation = false
-max_contacts_reported = 2
+contact_monitor = true
+max_contacts_reported = 3
 hook = NodePath("../Player1HookPoint")
 pinjoint = NodePath("../Player1PinJoint")
 player_id = "1"
@@ -293,13 +294,13 @@ width = 5.71
 texture = ExtResource("3_4mrxx")
 texture_mode = 1
 
-[node name="Player2" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
+[node name="Player2" parent="." node_paths=PackedStringArray("hook", "pinjoint") groups=["Players"] instance=ExtResource("2_i7141")]
 position = Vector2(92, 188)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
 lock_rotation = false
 contact_monitor = true
-max_contacts_reported = 2
+max_contacts_reported = 3
 hook = NodePath("../Player2HookPoint")
 pinjoint = NodePath("../Player2PinJoint")
 player_id = "2"
