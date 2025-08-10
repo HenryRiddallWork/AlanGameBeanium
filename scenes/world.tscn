@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="3_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://djgx60mo6uv1k" path="res://tileset.png" id="5_w7kh3"]
-[ext_resource type="Texture2D" uid="uid://bbhmhgaa3g7o" path="res://clouds.png" id="6_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
 
@@ -14,6 +13,9 @@ friction = 0.0
 bounce = 0.17
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ceco4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i7141"]
+rough = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k4lu0"]
 texture = ExtResource("5_w7kh3")
@@ -237,6 +239,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_dxqkr"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_i7141")
 sources/3 = SubResource("TileSetAtlasSource_k4lu0")
 
 [node name="main" type="Node2D"]
@@ -337,14 +340,6 @@ position = Vector2(-21, 0)
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Hookable"]]
 tile_map_data = PackedByteArray("AAAGAAYAAwABAAAAAAACAAcAAwACAAEAAAABAAcAAwABAAEAAAABAAYAAwABAAAAAAACAAYAAwACAAAAAAADAAcAAwADAAEAAAADAAYAAwADAAAAAAAEAAcAAwAEAAEAAAAEAAYAAwAEAAAAAAADAAgAAwADAAIAAAACAAgAAwACAAIAAAABAAgAAwABAAIAAAAGAAcAAwABAAEAAAAGAAgAAwABAAIAAAAHAAgAAwACAAIAAAAIAAgAAwADAAIAAAAHAAcAAwACAAEAAAAIAAcAAwADAAEAAAAIAAYAAwADAAAAAAAHAAYAAwACAAAAAAAJAAYAAwAEAAAAAAAJAAcAAwAEAAEAAAANAAEAAwABAAAAAAANAAIAAwABAAEAAAANAAMAAwABAAIAAAAOAAEAAwACAAAAAAAOAAIAAwACAAEAAAAOAAMAAwACAAIAAAAPAAEAAwADAAAAAAAPAAIAAwADAAEAAAAPAAMAAwADAAIAAAAQAAEAAwAEAAAAAAAQAAIAAwAEAAEAAAAFAAsAAwABAAAAAAAFAAwAAwABAAEAAAAFAA0AAwABAAIAAAAGAAsAAwACAAAAAAAGAAwAAwACAAEAAAAGAA0AAwACAAIAAAAHAAsAAwADAAAAAAAHAAwAAwADAAEAAAAHAA0AAwADAAIAAAAIAAsAAwAEAAAAAAAIAAwAAwAEAAEAAAAPAAoAAwABAAAAAAAPAAsAAwABAAEAAAAPAAwAAwABAAIAAAAQAAoAAwACAAAAAAAQAAsAAwACAAEAAAAQAAwAAwACAAIAAAARAAoAAwADAAAAAAARAAsAAwADAAEAAAARAAwAAwADAAIAAAASAAoAAwAEAAAAAAASAAsAAwAEAAEAAAAWAAUAAwABAAAAAAAWAAYAAwABAAEAAAAWAAcAAwABAAIAAAAXAAUAAwACAAAAAAAXAAYAAwACAAEAAAAXAAcAAwACAAIAAAAYAAUAAwADAAAAAAAYAAYAAwADAAEAAAAYAAcAAwADAAIAAAAZAAUAAwAEAAAAAAAZAAYAAwAEAAEAAAAfAAAAAwABAAAAAAAfAAEAAwABAAEAAAAfAAIAAwABAAIAAAAgAAAAAwACAAAAAAAgAAEAAwACAAEAAAAgAAIAAwACAAIAAAAhAAAAAwADAAAAAAAhAAEAAwADAAEAAAAhAAIAAwADAAIAAAAiAAAAAwAEAAAAAAAiAAEAAwAEAAEAAAAgAAoAAwABAAAAAAAgAAsAAwABAAEAAAAgAAwAAwABAAIAAAAhAAoAAwACAAAAAAAhAAsAAwACAAEAAAAhAAwAAwACAAIAAAAiAAoAAwADAAAAAAAiAAsAAwADAAEAAAAiAAwAAwADAAIAAAAjAAoAAwAEAAAAAAAjAAsAAwAEAAEAAAA=")
 tile_set = SubResource("TileSet_dxqkr")
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = -14.0
-offset_top = 433.0
-offset_right = 1271.0
-offset_bottom = 669.0
-texture = ExtResource("6_e3hyu")
-stretch_mode = 1
 
 [node name="StartLayer" type="CanvasLayer" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=10 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://b8v117whkq6l7" path="res://icon.svg" id="1_lnhqd"]
@@ -8,9 +8,13 @@
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjrip"]
+rough = true
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oxxb"]
 
 [node name="Player" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_fjrip")
 lock_rotation = true
 script = ExtResource("1_2kdwn")
 
