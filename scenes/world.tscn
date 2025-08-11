@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://d0ydkdscbtc8e" path="res://assets/non-animations/cannopy.png" id="11_e3hyu"]
-[ext_resource type="PackedScene" path="res://scenes/ui.tscn" id="12_q5onr"]
+[ext_resource type="PackedScene" uid="uid://qtjp0d56wc6p" path="res://scenes/ui.tscn" id="12_q5onr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 rough = true

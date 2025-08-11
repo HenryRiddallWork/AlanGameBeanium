@@ -17,8 +17,10 @@ signal resume_game
 const PLAYER_1_ID = "1"
 const PLAYER_2_ID = "2"
 
+const MAX_PLAYER_HEALTH = 10
+
 class PlayerData:
-	var health: int = 10
+	var health: int = MAX_PLAYER_HEALTH
 
 var player_data: Dictionary = {
 	PLAYER_1_ID: PlayerData.new(),
