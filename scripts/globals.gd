@@ -17,7 +17,7 @@ signal resume_game
 const PLAYER_1_ID = "1"
 const PLAYER_2_ID = "2"
 
-const MAX_PLAYER_HEALTH = 10
+const MAX_PLAYER_HEALTH = 30
 
 class PlayerData:
 	var health: int = MAX_PLAYER_HEALTH

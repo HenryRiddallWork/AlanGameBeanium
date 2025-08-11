@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=17 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
-[ext_resource type="Texture2D" uid="uid://b8v117whkq6l7" path="res://icon.svg" id="1_lnhqd"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="2_smehm"]
+[ext_resource type="Texture2D" uid="uid://bl3l711mkcopc" path="res://assets/animations/konk/konk_deatg.png" id="3_fjrip"]
 [ext_resource type="Script" uid="uid://7ur74s2qji2d" path="res://scripts/player/state_machine.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://vwf0hw7scwoa" path="res://scripts/player/states/on_ground.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
@@ -11,12 +12,85 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjrip"]
 rough = true
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jej6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}],
+"loop": true,
+"name": &"100_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}],
+"loop": true,
+"name": &"25_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}],
+"loop": true,
+"name": &"50_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": true,
+"name": &"75_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oxxb"]
+radius = 27.4591
 
 [node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_fjrip")
 lock_rotation = true
 script = ExtResource("1_2kdwn")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(0.175957, 0.301231)
+scale = Vector2(1.0176, 1.03012)
+points = PackedVector2Array(0, 0, 130.527, 20.0935)
+width = 5.71
+texture = ExtResource("2_smehm")
+texture_mode = 1
 
 [node name="DirectionHook" type="Sprite2D" parent="."]
 visible = false
@@ -24,9 +98,12 @@ rotation = 3.12763
 texture = ExtResource("2_qhqgy")
 offset = Vector2(1, -15)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.140625, 0.140625)
-texture = ExtResource("1_lnhqd")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.625001, -7.375)
+scale = Vector2(1.26172, 1.26172)
+sprite_frames = SubResource("SpriteFrames_jej6c")
+animation = &"100_health"
+autoplay = "100_health"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6oxxb")
