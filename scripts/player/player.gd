@@ -17,6 +17,7 @@ class_name Player extends RigidBody2D
 @onready var line = $Line2D
 @onready var line_end = hook.get_node("Marker2D")
 @onready var direction_hook: Sprite2D = $DirectionHook
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
 signal player_collision(player_speeds: Dictionary)
 
@@ -26,6 +27,17 @@ func _ready() -> void:
 	pinjoint.node_b = NodePath("")
 	body_entered.connect(_on_body_entered)
 
+func _process(delta: float) -> void:
+	if Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:
+		sprite.play("75_health")
+	elif Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.5:
+		sprite.play("50_health")
+	elif Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.25:
+		sprite.play("25_health")
+	elif Globals.player_data[player_id].health <=0:
+		sprite.play("death")
+	else:
+		sprite.play("100_health")
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Players"):
