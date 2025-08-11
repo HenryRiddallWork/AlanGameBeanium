@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://d0ydkdscbtc8e" path="res://assets/non-animations/cannopy.png" id="11_e3hyu"]
-[ext_resource type="PackedScene" uid="uid://dmfhvmr4l7pgs" path="res://scenes/ui.tscn" id="12_q5onr"]
+[ext_resource type="PackedScene" path="res://scenes/ui.tscn" id="12_q5onr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 rough = true
@@ -244,11 +244,6 @@ position = Vector2(-166, 65)
 scale = Vector2(0.719109, 0.536184)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
-[node name="PausedLayer" type="CanvasLayer" parent="."]
-
-[node name="Paused" parent="PausedLayer" instance=ExtResource("9_7r4gi")]
-visible = false
-
 [node name="canopy" type="StaticBody2D" parent="." groups=["Hookable"]]
 position = Vector2(-2, 2)
 
@@ -283,6 +278,11 @@ horizontal_alignment = 2
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="Ui" parent="Ui" instance=ExtResource("12_q5onr")]
+
+[node name="PausedLayer" type="CanvasLayer" parent="."]
+
+[node name="Paused" parent="PausedLayer" instance=ExtResource("9_7r4gi")]
+visible = false
 
 [node name="StartLayer" type="CanvasLayer" parent="."]
 
