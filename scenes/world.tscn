@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=16 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://d0ydkdscbtc8e" path="res://assets/non-animations/cannopy.png" id="11_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://qtjp0d56wc6p" path="res://scenes/ui.tscn" id="12_q5onr"]
+[ext_resource type="Script" uid="uid://dxvvo2tftogv1" path="res://scripts/end_game.gd" id="13_jhx03"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 rough = true
@@ -51,7 +52,7 @@ disable_collision = false
 softness = 16.0
 motor_target_velocity = 1.39626
 
-[node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") instance=ExtResource("2_i7141")]
+[node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") groups=["Players"] instance=ExtResource("2_i7141")]
 position = Vector2(348, 140)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.0
@@ -234,9 +235,9 @@ texture = ExtResource("11_e3hyu")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="canopy"]
 polygon = PackedVector2Array(84, 166, 92, 130, 115, 121, 149, 121, 166, 113, 174, 99, 177, 75, 191, 74, 202, 64, 213, 65, 227, 54, 238, 66, 248, 72, 261, 71, 272, 67, 286, 73, 296, 70, 302, 64, 333, 77, 363, 68, 406, 66, 432, 58, 478, 56, 513, 47, 500, 35, 520, 35, 548, 40, 573, 48, 597, 55, 611, 71, 635, 60, 667, 59, 688, 43, 709, 53, 744, 41, 788, 41, 820, 44, 818, 57, 850, 43, 891, 48, 915, 41, 1023, 51, 1047, 96, 1074, 125, 1116, 136, 1153, 146, 1150, 1, 9, 2, 5, 154, 5, 175, 42, 182, 69, 184)
 
-[node name="Ui" type="CanvasLayer" parent="."]
+[node name="UiLayer" type="CanvasLayer" parent="."]
 
-[node name="Ui" parent="Ui" instance=ExtResource("12_q5onr")]
+[node name="Ui" parent="UiLayer" instance=ExtResource("12_q5onr")]
 
 [node name="PausedLayer" type="CanvasLayer" parent="."]
 
@@ -247,3 +248,9 @@ visible = false
 
 [node name="Start" parent="StartLayer" instance=ExtResource("8_4mrxx")]
 visible = false
+
+[node name="EndGameLayer" type="CanvasLayer" parent="."]
+
+[node name="EndGame" parent="EndGameLayer" instance=ExtResource("8_4mrxx")]
+visible = false
+script = ExtResource("13_jhx03")
