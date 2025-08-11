@@ -1,55 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://qtjp0d56wc6p"]
+[gd_scene load_steps=7 format=3 uid="uid://dmfhvmr4l7pgs"]
 
 [ext_resource type="Script" uid="uid://bjd76b5pcvrf2" path="res://ui.gd" id="1_x4jx1"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="2_yev5y"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yev5y"]
+bg_color = Color(0.66526, 0, 0.0216949, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x4jx1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
-bg_color = Color(0.363315, 0.0357251, 0.0614854, 1)
+bg_color = Color(0.36, 0.036, 0.0630001, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdt2y"]
+bg_color = Color(0.666667, 0, 0.0235294, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="Ui" type="Node2D"]
 script = ExtResource("1_x4jx1")
 
 [node name="Player1" type="Label" parent="."]
-offset_left = 15.0
-offset_top = 8.0
-offset_right = 95.0
-offset_bottom = 63.0
+offset_left = 11.0
+offset_top = 42.0
+offset_right = 91.0
+offset_bottom = 97.0
 theme_override_fonts/font = ExtResource("2_yev5y")
 theme_override_font_sizes/font_size = 25
 text = "Player 1
 "
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(0.72, 0.1152, 0.19584, 1)
-offset_left = 15.0
-offset_top = 38.0
-offset_right = 161.0
-offset_bottom = 65.0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 156.0
+offset_bottom = 38.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_yev5y")
 max_value = 10.0
 value = 10.0
 show_percentage = false
 
 [node name="ProgressBar2" type="ProgressBar" parent="."]
-self_modulate = Color(0.886966, 0, 0.0294132, 1)
 material = SubResource("CanvasItemMaterial_x4jx1")
-offset_left = 981.0
-offset_top = 33.0
-offset_right = 1138.0
-offset_bottom = 60.0
+offset_left = 984.0
+offset_top = 9.0
+offset_right = 1141.0
+offset_bottom = 36.0
 theme_override_styles/background = SubResource("StyleBoxFlat_x4jx1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gdt2y")
 max_value = 10.0
 value = 10.0
 fill_mode = 1
 show_percentage = false
 
 [node name="Player2" type="Label" parent="."]
-offset_left = 1055.0
-offset_top = 3.0
-offset_right = 1135.0
-offset_bottom = 29.0
+offset_left = 1062.0
+offset_top = 40.0
+offset_right = 1142.0
+offset_bottom = 66.0
 theme_override_fonts/font = ExtResource("2_yev5y")
 theme_override_font_sizes/font_size = 25
 text = "Player 2"
