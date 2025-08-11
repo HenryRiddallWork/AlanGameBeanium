@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=15 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
@@ -17,6 +17,9 @@ rough = true
 bounce = 0.17
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ceco4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hyu"]
+size = Vector2(1620, 826)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_7r4gi")
@@ -254,3 +257,9 @@ visible = false
 [node name="EndGame" parent="EndGameLayer" instance=ExtResource("8_4mrxx")]
 visible = false
 script = ExtResource("13_jhx03")
+
+[node name="GameBoundary" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundary"]
+position = Vector2(582, 403)
+shape = SubResource("RectangleShape2D_e3hyu")

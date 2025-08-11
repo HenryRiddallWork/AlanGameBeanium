@@ -1,9 +1,8 @@
 extends Node
 
-@onready var player_1_health: Label = $Player1Health
-@onready var player_2_health: Label = $Player2Health
 @onready var player_1: Player = $Player1
 @onready var player_2: Player = $Player2
+@onready var game_boundary: Area2D = $GameBoundary
 
 const COLLISION_HEALTH_SCALE_FACTOR = 0.1
 
@@ -17,6 +16,7 @@ var player_2_initial_position: Vector2
 
 func _ready() -> void:
 	Globals.player_reset.connect(_on_player_reset)
+	game_boundary.body_exited.connect(_on_game_boundary_body_exited)
 	player_1.player_collision.connect(_on_player_collision)
 	player_2.player_collision.connect(_on_player_collision)
 	player_1_initial_position = player_1.position
@@ -46,6 +46,10 @@ func _damage_players(player_1_damage: int, player_2_damage: int) -> void:
 	
 	if player_1_new_health == 0 or player_2_new_health == 0:
 		Globals.end()
+
+
+func _on_game_boundary_body_exited(body: Node) -> void:
+	Globals.end()
 
 
 func _on_player_reset() -> void:

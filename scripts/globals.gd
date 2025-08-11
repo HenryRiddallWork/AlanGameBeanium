@@ -62,7 +62,6 @@ func resume() -> void:
 
 func end() -> void:
 	gamestate = GAMESTATES.WIN_SCREEN
-	# _reset_game_state()
 	end_game.emit()
 	get_tree().paused = true
  
