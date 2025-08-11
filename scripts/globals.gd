@@ -30,21 +30,21 @@ var time_elapsed: float = 0
 
 
 func _ready() -> void:
-	pass
-	
+	get_tree().paused = true
+
 func start():
 	gamestate = GAMESTATES.PLAYING
 	start_game.emit()
 	get_tree().paused = false
 	print("starting game")
 	resume()
-	
+
 func pause():
 	gamestate = GAMESTATES.PAUSED
 	pause_game.emit()
 	get_tree().paused = true
 	print("pausing game")
-	
+
 func resume():
 	get_tree().paused = false
 	gamestate = GAMESTATES.PLAYING
@@ -52,5 +52,7 @@ func resume():
 	print("resuming game")
 
 func _process(delta: float) -> void:
-	if Globals.gamestate == Globals.GAMESTATES.PLAYING:
+	if gamestate == GAMESTATES.PLAYING:
 		time_elapsed += delta
+	if Input.is_action_just_pressed("Paused"):
+		pause()

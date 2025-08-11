@@ -7,7 +7,7 @@ extends Node
 
 const COLLISION_HEALTH_SCALE_FACTOR = 0.1
 
-const COLLISION_TIMEOUT: float = 1
+const COLLISION_TIMEOUT: float = 0.7 # Seconds
 var current_collision_timeout: float = 0
 
 

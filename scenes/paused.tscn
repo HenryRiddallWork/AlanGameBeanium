@@ -10,14 +10,14 @@
 [node name="Paused" type="Node2D"]
 script = ExtResource("1_r8o1p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
 self_modulate = Color(0.160784, 0.160784, 0.160784, 0.419608)
 material = SubResource("ShaderMaterial_f4kqd")
 position = Vector2(574, 322.25)
 scale = Vector2(1156, 645.5)
 texture = SubResource("CanvasTexture_1qn1x")
 
-[node name="Button" type="Button" parent="."]
+[node name="ResumeButton" type="Button" parent="."]
 process_mode = 3
 offset_left = 512.0
 offset_top = 339.0
@@ -27,7 +27,7 @@ theme_override_fonts/font = ExtResource("3_j5rf4")
 theme_override_font_sizes/font_size = 50
 text = "Resume"
 
-[node name="Label" type="Label" parent="."]
+[node name="PausedLabel" type="Label" parent="."]
 offset_left = 448.0
 offset_top = 219.0
 offset_right = 711.0

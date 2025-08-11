@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://k2h4f3dx462v"]
 
-[ext_resource type="Script" path="res://scripts/start.gd" id="1_bodal"]
+[ext_resource type="Script" uid="uid://cv0itvsmcq71s" path="res://scripts/start.gd" id="1_bodal"]
 [ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="2_bodal"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="3_0auqf"]
 
@@ -9,17 +9,17 @@
 [node name="Start" type="Node2D"]
 script = ExtResource("1_bodal")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 texture = ExtResource("2_bodal")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="TitleLabelBackgroundSprite" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.443137)
 position = Vector2(571.75, 219.75)
 scale = Vector2(410.5, 156.5)
 texture = SubResource("CanvasTexture_kdmts")
 
-[node name="Label" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="."]
 offset_left = 397.0
 offset_top = 115.0
 offset_right = 747.0
@@ -30,7 +30,7 @@ theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 200
 text = "KONK"
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 process_mode = 3
 offset_left = 462.0
 offset_top = 383.0
@@ -40,7 +40,7 @@ theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 100
 text = "START"
 
-[node name="Label2" type="Label" parent="."]
+[node name="PauseLabel" type="Label" parent="."]
 offset_left = 914.0
 offset_top = 601.0
 offset_right = 1155.0
