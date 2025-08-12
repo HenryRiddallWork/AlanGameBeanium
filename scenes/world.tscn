@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=20 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
@@ -11,7 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://d0ydkdscbtc8e" path="res://assets/non-animations/cannopy.png" id="11_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://dtk6c78uq0dnw" path="res://scenes/end.tscn" id="11_q5onr"]
 [ext_resource type="PackedScene" uid="uid://qtjp0d56wc6p" path="res://scenes/ui.tscn" id="12_q5onr"]
-[ext_resource type="Script" path="res://scripts/end_game.gd" id="13_jhx03"]
+[ext_resource type="Script" uid="uid://7ur74s2qji2d" path="res://scripts/state_machine.gd" id="13_o8fc1"]
+[ext_resource type="Script" uid="uid://c462r4w3iu42t" path="res://scripts/game_states/start_screen.gd" id="14_o8fc1"]
+[ext_resource type="Script" uid="uid://cqhf7o3e5vw58" path="res://scripts/game_states/paused.gd" id="15_xo05s"]
+[ext_resource type="Script" uid="uid://du8blcotjl33q" path="res://scripts/game_states/playing.gd" id="16_dss4m"]
+[ext_resource type="Script" uid="uid://nyo8kxgkxdi7" path="res://scripts/game_states/end_game.gd" id="17_7t5mc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 rough = true
@@ -257,10 +261,25 @@ visible = false
 
 [node name="EndScene" parent="EndGameLayer" instance=ExtResource("11_q5onr")]
 visible = false
-script = ExtResource("13_jhx03")
 
 [node name="GameBoundary" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundary"]
 position = Vector2(582, 403)
 shape = SubResource("RectangleShape2D_e3hyu")
+
+[node name="GameState" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("13_o8fc1")
+initial_state = NodePath("StartScreen")
+
+[node name="StartScreen" type="Node" parent="GameState"]
+script = ExtResource("14_o8fc1")
+
+[node name="Paused" type="Node" parent="GameState"]
+script = ExtResource("15_xo05s")
+
+[node name="Playing" type="Node" parent="GameState"]
+script = ExtResource("16_dss4m")
+
+[node name="EndGame" type="Node" parent="GameState"]
+script = ExtResource("17_7t5mc")
