@@ -1,7 +1,10 @@
 extends GameState
 
-func enter(previous_state_path: String, data := {}) -> void:
+func _ready() -> void:
+	await game.ready
 	game.paused_layer.resume_triggered.connect(_resume)
+
+func enter(previous_state_path: String, data := {}) -> void:
 	game.paused_layer.visible = true
 	get_tree().paused = true
 

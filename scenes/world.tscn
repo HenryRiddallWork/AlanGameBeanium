@@ -269,6 +269,7 @@ position = Vector2(582, 403)
 shape = SubResource("RectangleShape2D_e3hyu")
 
 [node name="GameState" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+process_mode = 3
 script = ExtResource("13_o8fc1")
 initial_state = NodePath("StartScreen")
 
@@ -276,10 +277,12 @@ initial_state = NodePath("StartScreen")
 script = ExtResource("14_o8fc1")
 
 [node name="Paused" type="Node" parent="GameState"]
+process_mode = 3
 script = ExtResource("15_xo05s")
 
 [node name="Playing" type="Node" parent="GameState"]
 script = ExtResource("16_dss4m")
 
 [node name="EndGame" type="Node" parent="GameState"]
+process_mode = 3
 script = ExtResource("17_7t5mc")

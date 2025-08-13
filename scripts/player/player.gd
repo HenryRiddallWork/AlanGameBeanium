@@ -22,6 +22,7 @@ class_name Player extends RigidBody2D
 signal player_collision(player_speeds: Dictionary)
 
 func reset_player(intial_position: Vector2) -> void:
+	# TODO: Need to set all physics back to defauls!!!
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
 	body_entered.connect(_on_body_entered)

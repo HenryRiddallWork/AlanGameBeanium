@@ -8,9 +8,7 @@ const PLAYING = "Playing"
 const PAUSED = "Paused"
 const END_GAME = "EndGame"
 
-var game: Game
+@onready var game: Game = owner as Game
 
 func _ready() -> void:
-	await owner.ready
-	game = owner as Game
-	assert(game != null)
+	await game.ready
