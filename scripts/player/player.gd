@@ -21,14 +21,10 @@ class_name Player extends RigidBody2D
 
 signal player_collision(player_speeds: Dictionary)
 
-func reset_player(intial_position: Vector2) -> void:
-	# TODO: Need to set all physics back to defauls!!!
+func _ready() -> void:
+	Globals.player_data[player_id] = Globals.PlayerData.new()
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
-	body_entered.connect(_on_body_entered)
-	global_position = intial_position
-	global_rotation = 0
-	Globals.player_data[Globals.PLAYER_1_ID] = Globals.PlayerData.new()
 
 func _process(delta: float) -> void:
 	if Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:
