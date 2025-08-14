@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 		sprite.play("100_health")
 
 func _on_body_entered(body: Node) -> void:
-	print("beep")
 	if body.is_in_group("Players"):
 		player_collision.emit({
 			player_id: linear_velocity.length(),
@@ -73,7 +72,6 @@ func _on_body_entered(body: Node) -> void:
 	get_tree().current_scene.add_child(particles)
 	
 	var cleanup_time = particles.lifetime + 0.5
-	print(collision_point)
 	get_tree().create_timer(cleanup_time).connect("timeout", Callable(particles, "queue_free"))	
 
 

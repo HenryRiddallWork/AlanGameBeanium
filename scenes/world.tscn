@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=21 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://ca2mjl3kgpx36" path="res://scenes/player.tscn" id="2_i7141"]
 [ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="3_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="4_7r4gi"]
+[ext_resource type="Script" uid="uid://bsa8r2vc8cqlj" path="res://scripts/camera_2d.gd" id="4_7t5mc"]
 [ext_resource type="Texture2D" uid="uid://dgndupctbky6f" path="res://assets/non-animations/platform.png" id="7_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://k2h4f3dx462v" path="res://scenes/start.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cu2qmhl5lasj1" path="res://scenes/paused.tscn" id="9_7r4gi"]
@@ -43,6 +44,7 @@ texture = ExtResource("3_w7kh3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 327)
+script = ExtResource("4_7t5mc")
 
 [node name="Player2PinJoint" type="PinJoint2D" parent="."]
 position = Vector2(234, 74)
