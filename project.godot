@@ -21,7 +21,8 @@ Globals="*res://scripts/globals.gd"
 
 [display]
 
-window/stretch/scale=2.0
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
