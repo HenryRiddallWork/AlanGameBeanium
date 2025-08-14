@@ -25,6 +25,7 @@ func _ready() -> void:
 	Globals.player_data[player_id] = Globals.PlayerData.new()
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
+	body_entered.connect(_on_body_entered)
 
 func _process(delta: float) -> void:
 	if Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:
