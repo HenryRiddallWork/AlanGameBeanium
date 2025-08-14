@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://imtv8dqupw8u"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ak2lm"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 258.39
+initial_velocity_max = 258.39
+gravity = Vector3(0, 98, 0)
+
+[node name="Kollision" type="GPUParticles2D"]
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_ak2lm")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=18 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="2_smehm"]
+[ext_resource type="PackedScene" uid="uid://imtv8dqupw8u" path="res://scenes/Kollision.tscn" id="2_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://bl3l711mkcopc" path="res://assets/animations/konk/konk_deatg.png" id="3_fjrip"]
 [ext_resource type="Script" uid="uid://7ur74s2qji2d" path="res://scripts/state_machine.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://vwf0hw7scwoa" path="res://scripts/player/states/on_ground.gd" id="5_qlg0r"]
@@ -82,6 +83,7 @@ radius = 27.4591
 physics_material_override = SubResource("PhysicsMaterial_fjrip")
 lock_rotation = true
 script = ExtResource("1_2kdwn")
+particle_scene = ExtResource("2_ur7pv")
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
