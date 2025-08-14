@@ -1,12 +1,8 @@
 extends GameState
 
-func _ready() -> void:
-	await game.ready
-	game.start_screen.start_game_triggered.connect(_start_game)
-
 func enter(previous_state_path: String, data := {}) -> void:
-	game.start_screen.visible = true
 	Globals.time_elapsed = 0
+	game.start_screen.visible = true
 	get_tree().paused = true
 
 func exit() -> void:

@@ -286,3 +286,9 @@ script = ExtResource("16_dss4m")
 [node name="EndGame" type="Node" parent="GameState"]
 process_mode = 3
 script = ExtResource("17_7t5mc")
+
+[connection signal="player_collision" from="Player1" to="GameState/Playing" method="_on_player_collision"]
+[connection signal="player_collision" from="Player2" to="GameState/Playing" method="_on_player_collision"]
+[connection signal="resume_triggered" from="PausedLayer/Paused" to="GameState/Paused" method="_resume"]
+[connection signal="start_game_triggered" from="StartLayer/Start" to="GameState/StartScreen" method="_start_game"]
+[connection signal="body_exited" from="GameBoundary" to="GameState/Playing" method="_on_game_boundary_body_exited"]

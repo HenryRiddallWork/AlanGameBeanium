@@ -48,3 +48,5 @@ offset_bottom = 652.0
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 50
 text = "[p] to pause"
+
+[connection signal="pressed" from="StartButton" to="." method="_start_game"]

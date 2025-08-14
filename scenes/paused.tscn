@@ -35,3 +35,5 @@ offset_bottom = 320.0
 theme_override_fonts/font = ExtResource("3_j5rf4")
 theme_override_font_sizes/font_size = 100
 text = "Paused"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_resume_game"]

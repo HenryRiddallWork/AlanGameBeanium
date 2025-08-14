@@ -5,12 +5,6 @@ const COLLISION_HEALTH_SCALE_FACTOR = 0.1
 const COLLISION_TIMEOUT = 0.7 # Seconds
 var current_collision_timeout = 0
 
-func _ready() -> void:
-	await game.ready
-	game.game_boundary.body_exited.connect(_on_game_boundary_body_exited)
-	game.player_1.player_collision.connect(_on_player_collision)
-	game.player_2.player_collision.connect(_on_player_collision)
-
 func update(_delta: float) -> void:
 	Globals.time_elapsed += _delta
 	if current_collision_timeout > 0:
