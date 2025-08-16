@@ -1,5 +1,7 @@
 class_name Player extends RigidBody2D
 
+const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
+
 @export var hook: StaticBody2D
 @export var pinjoint: PinJoint2D
 @export var speed: int = 10
@@ -12,6 +14,8 @@ class_name Player extends RigidBody2D
 @export var lifetime_scale = 0.005
 @export var max_particle_speed = 1000.0
 @export var max_lifetime = 2.0
+@export var effect_threshold = 25
+@export var konk_sound_scaler = 0.05
 
 # If changing this enum, also change the player IDs in globals
 @export_enum("1", "2") var player_id: String
@@ -47,34 +51,41 @@ func _process(delta: float) -> void:
 		sprite.play("100_health")
 
 func _on_body_entered(body: Node) -> void:
+	var player_velocity = linear_velocity.length()
 	if body.is_in_group("Players"):
 		player_collision.emit({
-			player_id: linear_velocity.length(),
+			player_id: player_velocity,
 			body.player_id: body.linear_velocity.length(),
 		})
+	else:
+		$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
+	
+	if player_velocity > effect_threshold:
+		$AudioStreamPlayer2D.volume_db = player_velocity * konk_sound_scaler
+		$AudioStreamPlayer2D.play()
+		var new_amount = clamp(int(player_velocity * velocity_multiplier), 5, 200)
+		var base_speed = clamp(player_velocity * speed_scale, 200, max_particle_speed)
+		var initial_velocity_min = base_speed * 0.8
+		var initial_velocity_max = base_speed * 1.2
+		var new_lifetime = clamp(player_velocity * lifetime_scale, 0.2, max_lifetime)
+		var particles: GPUParticles2D = particle_scene.instantiate()
+		particles.position = collision_point
+		var mat: ParticleProcessMaterial = particles.process_material
+		particles.amount = new_amount
+		mat.initial_velocity_min = initial_velocity_min
+		mat.initial_velocity_max = initial_velocity_max
+		particles.lifetime = new_lifetime
 		
-	var player_velocity = linear_velocity.length()
-	var new_amount = clamp(int(player_velocity * velocity_multiplier), 5, 200)
-	var base_speed = clamp(player_velocity * speed_scale, 200, max_particle_speed)
-	var initial_velocity_min = base_speed * 0.8
-	var initial_velocity_max = base_speed * 1.2
-	var new_lifetime = clamp(player_velocity * lifetime_scale, 0.2, max_lifetime)
-	var particles: GPUParticles2D = particle_scene.instantiate()
-	particles.position = collision_point
-	var mat: ParticleProcessMaterial = particles.process_material
-	particles.amount = new_amount
-	mat.initial_velocity_min = initial_velocity_min
-	mat.initial_velocity_max = initial_velocity_max
-	particles.lifetime = new_lifetime
-	
-	particles.one_shot = true
-	particles.emitting = true
-	get_tree().current_scene.add_child(particles)
-	
-	var cleanup_time = particles.lifetime + 0.5
-	get_tree().create_timer(cleanup_time).connect("timeout", Callable(particles, "queue_free"))	
-
+		particles.one_shot = true
+		particles.emitting = true
+		get_tree().current_scene.add_child(particles)
+		
+		var cleanup_time = particles.lifetime + 0.5
+		get_tree().create_timer(cleanup_time).connect("timeout", Callable(particles, "queue_free"))	
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
+	if state.get_contact_count() == 0:
+		return
+
 	var point = state.get_contact_local_position(0)
 	collision_point = point

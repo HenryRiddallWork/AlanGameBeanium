@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=20 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://vwf0hw7scwoa" path="res://scripts/player/states/on_ground.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://y5m2jxxknaip" path="res://assets/sound effects/konk.wav" id="10_y4r1p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjrip"]
 rough = true
@@ -79,6 +80,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oxxb"]
 radius = 27.4591
 
+[sub_resource type="GDScript" id="GDScript_d2wvv"]
+script/source = "extends AudioStreamPlayer2D
+"
+
 [node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_fjrip")
 lock_rotation = true
@@ -124,3 +129,7 @@ script = ExtResource("6_tuyoq")
 
 [node name="Hooked" type="Node" parent="State"]
 script = ExtResource("7_fjrip")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_y4r1p")
+script = SubResource("GDScript_d2wvv")

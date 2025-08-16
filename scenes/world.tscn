@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=23 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b1etgd0ybmxp4" path="res://sky.png" id="1_qfnet"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://cqhf7o3e5vw58" path="res://scripts/game_states/paused.gd" id="15_xo05s"]
 [ext_resource type="Script" uid="uid://du8blcotjl33q" path="res://scripts/game_states/playing.gd" id="16_dss4m"]
 [ext_resource type="Script" uid="uid://nyo8kxgkxdi7" path="res://scripts/game_states/end_game.gd" id="17_7t5mc"]
+[ext_resource type="AudioStream" uid="uid://6eyeb251ge6p" path="res://assets/music/konk-song.wav" id="18_lakw3"]
+[ext_resource type="Script" uid="uid://d167j76r6ii4s" path="res://scenes/song_looper.gd" id="19_pm21f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 rough = true
@@ -45,6 +47,9 @@ texture = ExtResource("3_w7kh3")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 327)
 script = ExtResource("4_7t5mc")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
 
 [node name="Player2PinJoint" type="PinJoint2D" parent="."]
 position = Vector2(234, 74)
@@ -288,6 +293,11 @@ script = ExtResource("16_dss4m")
 [node name="EndGame" type="Node" parent="GameState"]
 process_mode = 3
 script = ExtResource("17_7t5mc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_lakw3")
+autoplay = true
+script = ExtResource("19_pm21f")
 
 [connection signal="player_collision" from="Player1" to="GameState/Playing" method="_on_player_collision"]
 [connection signal="player_collision" from="Player2" to="GameState/Playing" method="_on_player_collision"]

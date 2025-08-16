@@ -1,7 +1,7 @@
 extends GameState
 
 const COLLISION_HEALTH_SCALE_FACTOR = 0.1
-const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.05
+const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.07
 
 const COLLISION_TIMEOUT = 0.7 # Seconds
 var current_collision_timeout = 0
@@ -21,7 +21,7 @@ func _on_player_collision(player_speeds: Dictionary) -> void:
 		var player_1_damage = floor(COLLISION_HEALTH_SCALE_FACTOR * player_2_speed)
 		var player_2_damage = floor(COLLISION_HEALTH_SCALE_FACTOR * player_1_speed)
 		_damage_players(player_1_damage, player_2_damage)
-		$"../../Camera2D".shake(0.5, (player_1_speed + player_2_speed) * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
+		$"../../Camera2D".shake(1, (player_1_speed + player_2_speed) * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 
 func _damage_players(player_1_damage: int, player_2_damage: int) -> void:
 	var player_1_new_health = max(0, Globals.player_data[Globals.PLAYER_1_ID].health - player_1_damage)
