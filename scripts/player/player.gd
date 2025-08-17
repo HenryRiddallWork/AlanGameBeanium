@@ -29,6 +29,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var direction_hook: Sprite2D = $DirectionHook
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_point: Vector2 = Vector2(0, 0)
+@onready var label: Label = $Label
 
 signal player_collision(player_speeds: Dictionary)
 
@@ -37,6 +38,12 @@ func _ready() -> void:
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
 	body_entered.connect(_on_body_entered)
+	if (player_id == "1"):
+		label.text = "1"
+		label.add_theme_color_override("font_color", Color.DARK_RED)
+	else:
+		label.text = "2"
+		label.add_theme_color_override("font_color", Color.CADET_BLUE)
 
 func _process(delta: float) -> void:
 	if Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:

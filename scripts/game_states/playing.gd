@@ -29,10 +29,8 @@ func _damage_players(player_1_damage: int, player_2_damage: int) -> void:
 	Globals.player_data[Globals.PLAYER_1_ID].health = player_1_new_health
 	Globals.player_data[Globals.PLAYER_2_ID].health = player_2_new_health
 	if player_1_new_health == 0 or player_2_new_health == 0:
-		# TODO: Report winner here
-		finished.emit(END_GAME)
+		finished.emit(END_GAME, {"is_winner_player_1": player_1_new_health > player_2_new_health})
 
 func _on_game_boundary_body_exited(body: Node) -> void:
 	if body.is_in_group("Players"):
-		# TODO: Report winner here
-		finished.emit(END_GAME)
+		finished.emit(END_GAME, {"is_winner_player_1": body.name == "Player2"})

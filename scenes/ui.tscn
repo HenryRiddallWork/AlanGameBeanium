@@ -1,7 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://qtjp0d56wc6p"]
+[gd_scene load_steps=9 format=3 uid="uid://qtjp0d56wc6p"]
 
 [ext_resource type="Script" uid="uid://bjd76b5pcvrf2" path="res://ui.gd" id="1_x4jx1"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="2_yev5y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4jx1"]
+font_size = 32
+font_color = Color(0.545, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yev5y"]
+font_size = 32
+font_color = Color(0.373, 0.62, 0.627, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yev5y"]
 bg_color = Color(0.66526, 0, 0.0216949, 1)
@@ -34,15 +42,17 @@ theme_override_fonts/font = ExtResource("2_yev5y")
 theme_override_font_sizes/font_size = 25
 text = "Player 1
 "
+label_settings = SubResource("LabelSettings_x4jx1")
 
 [node name="Player2Label" type="Label" parent="."]
-offset_left = 1062.0
-offset_top = 40.0
-offset_right = 1142.0
-offset_bottom = 66.0
+offset_left = 1039.0
+offset_top = 41.0
+offset_right = 1141.0
+offset_bottom = 73.0
 theme_override_fonts/font = ExtResource("2_yev5y")
 theme_override_font_sizes/font_size = 25
 text = "Player 2"
+label_settings = SubResource("LabelSettings_yev5y")
 
 [node name="Player1HealthBar" type="ProgressBar" parent="."]
 offset_left = 10.0

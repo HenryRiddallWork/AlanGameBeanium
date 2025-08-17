@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtk6c78uq0dnw"]
+[gd_scene load_steps=9 format=3 uid="uid://dtk6c78uq0dnw"]
 
+[ext_resource type="Script" uid="uid://qreejurn71a6" path="res://scripts/end_scene.gd" id="1_bvfni"]
 [ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="1_p7m4f"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="2_bvfni"]
 [ext_resource type="Texture2D" uid="uid://bl3l711mkcopc" path="res://assets/animations/konk/konk_deatg.png" id="3_s4tl2"]
@@ -34,6 +35,7 @@ animations = [{
 }]
 
 [node name="EndScene" type="Node2D"]
+script = ExtResource("1_bvfni")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -55,7 +57,7 @@ theme_override_fonts/font = ExtResource("2_bvfni")
 theme_override_font_sizes/font_size = 150
 text = "GET KONKED!"
 
-[node name="Konked2" type="Label" parent="."]
+[node name="WinnerText" type="Label" parent="."]
 offset_left = 268.0
 offset_top = 50.0
 offset_right = 943.0
