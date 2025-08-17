@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtk6c78uq0dnw"]
+[gd_scene load_steps=18 format=3 uid="uid://dtk6c78uq0dnw"]
 
 [ext_resource type="Script" uid="uid://qreejurn71a6" path="res://scripts/end_scene.gd" id="1_bvfni"]
 [ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="1_p7m4f"]
@@ -8,7 +8,27 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8hmjt"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4tl2"]
+atlas = ExtResource("3_s4tl2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hmjt"]
+atlas = ExtResource("3_s4tl2")
+region = Rect2(64, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_o5lv4"]
+atlas = ExtResource("3_s4tl2")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl5ow"]
+atlas = ExtResource("3_s4tl2")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovs12"]
+atlas = ExtResource("3_s4tl2")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc5t2"]
 atlas = ExtResource("3_s4tl2")
 region = Rect2(64, 128, 64, 64)
 
@@ -20,11 +40,26 @@ region = Rect2(0, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_s4tl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hmjt")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o5lv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl5ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovs12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc5t2")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -43,6 +78,10 @@ font_color = Color(0.545, 0, 0, 1)
 font_size = 192
 font_color = Color(0.373, 0.62, 0.627, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_o5lv4"]
+font = ExtResource("2_bvfni")
+font_size = 36
+
 [node name="EndScene" type="Node2D"]
 script = ExtResource("1_bvfni")
 
@@ -58,34 +97,29 @@ scale = Vector2(742, 590)
 texture = SubResource("CanvasTexture_8hmjt")
 
 [node name="Konked" type="Label" parent="."]
-offset_left = 247.0
-offset_top = 153.0
-offset_right = 922.0
-offset_bottom = 304.0
+offset_left = 197.0
+offset_top = 132.0
+offset_right = 936.0
+offset_bottom = 283.0
 theme_override_fonts/font = ExtResource("2_bvfni")
 theme_override_font_sizes/font_size = 150
 text = "GET KONKED!"
+horizontal_alignment = 1
 
 [node name="WinnerText" type="Label" parent="."]
-offset_left = 268.0
-offset_top = 50.0
+offset_left = 203.0
+offset_top = 43.0
 offset_right = 943.0
-offset_bottom = 201.0
+offset_bottom = 194.0
 theme_override_fonts/font = ExtResource("2_bvfni")
 theme_override_font_sizes/font_size = 100
 text = "Player X Wins!"
+horizontal_alignment = 1
 
 [node name="konk2" type="AnimatedSprite2D" parent="."]
-position = Vector2(570, 446)
-scale = Vector2(4.9375, 4.9375)
+position = Vector2(560, 392)
+scale = Vector2(3.71875, 3.71875)
 sprite_frames = SubResource("SpriteFrames_nl5ow")
-autoplay = "default"
-
-[node name="konk2" type="AnimatedSprite2D" parent="konk2"]
-position = Vector2(624, 439)
-scale = Vector2(4.9375, 4.9375)
-sprite_frames = SubResource("SpriteFrames_nl5ow")
-animation = &"smash"
 autoplay = "default"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -93,10 +127,10 @@ stream = ExtResource("5_s4tl2")
 volume_db = 4.0
 
 [node name="Player1Score" type="Label" parent="."]
-offset_left = 202.0
-offset_top = 359.0
-offset_right = 436.0
-offset_bottom = 510.0
+offset_left = 216.0
+offset_top = 309.0
+offset_right = 450.0
+offset_bottom = 501.0
 theme_override_fonts/font = ExtResource("2_bvfni")
 theme_override_font_sizes/font_size = 150
 text = "0"
@@ -104,12 +138,23 @@ label_settings = SubResource("LabelSettings_s4tl2")
 horizontal_alignment = 1
 
 [node name="Player2Score" type="Label" parent="."]
-offset_left = 726.0
-offset_top = 368.0
-offset_right = 940.0
-offset_bottom = 519.0
+offset_left = 720.0
+offset_top = 304.0
+offset_right = 934.0
+offset_bottom = 496.0
 theme_override_fonts/font = ExtResource("2_bvfni")
 theme_override_font_sizes/font_size = 150
 text = "0"
 label_settings = SubResource("LabelSettings_8hmjt")
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 199.0
+offset_top = 527.0
+offset_right = 937.0
+offset_bottom = 628.0
+text = "REMATCH     [⌨Enter /🕹️A]
+Main Menu  [⌨P /🕹️Start]"
+label_settings = SubResource("LabelSettings_o5lv4")
+horizontal_alignment = 1
+vertical_alignment = 1

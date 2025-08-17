@@ -1,4 +1,4 @@
-class_name StartScreen extends Node2D
+class_name StartScreen extends Control
 
 signal start_game_triggered
 

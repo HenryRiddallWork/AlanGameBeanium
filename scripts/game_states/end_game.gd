@@ -1,6 +1,10 @@
 extends GameState
 
+const INPUT_DELAY: float = 1
+var time_counter: float = 0
+
 func enter(previous_state_path: String, data := {}) -> void:
+	time_counter = 0
 	game.end_screen.visible = true
 	if Globals.winner == "1":
 		Globals.player_1_wins += 1
@@ -23,7 +27,10 @@ func disable_players():
 	game.player_2.process_mode = Node.PROCESS_MODE_DISABLED
 
 func physics_update(_delta: float) -> void:
-	if Input.is_action_just_pressed("shoot_1") or Input.is_action_just_pressed("shoot_2"):
-		finished.emit(PLAYING)
-	if Input.is_action_just_pressed("Start"):
-		get_tree().change_scene_to_file("res://scenes/world.tscn")
+	if time_counter < INPUT_DELAY:
+		time_counter += _delta
+	if time_counter >= INPUT_DELAY:
+		if Input.is_action_just_pressed("shoot_1") or Input.is_action_just_pressed("shoot_2"):
+			finished.emit(PLAYING)
+		if Input.is_action_just_pressed("Start"):
+			get_tree().change_scene_to_file("res://scenes/world.tscn")

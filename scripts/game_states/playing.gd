@@ -6,12 +6,18 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.07
 const COLLISION_TIMEOUT = 0.7 # Seconds
 var current_collision_timeout = 0
 
+const INPUT_DELAY: float = 0.5
+var time_paused: float = 0
+
 @onready var player_1 = $"../../Player1"
 @onready var player_2 = $"../../Player2"
 @onready var player_1_spawn = $"../../PlayerSpawn1"
 @onready var player_2_spawn = $"../../PlayerSpawn2"
 
 func enter(previous_state_path: String, data := {}) -> void:
+	time_paused = 0
+	if previous_state_path == PAUSED:
+		return
 	Globals.time_elapsed = 0
 	Globals.winner = ""
 	
@@ -29,7 +35,9 @@ func update(_delta: float) -> void:
 	Globals.time_elapsed += _delta
 	if current_collision_timeout > 0:
 		current_collision_timeout -= _delta
-	if Input.is_action_just_pressed("Start"):
+	if time_paused < INPUT_DELAY:
+		time_paused += _delta
+	if time_paused >= INPUT_DELAY && Input.is_action_just_pressed("Start"):
 		finished.emit(PAUSED)
 
 func _on_player_collision(player_speeds: Dictionary) -> void:

@@ -8,6 +8,7 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_1qn1x"]
 
 [node name="Paused" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_r8o1p")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]

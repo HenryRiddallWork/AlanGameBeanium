@@ -4,49 +4,132 @@
 [ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="2_bodal"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="3_0auqf"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_kdmts"]
+[sub_resource type="LabelSettings" id="LabelSettings_bodal"]
+font_size = 36
 
-[node name="Start" type="Node2D"]
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_bodal")
 
-[node name="BackgroundSprite" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_bodal")
 
-[node name="TitleLabelBackgroundSprite" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0.443137)
-position = Vector2(571.75, 219.75)
-scale = Vector2(410.5, 156.5)
-texture = SubResource("CanvasTexture_kdmts")
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -305.0
+offset_right = 202.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(175, 100)
+color = Color(0.0627451, 0.0627451, 0.0627451, 0.686275)
 
-[node name="TitleLabel" type="Label" parent="."]
-offset_left = 397.0
-offset_top = 115.0
-offset_right = 747.0
-offset_bottom = 316.0
+[node name="TitleLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0.507244, 5.95618e-07, 2.88785e-07, 1)
 theme_override_constants/shadow_offset_x = 6
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 200
 text = "KONK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
 process_mode = 3
-offset_left = 462.0
-offset_top = 383.0
-offset_right = 689.0
-offset_bottom = 492.0
+offset_left = 461.0
+offset_top = 262.0
+offset_right = 688.0
+offset_bottom = 371.0
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 100
 text = "START"
 
-[node name="PauseLabel" type="Label" parent="."]
-offset_left = 914.0
-offset_top = 601.0
-offset_right = 1155.0
-offset_bottom = 652.0
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -280.0
+offset_right = 392.0
+offset_bottom = 29.0
+grow_vertical = 0
+color = Color(0.0627451, 0.0627451, 0.0627451, 0.686275)
+
+[node name="Player1Controls" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 50
-text = "[p] to pause"
+text = "              Player 1
+
+Pause        [⌨P /🕹️Start]
+Move         [⌨WASD /
+                  🕹️Joystick]
+Grapple     [⌨C /🕹️A]
+Retract     [⌨V /🕹️B]"
+label_settings = SubResource("LabelSettings_bodal")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -391.0
+offset_top = -294.0
+offset_right = 1.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.0627451, 0.0627451, 0.0627451, 0.686275)
+
+[node name="Player1Controls" type="Label" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_0auqf")
+theme_override_font_sizes/font_size = 50
+text = "Player 2            
+
+[⌨P /🕹️Start]        Pause
+ [⌨↑↓←→ /          Move
+🕹️Joystick]                 
+[⌨Enter /🕹️A]     Grapple
+[⌨⌫ /🕹️B]     Retract"
+label_settings = SubResource("LabelSettings_bodal")
+horizontal_alignment = 2
 
 [connection signal="pressed" from="StartButton" to="." method="_start_game"]
