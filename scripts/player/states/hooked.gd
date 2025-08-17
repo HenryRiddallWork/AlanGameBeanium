@@ -23,7 +23,7 @@ func exit() -> void:
 
 
 func physics_update(delta: float) -> void:
-	if not Input.is_action_pressed("shoot_"+player.player_id):
+	if Input.is_action_just_pressed("shoot_"+player.player_id):
 		if player.get_contact_count() > 0:
 			finished.emit(ON_GROUND)
 		else:

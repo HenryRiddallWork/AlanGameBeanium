@@ -156,7 +156,7 @@ scale = Vector2(0.719109, 0.536184)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform3" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(220, 77)
+position = Vector2(156, 101)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform3"]
 position = Vector2(267, 122)
@@ -204,7 +204,7 @@ scale = Vector2(0.719109, 0.536184)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform7" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(159, 321)
+position = Vector2(231, 394)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform7"]
 position = Vector2(267, 122)

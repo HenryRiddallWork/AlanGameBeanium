@@ -4,7 +4,7 @@ extends Node2D
 const PLAYER_1_ID = "1"
 const PLAYER_2_ID = "2"
 
-const MAX_PLAYER_HEALTH = 30
+const MAX_PLAYER_HEALTH = 100
 
 class PlayerData:
 	var health: int = MAX_PLAYER_HEALTH

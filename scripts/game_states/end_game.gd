@@ -21,6 +21,8 @@ func exit() -> void:
 func enable_players():
 	game.player_1.process_mode = Node.PROCESS_MODE_PAUSABLE
 	game.player_2.process_mode = Node.PROCESS_MODE_PAUSABLE
+	game.player_1.unhook()
+	game.player_2.unhook()
 
 func disable_players():
 	game.player_1.process_mode = Node.PROCESS_MODE_DISABLED

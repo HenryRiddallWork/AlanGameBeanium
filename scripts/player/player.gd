@@ -2,6 +2,8 @@ class_name Player extends RigidBody2D
 
 const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 
+@export var player1Font: LabelSettings
+@export var player2Font: LabelSettings
 @export var hook: StaticBody2D
 @export var pinjoint: PinJoint2D
 @export var speed: int = 15
@@ -30,6 +32,9 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_point: Vector2 = Vector2(0, 0)
 @onready var label: Label = $Label
+@onready var state: StateMachine = $State
+
+var prev_velocity: Vector2 = Vector2.ZERO
 
 signal player_collision(player_speeds: Dictionary)
 
@@ -37,13 +42,11 @@ func _ready() -> void:
 	Globals.player_data[player_id] = Globals.PlayerData.new()
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
-	body_entered.connect(_on_body_entered)
-	if (player_id == "1"):
-		label.text = "1"
-		label.add_theme_color_override("font_color", Color.DARK_RED)
+	if (player_id == Globals.PLAYER_1_ID):
+		label.label_settings = player1Font
 	else:
-		label.text = "2"
-		label.add_theme_color_override("font_color", Color.CADET_BLUE)
+		label.label_settings = player2Font
+	body_entered.connect(_on_body_entered)
 
 func _process(delta: float) -> void:
 	if Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:
@@ -62,16 +65,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	var player_velocity = linear_velocity.length()
-	$Label.text = str(player_velocity) + " m/s"
-	if body.is_in_group("Players"):
-		player_collision.emit({
-			player_id: player_velocity,
-			body.player_id: body.linear_velocity.length(),
-		})
-	else:
-		$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
+	$Label.text = str(player_velocity) + " m/s"		
 	
 	if player_velocity > effect_threshold:
+		if !body.is_in_group("Players"):
+			$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 		$AudioStreamPlayer2D.volume_linear = player_velocity * konk_sound_scaler
 		$AudioStreamPlayer2D.pitch_scale = 1 / (player_velocity * konk_sound_scaler) 
 		$AudioStreamPlayer2D.play()
@@ -101,3 +99,24 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 
 	var point = state.get_contact_local_position(0)
 	collision_point = point
+	
+	var body = state.get_contact_collider_object(0)
+	if body.is_in_group("Players"):
+		if player_id == "1" && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
+			player_collision.emit({
+				"player_1_velocity": prev_velocity,
+				"player_2_velocity": body.linear_velocity,
+				"player_1_pos": global_position,
+				"player_2_pos": body.global_position
+			})
+		else:
+			player_collision.emit({
+				"player_2_velocity": prev_velocity,
+				"player_1_velocity": body.linear_velocity,
+				"player_2_pos": global_position,
+				"player_1_pos": body.global_position
+			})
+	prev_velocity = linear_velocity
+
+func unhook():
+	state._transition_to_next_state(PlayerState.IN_AIR)

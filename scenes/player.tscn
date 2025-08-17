@@ -1,6 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
+[ext_resource type="LabelSettings" uid="uid://devcsruc1o6c6" path="res://assets/font/player_1_font.tres" id="2_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dux7yqd7pb0vr" path="res://rope.png" id="2_smehm"]
 [ext_resource type="PackedScene" uid="uid://imtv8dqupw8u" path="res://scenes/Kollision.tscn" id="2_ur7pv"]
@@ -10,7 +11,7 @@
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://c47nxfe1mcanq" path="res://assets/sound effects/konk.wav" id="10_y4r1p"]
-[ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="11_d2wvv"]
+[ext_resource type="LabelSettings" uid="uid://bol8r8xjofshh" path="res://assets/font/player_2_font.tres" id="11_d2wvv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjrip"]
 rough = true
@@ -86,13 +87,12 @@ radius = 27.4591
 script/source = "extends AudioStreamPlayer2D
 "
 
-[sub_resource type="LabelSettings" id="LabelSettings_3v2ag"]
-font = ExtResource("11_d2wvv")
-
 [node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_fjrip")
 lock_rotation = true
 script = ExtResource("1_2kdwn")
+player1Font = ExtResource("2_3v2ag")
+player2Font = ExtResource("11_d2wvv")
 particle_scene = ExtResource("2_ur7pv")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -146,6 +146,6 @@ offset_top = -50.0
 offset_right = 20.0
 offset_bottom = -27.0
 text = "1"
-label_settings = SubResource("LabelSettings_3v2ag")
+label_settings = ExtResource("11_d2wvv")
 horizontal_alignment = 1
 vertical_alignment = 1
