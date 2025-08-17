@@ -7,6 +7,9 @@ spread = 180.0
 initial_velocity_min = 258.39
 initial_velocity_max = 258.39
 gravity = Vector3(0, 98, 0)
+color = Color(0.697021, 0.4091, 0, 1)
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
 
 [node name="Kollision" type="GPUParticles2D"]
 explosiveness = 1.0

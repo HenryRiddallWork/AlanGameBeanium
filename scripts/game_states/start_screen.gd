@@ -1,7 +1,6 @@
 extends GameState
 
 func enter(previous_state_path: String, data := {}) -> void:
-	Globals.time_elapsed = 0
 	game.start_screen.visible = true
 	get_tree().paused = true
 

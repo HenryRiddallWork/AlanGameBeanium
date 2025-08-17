@@ -1,7 +1,7 @@
 class_name Game extends Node
 
 @onready var start_screen: StartScreen = $StartLayer/Start
-@onready var ui_layer: Node2D = $UiLayer/Ui
+@onready var ui_layer: Control = $UiLayer/Ui
 @onready var paused_layer: PauseLayer = $PausedLayer/Paused
 @onready var end_screen: Node2D = $EndGameLayer/EndScene
 

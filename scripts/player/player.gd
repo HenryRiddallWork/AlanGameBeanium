@@ -4,18 +4,18 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 
 @export var hook: StaticBody2D
 @export var pinjoint: PinJoint2D
-@export var speed: int = 10
-@export var swing_speed: int = 5
+@export var speed: int = 15
+@export var swing_speed: int = 10
 @export var hook_range: int = 1000
 @export var raycast_count: int = 30
 @export var particle_scene: PackedScene
-@export var velocity_multiplier = 0.3
+@export var amount_scale = 0.1
 @export var speed_scale = 0.05
-@export var lifetime_scale = 0.005
-@export var max_particle_speed = 1000.0
-@export var max_lifetime = 2.0
-@export var effect_threshold = 25
-@export var konk_sound_scaler = 0.05
+@export var lifetime_scale = 0.001
+@export var max_particle_speed = 2000.0
+@export var max_lifetime = 0.5
+@export var effect_threshold = 50
+@export var konk_sound_scaler = 0.01
 
 # If changing this enum, also change the player IDs in globals
 @export_enum("1", "2") var player_id: String
@@ -57,8 +57,12 @@ func _process(delta: float) -> void:
 	else:
 		sprite.play("100_health")
 
+func _physics_process(delta: float) -> void:
+	$Label.text = str(linear_velocity.length()).get_slice(".", 0) + " m/s"
+
 func _on_body_entered(body: Node) -> void:
 	var player_velocity = linear_velocity.length()
+	$Label.text = str(player_velocity) + " m/s"
 	if body.is_in_group("Players"):
 		player_collision.emit({
 			player_id: player_velocity,
@@ -68,9 +72,10 @@ func _on_body_entered(body: Node) -> void:
 		$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 	
 	if player_velocity > effect_threshold:
-		$AudioStreamPlayer2D.volume_db = player_velocity * konk_sound_scaler
+		$AudioStreamPlayer2D.volume_linear = player_velocity * konk_sound_scaler
+		$AudioStreamPlayer2D.pitch_scale = 1 / (player_velocity * konk_sound_scaler) 
 		$AudioStreamPlayer2D.play()
-		var new_amount = clamp(int(player_velocity * velocity_multiplier), 5, 200)
+		var new_amount = clamp(int(player_velocity * amount_scale), 5, 200)
 		var base_speed = clamp(player_velocity * speed_scale, 200, max_particle_speed)
 		var initial_velocity_min = base_speed * 0.8
 		var initial_velocity_max = base_speed * 1.2

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtk6c78uq0dnw"]
+[gd_scene load_steps=12 format=3 uid="uid://dtk6c78uq0dnw"]
 
 [ext_resource type="Script" uid="uid://qreejurn71a6" path="res://scripts/end_scene.gd" id="1_bvfni"]
 [ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="1_p7m4f"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="2_bvfni"]
 [ext_resource type="Texture2D" uid="uid://bl3l711mkcopc" path="res://assets/animations/konk/konk_deatg.png" id="3_s4tl2"]
+[ext_resource type="AudioStream" uid="uid://bh4usdr63uexv" path="res://assets/sound effects/get_konked.wav" id="5_s4tl2"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8hmjt"]
 
@@ -33,6 +34,14 @@ animations = [{
 "name": &"smash",
 "speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4tl2"]
+font_size = 192
+font_color = Color(0.545, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8hmjt"]
+font_size = 192
+font_color = Color(0.373, 0.62, 0.627, 1)
 
 [node name="EndScene" type="Node2D"]
 script = ExtResource("1_bvfni")
@@ -64,7 +73,7 @@ offset_right = 943.0
 offset_bottom = 201.0
 theme_override_fonts/font = ExtResource("2_bvfni")
 theme_override_font_sizes/font_size = 100
-text = "WINNER:"
+text = "Player X Wins!"
 
 [node name="konk2" type="AnimatedSprite2D" parent="."]
 position = Vector2(570, 446)
@@ -78,3 +87,29 @@ scale = Vector2(4.9375, 4.9375)
 sprite_frames = SubResource("SpriteFrames_nl5ow")
 animation = &"smash"
 autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_s4tl2")
+volume_db = 4.0
+
+[node name="Player1Score" type="Label" parent="."]
+offset_left = 202.0
+offset_top = 359.0
+offset_right = 436.0
+offset_bottom = 510.0
+theme_override_fonts/font = ExtResource("2_bvfni")
+theme_override_font_sizes/font_size = 150
+text = "0"
+label_settings = SubResource("LabelSettings_s4tl2")
+horizontal_alignment = 1
+
+[node name="Player2Score" type="Label" parent="."]
+offset_left = 726.0
+offset_top = 368.0
+offset_right = 940.0
+offset_bottom = 519.0
+theme_override_fonts/font = ExtResource("2_bvfni")
+theme_override_font_sizes/font_size = 150
+text = "0"
+label_settings = SubResource("LabelSettings_8hmjt")
+horizontal_alignment = 1

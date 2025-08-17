@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qtjp0d56wc6p"]
+[gd_scene load_steps=12 format=3 uid="uid://qtjp0d56wc6p"]
 
 [ext_resource type="Script" uid="uid://bjd76b5pcvrf2" path="res://ui.gd" id="1_x4jx1"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="2_yev5y"]
@@ -30,7 +30,24 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Ui" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_gdt2y"]
+font_size = 72
+font_color = Color(0.545, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wm3ai"]
+font_size = 72
+font_color = Color(0.373, 0.62, 0.627, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8dubc"]
+font_size = 72
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_x4jx1")
 
 [node name="Player1Label" type="Label" parent="."]
@@ -45,10 +62,14 @@ text = "Player 1
 label_settings = SubResource("LabelSettings_x4jx1")
 
 [node name="Player2Label" type="Label" parent="."]
-offset_left = 1039.0
-offset_top = 41.0
-offset_right = 1141.0
-offset_bottom = 73.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -102.0
+offset_top = 27.0
+offset_bottom = 69.0
+grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_yev5y")
 theme_override_font_sizes/font_size = 25
 text = "Player 2"
@@ -66,13 +87,60 @@ show_percentage = false
 
 [node name="Player2HealthBar" type="ProgressBar" parent="."]
 material = SubResource("CanvasItemMaterial_x4jx1")
-offset_left = 984.0
-offset_top = 9.0
-offset_right = 1141.0
-offset_bottom = 36.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_bottom = 27.0
+grow_horizontal = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_x4jx1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gdt2y")
 max_value = 10.0
 value = 10.0
 fill_mode = 1
 show_percentage = false
+
+[node name="Player1Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_top = 1.0
+offset_right = -22.0
+offset_bottom = 68.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_yev5y")
+theme_override_font_sizes/font_size = 25
+text = "0"
+label_settings = SubResource("LabelSettings_gdt2y")
+horizontal_alignment = 2
+
+[node name="Player2Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 22.0
+offset_top = 1.0
+offset_right = 124.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("2_yev5y")
+theme_override_font_sizes/font_size = 25
+text = "0"
+label_settings = SubResource("LabelSettings_wm3ai")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = -18.0
+offset_right = 19.0
+offset_bottom = 81.0
+grow_horizontal = 2
+text = "-"
+label_settings = SubResource("LabelSettings_8dubc")
+horizontal_alignment = 1

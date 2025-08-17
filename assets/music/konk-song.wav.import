@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://6eyeb251ge6p"
+uid="uid://bekrq58rndit2"
 path="res://.godot/imported/konk-song.wav-bd3df29eadcea27fe348b40416371127.sample"
 
 [deps]
@@ -12,13 +12,13 @@ dest_files=["res://.godot/imported/konk-song.wav-bd3df29eadcea27fe348b4041637112
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=2

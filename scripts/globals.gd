@@ -16,3 +16,8 @@ var player_data: Dictionary = {
 
 # counters
 var time_elapsed: float = 0
+
+var winner = ""
+
+var player_1_wins = 0
+var player_2_wins = 0

@@ -2,3 +2,6 @@ extends Node2D
 
 func set_winner_text(new_text: String):
 	$WinnerText.text = new_text
+	$AudioStreamPlayer2D.play()
+	$Player1Score.text = str(Globals.player_1_wins)
+	$Player2Score.text = str(Globals.player_2_wins)
