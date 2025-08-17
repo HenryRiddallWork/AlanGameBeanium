@@ -30,17 +30,13 @@ texture = ExtResource("2_bodal")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -198.0
-offset_top = -305.0
-offset_right = 202.0
-offset_bottom = -105.0
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
 grow_horizontal = 2
-grow_vertical = 2
 pivot_offset = Vector2(175, 100)
 color = Color(0.0627451, 0.0627451, 0.0627451, 0.686275)
 
@@ -61,10 +57,18 @@ vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
 process_mode = 3
-offset_left = 461.0
-offset_top = 262.0
-offset_right = 688.0
-offset_bottom = 371.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -54.5
+offset_right = 113.5
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 100
 text = "START"
@@ -74,9 +78,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -280.0
+offset_top = -266.0
 offset_right = 392.0
-offset_bottom = 29.0
 grow_vertical = 0
 color = Color(0.0627451, 0.0627451, 0.0627451, 0.686275)
 
@@ -90,7 +93,6 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 50
 text = "              Player 1
-
 Pause        [⌨P /🕹️Start]
 Move         [⌨WASD /
                   🕹️Joystick]
@@ -105,10 +107,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -391.0
-offset_top = -294.0
-offset_right = 1.0
-offset_bottom = 15.0
+offset_left = -392.0
+offset_top = -266.0
 grow_horizontal = 0
 grow_vertical = 0
 color = Color(0.0627451, 0.0627451, 0.0627451, 0.686275)
@@ -123,7 +123,6 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_0auqf")
 theme_override_font_sizes/font_size = 50
 text = "Player 2            
-
 [⌨P /🕹️Start]        Pause
  [⌨↑↓←→ /          Move
 🕹️Joystick]                 
