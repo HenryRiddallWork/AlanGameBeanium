@@ -1,12 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtk6c78uq0dnw"]
+[gd_scene load_steps=17 format=3 uid="uid://dtk6c78uq0dnw"]
 
 [ext_resource type="Script" uid="uid://qreejurn71a6" path="res://scripts/end_scene.gd" id="1_bvfni"]
 [ext_resource type="Texture2D" uid="uid://cb2w8p48ib443" path="res://assets/non-animations/background.png" id="1_p7m4f"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="2_bvfni"]
 [ext_resource type="Texture2D" uid="uid://bl3l711mkcopc" path="res://assets/animations/konk/konk_deatg.png" id="3_s4tl2"]
 [ext_resource type="AudioStream" uid="uid://bh4usdr63uexv" path="res://assets/sound effects/get_konked.wav" id="5_s4tl2"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_8hmjt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4tl2"]
 atlas = ExtResource("3_s4tl2")
@@ -82,21 +80,34 @@ font_color = Color(0.373, 0.62, 0.627, 1)
 font = ExtResource("2_bvfni")
 font_size = 36
 
-[node name="EndScene" type="Node2D"]
+[node name="EndScene" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p7m4f")
 script = ExtResource("1_bvfni")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(575, 323)
-texture = ExtResource("1_p7m4f")
-
-[node name="TitleLabelBackgroundSprite" type="Sprite2D" parent="."]
+[node name="TitleLabelBackgroundSprite" type="ColorRect" parent="."]
 self_modulate = Color(0, 0, 0, 0.443137)
-position = Vector2(570, 337)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -386.0
+offset_top = -282.0
+offset_right = -385.0
+offset_bottom = -281.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(742, 590)
-texture = SubResource("CanvasTexture_8hmjt")
+color = Color(0, 0, 0, 0.796078)
 
 [node name="Konked" type="Label" parent="."]
+layout_mode = 0
 offset_left = 197.0
 offset_top = 132.0
 offset_right = 936.0
@@ -107,6 +118,7 @@ text = "GET KONKED!"
 horizontal_alignment = 1
 
 [node name="WinnerText" type="Label" parent="."]
+layout_mode = 0
 offset_left = 203.0
 offset_top = 43.0
 offset_right = 943.0
@@ -124,9 +136,10 @@ autoplay = "default"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_s4tl2")
-volume_db = 4.0
+volume_db = 10.0
 
 [node name="Player1Score" type="Label" parent="."]
+layout_mode = 0
 offset_left = 216.0
 offset_top = 309.0
 offset_right = 450.0
@@ -138,6 +151,7 @@ label_settings = SubResource("LabelSettings_s4tl2")
 horizontal_alignment = 1
 
 [node name="Player2Score" type="Label" parent="."]
+layout_mode = 0
 offset_left = 720.0
 offset_top = 304.0
 offset_right = 934.0
@@ -149,6 +163,7 @@ label_settings = SubResource("LabelSettings_8hmjt")
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 199.0
 offset_top = 527.0
 offset_right = 937.0

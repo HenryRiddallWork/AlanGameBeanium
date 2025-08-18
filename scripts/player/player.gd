@@ -33,6 +33,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var collision_point: Vector2 = Vector2(0, 0)
 @onready var label: Label = $Label
 @onready var state: StateMachine = $State
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var prev_velocity: Vector2 = Vector2.ZERO
 
@@ -70,7 +71,8 @@ func _on_body_entered(body: Node) -> void:
 	if player_velocity > effect_threshold:
 		if !body.is_in_group("Players"):
 			$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
-		$AudioStreamPlayer2D.volume_linear = player_velocity * konk_sound_scaler
+		print(player_velocity * konk_sound_scaler)
+		$AudioStreamPlayer2D.volume_db = player_velocity * konk_sound_scaler
 		$AudioStreamPlayer2D.pitch_scale = 1 / (player_velocity * konk_sound_scaler) 
 		$AudioStreamPlayer2D.play()
 		var new_amount = clamp(int(player_velocity * amount_scale), 5, 200)
@@ -120,3 +122,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 
 func unhook():
 	state._transition_to_next_state(PlayerState.IN_AIR)
+
+func play_damage_animation():
+	animation_player.play("damage_player")

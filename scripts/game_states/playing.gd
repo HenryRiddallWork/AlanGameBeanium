@@ -1,7 +1,7 @@
 extends GameState
 
 const COLLISION_HEALTH_SCALE_FACTOR = 0.25
-const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.07
+const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.3
 
 const COLLISION_TIMEOUT = 0.7 # Seconds
 var current_collision_timeout = 0
@@ -57,8 +57,10 @@ func _on_player_collision(data: Dictionary) -> void:
 		
 		if damage > 0:
 			_damage_players(0, damage)
+			player_2.play_damage_animation()
 		else:
 			_damage_players(abs(damage), 0)
+			player_1.play_damage_animation()
 		$"../../Camera2D".shake(1, damage * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 
 func _damage_players(player_1_damage: int, player_2_damage: int) -> void:

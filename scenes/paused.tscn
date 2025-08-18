@@ -1,38 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu2qmhl5lasj1"]
+[gd_scene load_steps=3 format=3 uid="uid://cu2qmhl5lasj1"]
 
 [ext_resource type="Script" uid="uid://cka1uqlkfo3je" path="res://scripts/paused.gd" id="1_r8o1p"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="3_j5rf4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4kqd"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_1qn1x"]
-
-[node name="Paused" type="Node2D"]
+[node name="Paused" type="ColorRect"]
 process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.231373)
 script = ExtResource("1_r8o1p")
-
-[node name="BackgroundSprite" type="Sprite2D" parent="."]
-self_modulate = Color(0.160784, 0.160784, 0.160784, 0.419608)
-material = SubResource("ShaderMaterial_f4kqd")
-position = Vector2(574, 322.25)
-scale = Vector2(1156, 645.5)
-texture = SubResource("CanvasTexture_1qn1x")
 
 [node name="ResumeButton" type="Button" parent="."]
 process_mode = 3
-offset_left = 512.0
-offset_top = 339.0
-offset_right = 658.0
-offset_bottom = 398.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -29.5
+offset_right = 73.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_j5rf4")
 theme_override_font_sizes/font_size = 50
 text = "Resume"
 
 [node name="PausedLabel" type="Label" parent="."]
-offset_left = 448.0
-offset_top = 219.0
-offset_right = 711.0
-offset_bottom = 320.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.5
+offset_top = -146.5
+offset_right = 131.5
+offset_bottom = -45.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_j5rf4")
 theme_override_font_sizes/font_size = 100
 text = "Paused"

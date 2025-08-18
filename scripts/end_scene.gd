@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 func set_winner_text(new_text: String):
 	$konk2.frame = 0

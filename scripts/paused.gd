@@ -1,4 +1,4 @@
-class_name PauseLayer extends Node2D
+class_name PauseLayer extends Control
 
 signal resume_triggered
 
