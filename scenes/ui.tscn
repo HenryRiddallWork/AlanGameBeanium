@@ -45,7 +45,6 @@ grow_vertical = 2
 script = ExtResource("1_x4jx1")
 
 [node name="Player1HealthBar" type="ProgressBar" parent="."]
-layout_mode = 0
 offset_left = 10.0
 offset_top = 11.0
 offset_right = 156.0
@@ -71,7 +70,6 @@ value = 10.0
 show_percentage = false
 
 [node name="Player1Label" type="Label" parent="."]
-layout_mode = 0
 offset_left = 11.0
 offset_top = 42.0
 offset_right = 113.0

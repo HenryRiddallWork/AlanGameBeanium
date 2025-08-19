@@ -71,7 +71,6 @@ func _on_body_entered(body: Node) -> void:
 	if player_velocity > effect_threshold:
 		if !body.is_in_group("Players"):
 			$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
-		print(player_velocity * konk_sound_scaler)
 		$AudioStreamPlayer2D.volume_db = player_velocity * konk_sound_scaler
 		$AudioStreamPlayer2D.pitch_scale = 1 / (player_velocity * konk_sound_scaler) 
 		$AudioStreamPlayer2D.play()

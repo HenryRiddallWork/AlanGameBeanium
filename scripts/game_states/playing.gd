@@ -50,9 +50,6 @@ func _on_player_collision(data: Dictionary) -> void:
 		var p1_pos: Vector2 = data["player_1_pos"]
 		var p2_pos: Vector2 = data["player_2_pos"]
 		
-		# Using the normal of the two player positions doesn't seem to work, maybe because
-		# if you use normal A -> B then either A moving away from B or B moving away from A is going to give the wrong result
-
 		var damage = floor((p1_vel.length() - p2_vel.length()) * COLLISION_HEALTH_SCALE_FACTOR)
 		
 		if damage > 0:

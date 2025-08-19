@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=21 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://ca2mjl3kgpx36" path="res://scenes/player.tscn" id="2_i7141"]
@@ -18,14 +18,6 @@
 [ext_resource type="Script" uid="uid://nyo8kxgkxdi7" path="res://scripts/game_states/end_game.gd" id="17_7t5mc"]
 [ext_resource type="AudioStream" uid="uid://bekrq58rndit2" path="res://assets/music/konk-song.wav" id="18_lakw3"]
 
-[sub_resource type="Gradient" id="Gradient_7t5mc"]
-offsets = PackedFloat32Array(0.412008, 0.716356)
-colors = PackedColorArray(0.466667, 0.533333, 0.6, 1, 0.494118, 0.662745, 0.67451, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lakw3"]
-gradient = SubResource("Gradient_7t5mc")
-fill_to = Vector2(0.37037, 1)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 friction = 0.2
 bounce = 0.4
@@ -37,11 +29,6 @@ size = Vector2(1620, 826)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_7r4gi")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(646, 365.5)
-scale = Vector2(49.125, 30.8594)
-texture = SubResource("GradientTexture2D_lakw3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
@@ -264,6 +251,7 @@ visible = false
 [node name="GameBoundary" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundary"]
+visible = false
 position = Vector2(582, 403)
 shape = SubResource("RectangleShape2D_e3hyu")
 
