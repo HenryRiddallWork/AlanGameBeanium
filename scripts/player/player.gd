@@ -31,7 +31,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var direction_hook: Sprite2D = $DirectionHook
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_point: Vector2 = Vector2(0, 0)
-@onready var label: Label = $Label
+@onready var speed_bar: ProgressBar = $CanvasLayer/SpeedBar1 if player_id == Globals.PLAYER_1_ID else $CanvasLayer/SpeedBar2
 @onready var state: StateMachine = $State
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -43,10 +43,7 @@ func _ready() -> void:
 	Globals.player_data[player_id] = Globals.PlayerData.new()
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
-	if (player_id == Globals.PLAYER_1_ID):
-		label.label_settings = player1Font
-	else:
-		label.label_settings = player2Font
+	speed_bar.show()
 	body_entered.connect(_on_body_entered)
 
 func _process(delta: float) -> void:
@@ -62,11 +59,11 @@ func _process(delta: float) -> void:
 		sprite.play("100_health")
 
 func _physics_process(delta: float) -> void:
-	$Label.text = str(linear_velocity.length()).get_slice(".", 0) + " m/s"
+	speed_bar.value = linear_velocity.length()
 
 func _on_body_entered(body: Node) -> void:
 	var player_velocity = linear_velocity.length()
-	$Label.text = str(player_velocity) + " m/s"		
+	speed_bar.value = player_velocity
 	
 	if player_velocity > effect_threshold:
 		if !body.is_in_group("Players"):
@@ -102,21 +99,17 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 	collision_point = point
 	
 	var body = state.get_contact_collider_object(0)
-	if body.is_in_group("Players"):
-		if player_id == "1" && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
+	if body.is_in_group("Players") && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
+		if player_id == "1":
 			player_collision.emit({
 				"player_1_velocity": prev_velocity,
-				"player_2_velocity": body.linear_velocity,
-				"player_1_pos": global_position,
-				"player_2_pos": body.global_position
+				"player_2_velocity": (body as Player).prev_velocity,
 			})
-		else:
-			player_collision.emit({
-				"player_2_velocity": prev_velocity,
-				"player_1_velocity": body.linear_velocity,
-				"player_2_pos": global_position,
-				"player_1_pos": body.global_position
-			})
+		#else:
+			#player_collision.emit({
+				#"player_1_velocity": (body as Player).prev_velocity,
+				#"player_2_velocity": prev_velocity,
+			#})
 	prev_velocity = linear_velocity
 
 func unhook():

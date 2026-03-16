@@ -1,6 +1,6 @@
 extends GameState
 
-const COLLISION_HEALTH_SCALE_FACTOR = 0.25
+const COLLISION_HEALTH_SCALE_FACTOR = 0.125
 const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.3
 
 const COLLISION_TIMEOUT = 0.7 # Seconds
@@ -43,22 +43,19 @@ func update(_delta: float) -> void:
 		finished.emit(PAUSED)
 
 func _on_player_collision(data: Dictionary) -> void:
-	if current_collision_timeout <= 0:
-		current_collision_timeout = COLLISION_TIMEOUT
-		var p1_vel: Vector2 = data["player_1_velocity"]
-		var p2_vel: Vector2 = data["player_2_velocity"]
-		var p1_pos: Vector2 = data["player_1_pos"]
-		var p2_pos: Vector2 = data["player_2_pos"]
-		
-		var damage = floor((p1_vel.length() - p2_vel.length()) * COLLISION_HEALTH_SCALE_FACTOR)
-		
-		if damage > 0:
-			_damage_players(0, damage)
-			player_2.play_damage_animation()
-		else:
-			_damage_players(abs(damage), 0)
-			player_1.play_damage_animation()
-		$"../../Camera2D".shake(1, damage * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
+	var p1_vel: Vector2 = data["player_1_velocity"]
+	var p2_vel: Vector2 = data["player_2_velocity"]
+	print(str(p1_vel) + " : " + str(p2_vel))
+	
+	var old_damage = floor((p1_vel.length() - p2_vel.length()) * COLLISION_HEALTH_SCALE_FACTOR)
+	
+	if p1_vel.length() > p2_vel.length():
+		_damage_players(p2_vel.length() * COLLISION_HEALTH_SCALE_FACTOR / 2, p1_vel.length() * COLLISION_HEALTH_SCALE_FACTOR)
+	else:
+		_damage_players(p2_vel.length() * COLLISION_HEALTH_SCALE_FACTOR, p1_vel.length() * COLLISION_HEALTH_SCALE_FACTOR / 2)
+	player_1.play_damage_animation()
+	player_2.play_damage_animation()
+	$"../../Camera2D".shake(1, old_damage * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 
 func _damage_players(player_1_damage: int, player_2_damage: int) -> void:
 	var player_1_new_health = Globals.player_data[Globals.PLAYER_1_ID].health - player_1_damage
