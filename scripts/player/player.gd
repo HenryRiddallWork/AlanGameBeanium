@@ -92,25 +92,24 @@ func _on_body_entered(body: Node) -> void:
 		get_tree().create_timer(cleanup_time).connect("timeout", Callable(particles, "queue_free"))	
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
-	if state.get_contact_count() == 0:
-		return
-
-	var point = state.get_contact_local_position(0)
-	collision_point = point
-	
-	var body = state.get_contact_collider_object(0)
-	if body.is_in_group("Players") && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
-		if player_id == "1":
-			player_collision.emit({
-				"player_1_velocity": prev_velocity,
-				"player_2_velocity": (body as Player).prev_velocity,
-			})
-		#else:
-			#player_collision.emit({
-				#"player_1_velocity": (body as Player).prev_velocity,
-				#"player_2_velocity": prev_velocity,
-			#})
+	if state.get_contact_count() >= 0:
+		var point = state.get_contact_local_position(0)
+		collision_point = point
+		
+		var body = state.get_contact_collider_object(0)
+		if body != null && body.is_in_group("Players") && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
+			if player_id == "1":
+				player_collision.emit({
+					"player_1_velocity": prev_velocity,
+					"player_2_velocity": (body as Player).prev_velocity,
+				})
+			#else:
+				#player_collision.emit({
+					#"player_1_velocity": (body as Player).prev_velocity,
+					#"player_2_velocity": prev_velocity,
+				#})
 	prev_velocity = linear_velocity
+
 
 func unhook():
 	state._transition_to_next_state(PlayerState.IN_AIR)
