@@ -1,7 +1,7 @@
 extends GameState
 
 const COLLISION_HEALTH_SCALE_FACTOR = 0.125
-const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.3
+const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.1
 
 const COLLISION_TIMEOUT = 0.7 # Seconds
 var current_collision_timeout = 0
@@ -45,17 +45,37 @@ func update(_delta: float) -> void:
 func _on_player_collision(data: Dictionary) -> void:
 	var p1_vel: Vector2 = data["player_1_velocity"]
 	var p2_vel: Vector2 = data["player_2_velocity"]
-	print(str(p1_vel) + " : " + str(p2_vel))
+	var collision_normal: Vector2 = data["collision_normal"]
 	
-	var old_damage = floor((p1_vel.length() - p2_vel.length()) * COLLISION_HEALTH_SCALE_FACTOR)
+	# Relative velocity of p1 toward p2 along collision axis
+	var relative_vel: Vector2 = p1_vel - p2_vel
+	var closing_speed: float = abs(relative_vel.dot(collision_normal))
 	
-	if p1_vel.length() > p2_vel.length():
-		_damage_players(p2_vel.length() * COLLISION_HEALTH_SCALE_FACTOR / 2, p1_vel.length() * COLLISION_HEALTH_SCALE_FACTOR)
-	else:
-		_damage_players(p2_vel.length() * COLLISION_HEALTH_SCALE_FACTOR, p1_vel.length() * COLLISION_HEALTH_SCALE_FACTOR / 2)
+	# Each player's contribution to the closing speed
+	var p1_attack_speed = max(0, p1_vel.dot(-collision_normal))
+	var p2_attack_speed = max(0, p2_vel.dot(collision_normal))
+	var total_attack = p1_attack_speed + p2_attack_speed
+	
+	if total_attack == 0:
+		return
+	
+	print("Closing speed: %s  P1: %s  P2: %s" % [closing_speed, p1_attack_speed, p2_attack_speed])
+	
+	# Attribute the closing speed based on who's moving faster along the axis
+	var p1_share = p1_attack_speed / total_attack
+	var p2_share = p2_attack_speed / total_attack
+	
+	# Faster player deals more damage, takes less
+	var p1_damage = closing_speed * p2_share * COLLISION_HEALTH_SCALE_FACTOR / 2
+	var p2_damage = closing_speed * p1_share * COLLISION_HEALTH_SCALE_FACTOR
+	if p2_attack_speed > p1_attack_speed:
+		p1_damage = closing_speed * p2_share * COLLISION_HEALTH_SCALE_FACTOR
+		p2_damage = closing_speed * p1_share * COLLISION_HEALTH_SCALE_FACTOR / 2
+	
+	_damage_players(floor(p1_damage), floor(p2_damage))
 	player_1.play_damage_animation()
 	player_2.play_damage_animation()
-	$"../../Camera2D".shake(1, old_damage * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
+	$"../../Camera2D".shake(1, closing_speed * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 
 func _damage_players(player_1_damage: int, player_2_damage: int) -> void:
 	var player_1_new_health = Globals.player_data[Globals.PLAYER_1_ID].health - player_1_damage

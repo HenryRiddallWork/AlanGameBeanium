@@ -65,7 +65,7 @@ func _on_body_entered(body: Node) -> void:
 	var player_velocity = linear_velocity.length()
 	speed_bar.value = player_velocity
 	
-	if player_velocity > effect_threshold:
+	if player_velocity != null && player_velocity > effect_threshold:
 		if !body.is_in_group("Players"):
 			$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 		$AudioStreamPlayer2D.volume_db = player_velocity * konk_sound_scaler
@@ -99,16 +99,21 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 		var body = state.get_contact_collider_object(0)
 		if body != null && body.is_in_group("Players") && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
 			if player_id == "1":
+				var collision_normal = state.get_contact_local_normal(0)
 				player_collision.emit({
 					"player_1_velocity": prev_velocity,
 					"player_2_velocity": (body as Player).prev_velocity,
+					"collision_normal": collision_normal,
 				})
 			#else:
 				#player_collision.emit({
 					#"player_1_velocity": (body as Player).prev_velocity,
 					#"player_2_velocity": prev_velocity,
 				#})
-	prev_velocity = linear_velocity
+		else:
+			prev_velocity = linear_velocity
+	else:
+		prev_velocity = linear_velocity
 
 
 func unhook():
