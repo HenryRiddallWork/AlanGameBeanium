@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 			collision_points = collision_points.filter(func(v): return v != null)
 			collision_points.sort_custom(
 				func(v1, v2):
-					return (v1[0].distance_to(player.global_position) * v1[1]) < (v2[0].distance_to(player.global_position) * v2[1])
+					return (v1[0].distance_to(player.global_position) * v1[1]) > (v2[0].distance_to(player.global_position) * v2[1])
 			)
 			
 			if collision_points.size() > 0:
@@ -94,10 +94,5 @@ func _triangle_weighting_function(min: float, max: float, value: float) -> float
 	assert(value >= min)
 	assert(value <= max)
 	var mid_point_of_range = (min + max) / 2
-	var scaling_factor: float
-	if value < mid_point_of_range:
-		scaling_factor = (value - min) / (mid_point_of_range - min)
-	else:
-		scaling_factor = (value - mid_point_of_range) / (max - mid_point_of_range)
-	
-	return scaling_factor * player.hook_selection_factor
+	var half_range = abs(max - min)/2
+	return ((half_range - abs(mid_point_of_range - value))/half_range) * player.hook_selection_factor
