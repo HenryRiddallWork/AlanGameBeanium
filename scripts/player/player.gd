@@ -24,7 +24,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 
 @export var raycast_count: int = 30
 # The factor by which the hook selection will prefer central angles to outside options
-@export var hook_selection_factor: float = 1.5
+@export var hook_selection_factor: float = 9999999
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var line = $Line2D
 @onready var line_end = hook.get_node("Marker2D")
@@ -102,21 +102,19 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 		var point = state.get_contact_local_position(0)
 		collision_point = point
 		
-		var body = state.get_contact_collider_object(0)
-		if body != null && body.is_in_group("Players") && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
-			if player_id == "1":
-				var collision_normal = state.get_contact_local_normal(0)
-				player_collision.emit({
-					"player_1_velocity": prev_velocity,
-					"player_2_velocity": (body as Player).prev_velocity,
-					"collision_normal": collision_normal,
-				})
-			#else:
-				#player_collision.emit({
-					#"player_1_velocity": (body as Player).prev_velocity,
-					#"player_2_velocity": prev_velocity,
-				#})
-		else:
+		var has_contacted_player = false
+		for i in state.get_contact_count():
+			var body = state.get_contact_collider_object(i)
+			if body != null && body.is_in_group("Players") && (prev_velocity.length() + body.linear_velocity.length()) > effect_threshold:
+				has_contacted_player = true
+				if player_id == "1":
+					var collision_normal = state.get_contact_local_normal(i)
+					player_collision.emit({
+						"player_1_velocity": prev_velocity,
+						"player_2_velocity": (body as Player).prev_velocity,
+						"collision_normal": collision_normal,
+					})
+		if !has_contacted_player:
 			prev_velocity = linear_velocity
 	else:
 		prev_velocity = linear_velocity
