@@ -2,35 +2,36 @@ class_name Player extends RigidBody2D
 
 const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 
-@export var player1Font: LabelSettings
-@export var player2Font: LabelSettings
+@export var wall_hit_particle_color: Color
+@export var player_hit_particle_color: Color
 @export var hook: StaticBody2D
 @export var pinjoint: PinJoint2D
 @export var speed: int = 15
 @export var swing_speed: int = 10
 @export var hook_range: int = 1000
-@export var raycast_count: int = 30
+
 @export var particle_scene: PackedScene
-@export var amount_scale = 0.1
-@export var speed_scale = 0.05
-@export var lifetime_scale = 0.001
+@export var impact_particle_amount_scale = 0.1
+@export var impact_particle_speed_scale = 0.05
+@export var impact_particle_lifetime_scale = 0.001
 @export var max_particle_speed = 2000.0
-@export var max_lifetime = 0.5
+@export var max_particle_lifetime = 0.5
 @export var effect_threshold = 50
 @export var konk_sound_scaler = 0.01
 
 # If changing this enum, also change the player IDs in globals
 @export_enum("1", "2") var player_id: String
 
+@export var raycast_count: int = 30
 # The factor by which the hook selection will prefer central angles to outside options
 @export var hook_selection_factor: float = 1.5
-
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var line = $Line2D
 @onready var line_end = hook.get_node("Marker2D")
 @onready var direction_hook: Sprite2D = $DirectionHook
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_point: Vector2 = Vector2(0, 0)
+
 @onready var speed_bar: ProgressBar = $CanvasLayer/SpeedBar1 if player_id == Globals.PLAYER_1_ID else $CanvasLayer/SpeedBar2
 @onready var state: StateMachine = $State
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -66,16 +67,14 @@ func _on_body_entered(body: Node) -> void:
 	speed_bar.value = player_velocity
 	
 	if player_velocity != null && player_velocity > effect_threshold:
-		if !body.is_in_group("Players"):
-			$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
 		$AudioStreamPlayer2D.volume_db = player_velocity * konk_sound_scaler
 		$AudioStreamPlayer2D.pitch_scale = 1 / (player_velocity * konk_sound_scaler) 
 		$AudioStreamPlayer2D.play()
-		var new_amount = clamp(int(player_velocity * amount_scale), 5, 200)
-		var base_speed = clamp(player_velocity * speed_scale, 200, max_particle_speed)
+		var new_amount = clamp(int(player_velocity * impact_particle_amount_scale), 5, 200)
+		var base_speed = clamp(player_velocity * impact_particle_speed_scale, 200, max_particle_speed)
 		var initial_velocity_min = base_speed * 0.8
 		var initial_velocity_max = base_speed * 1.2
-		var new_lifetime = clamp(player_velocity * lifetime_scale, 0.2, max_lifetime)
+		var new_lifetime = clamp(player_velocity * impact_particle_lifetime_scale, 0.2, max_particle_lifetime)
 		var particles: GPUParticles2D = particle_scene.instantiate()
 		particles.position = collision_point
 		var mat: ParticleProcessMaterial = particles.process_material
@@ -86,6 +85,13 @@ func _on_body_entered(body: Node) -> void:
 		
 		particles.one_shot = true
 		particles.emitting = true
+		
+		if !body.is_in_group("Players"):
+			$"../Camera2D".shake(0.5, player_velocity * COLLISION_SCREEN_SHAKE_SCALE_FACTOR)
+			particles.process_material.color = wall_hit_particle_color
+		else:
+			particles.process_material.color = player_hit_particle_color
+		
 		get_tree().current_scene.add_child(particles)
 		
 		var cleanup_time = particles.lifetime + 0.5
