@@ -37,7 +37,7 @@ func physics_update(delta: float) -> void:
 		#player.pinjoint.node_b = player.get_path_to(player.hook)
 		#player.global_position = old_pos
 		var retract_vector = player.hook.global_position - player.global_position
-		var retract_force = retract_vector * 1000 / retract_vector.length()
+		var retract_force = retract_vector * 2000 / retract_vector.length()
 		player.apply_force(retract_force)
 		retracting = true
 	if Input.is_action_just_released("retract_"+player.player_id):

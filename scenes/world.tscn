@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8nnhaiuf5taq"]
+[gd_scene load_steps=31 format=3 uid="uid://8nnhaiuf5taq"]
 
 [ext_resource type="Script" uid="uid://byj167uh3nsu5" path="res://scripts/game.gd" id="1_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://ca2mjl3kgpx36" path="res://scenes/player.tscn" id="2_i7141"]
@@ -21,6 +21,60 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolhf"]
 friction = 0.2
 bounce = 0.4
+
+[sub_resource type="Gradient" id="Gradient_y4r1p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d2wvv"]
+gradient = SubResource("Gradient_y4r1p")
+
+[sub_resource type="Curve" id="Curve_3v2ag"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jej6c"]
+curve = SubResource("Curve_3v2ag")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ej7"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(25, 25, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 8.0
+color = Color(1, 1, 0, 1)
+color_initial_ramp = SubResource("GradientTexture1D_d2wvv")
+hue_variation_curve = SubResource("CurveTexture_jej6c")
+
+[sub_resource type="Gradient" id="Gradient_7t5mc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0.99607843, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lakw3"]
+gradient = SubResource("Gradient_7t5mc")
+
+[sub_resource type="Curve" id="Curve_pm21f"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2lf6f"]
+curve = SubResource("Curve_pm21f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7iits"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(25, 25, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 8.0
+color = Color(0.578952, 1, 0.9362121, 1)
+color_initial_ramp = SubResource("GradientTexture1D_lakw3")
+hue_variation_curve = SubResource("CurveTexture_2lf6f")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ceco4"]
 
@@ -68,6 +122,7 @@ contact_monitor = true
 max_contacts_reported = 3
 linear_damp = 0.001
 angular_damp = 0.001
+flame_material = SubResource("ParticleProcessMaterial_f1ej7")
 hook = NodePath("../Player1HookPoint")
 pinjoint = NodePath("../Player1PinJoint")
 player_id = "1"
@@ -83,6 +138,7 @@ contact_monitor = true
 max_contacts_reported = 3
 linear_damp = 0.001
 angular_damp = 0.001
+flame_material = SubResource("ParticleProcessMaterial_7iits")
 hook = NodePath("../Player2HookPoint")
 pinjoint = NodePath("../Player2PinJoint")
 player_id = "2"
@@ -220,7 +276,7 @@ position = Vector2(579, 324)
 texture = ExtResource("11_e3hyu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="canopy"]
-polygon = PackedVector2Array(84, 166, 92, 130, 115, 121, 149, 121, 166, 113, 174, 99, 177, 75, 191, 74, 202, 64, 213, 65, 227, 54, 238, 66, 248, 72, 261, 71, 272, 67, 286, 73, 296, 70, 302, 64, 333, 77, 363, 68, 406, 66, 432, 58, 478, 56, 513, 47, 500, 35, 520, 35, 548, 40, 573, 48, 597, 55, 611, 71, 635, 60, 667, 59, 688, 43, 709, 53, 744, 41, 788, 41, 820, 44, 818, 57, 850, 43, 891, 48, 915, 41, 1023, 51, 1047, 96, 1074, 125, 1116, 136, 1153, 146, 1150, 1, 9, 2, 5, 154, 5, 175, 42, 182, 69, 184)
+polygon = PackedVector2Array(84, 166, 92, 130, 115, 121, 149, 121, 166, 113, 174, 99, 177, 75, 191, 74, 202, 64, 213, 65, 227, 54, 238, 66, 248, 72, 261, 71, 272, 67, 286, 73, 296, 70, 302, 64, 333, 77, 363, 68, 406, 66, 432, 58, 478, 56, 513, 47, 500, 35, 520, 35, 548, 40, 573, 48, 597, 55, 611, 71, 635, 60, 667, 59, 688, 43, 709, 53, 744, 41, 788, 41, 820, 44, 818, 57, 850, 43, 891, 48, 915, 41, 1023, 51, 1047, 96, 1074, 125, 1116, 136, 3195, 110, 3234, -54, 9, 2, -1231, -111, -1207, 130, 42, 182, 69, 184)
 
 [node name="UiLayer" type="CanvasLayer" parent="."]
 

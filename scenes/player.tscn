@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=30 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
@@ -14,6 +14,33 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjrip"]
 rough = true
 bounce = 0.6
+
+[sub_resource type="Gradient" id="Gradient_y4r1p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d2wvv"]
+gradient = SubResource("Gradient_y4r1p")
+
+[sub_resource type="Curve" id="Curve_3v2ag"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jej6c"]
+curve = SubResource("Curve_3v2ag")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ej7"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(25, 25, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 8.0
+color = Color(1, 1, 0, 1)
+color_initial_ramp = SubResource("GradientTexture1D_d2wvv")
+hue_variation_curve = SubResource("CurveTexture_jej6c")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("3_fjrip")
@@ -140,6 +167,10 @@ script = ExtResource("1_2kdwn")
 wall_hit_particle_color = Color(0.93522495, 0.67232686, 0.31462908, 1)
 player_hit_particle_color = Color(1, 1, 1, 1)
 particle_scene = ExtResource("2_ur7pv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_f1ej7")
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2

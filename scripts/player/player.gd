@@ -4,6 +4,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 
 @export var wall_hit_particle_color: Color
 @export var player_hit_particle_color: Color
+@export var flame_material: ParticleProcessMaterial
 @export var hook: StaticBody2D
 @export var pinjoint: PinJoint2D
 @export var speed: int = 15
@@ -35,6 +36,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var speed_bar: ProgressBar = $CanvasLayer/SpeedBar1 if player_id == Globals.PLAYER_1_ID else $CanvasLayer/SpeedBar2
 @onready var state: StateMachine = $State
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var flame_emitter:GPUParticles2D = $GPUParticles2D
 
 var prev_velocity: Vector2 = Vector2.ZERO
 
@@ -46,6 +48,7 @@ func _ready() -> void:
 	pinjoint.node_b = NodePath("")
 	speed_bar.show()
 	body_entered.connect(_on_body_entered)
+	flame_emitter.process_material = flame_material
 
 func _process(delta: float) -> void:
 	if Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:
@@ -61,6 +64,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	speed_bar.value = linear_velocity.length()
+	if linear_velocity.length() < 400:
+		flame_emitter.amount_ratio = 0
+	else:
+		flame_emitter.amount_ratio = linear_velocity.length() * linear_velocity.length()
 
 func _on_body_entered(body: Node) -> void:
 	var player_velocity = linear_velocity.length()
