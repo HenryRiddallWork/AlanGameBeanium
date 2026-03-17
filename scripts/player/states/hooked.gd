@@ -30,12 +30,15 @@ func physics_update(delta: float) -> void:
 			finished.emit(IN_AIR)
 		return
 	
-	if Input.is_action_pressed("retract_"+player.player_id) and not retracting:
-		var old_pos = player.global_position
-		player.global_position = player.hook.global_position
+	if Input.is_action_pressed("retract_"+player.player_id):#and not retracting:
+		#var old_pos = player.global_position
+		#player.global_position = player.hook.global_position
 		player.pinjoint.node_b = NodePath("")
-		player.pinjoint.node_b = player.get_path_to(player.hook)
-		player.global_position = old_pos
+		#player.pinjoint.node_b = player.get_path_to(player.hook)
+		#player.global_position = old_pos
+		var retract_vector = player.hook.global_position - player.global_position
+		var retract_force = retract_vector * 1000 / retract_vector.length()
+		player.apply_force(retract_force)
 		retracting = true
 	if Input.is_action_just_released("retract_"+player.player_id):
 		player.pinjoint.node_b = NodePath("")
