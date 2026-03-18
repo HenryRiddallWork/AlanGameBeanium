@@ -1,6 +1,8 @@
 extends PlayerState
 
 func physics_update(delta: float) -> void:
+	if (Globals.winner != "" and Globals.winner != player.player_id):
+		return
 	if (player.get_contact_count() > 0):
 		finished.emit(ON_GROUND)
 		return

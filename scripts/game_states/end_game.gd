@@ -1,18 +1,22 @@
 extends GameState
 
-const INPUT_DELAY: float = 1
+const INPUT_DELAY: float = 1.5
 var time_counter: float = 0
 
 func enter(previous_state_path: String, data := {}) -> void:
+	game.end_screen.play_konked()
 	time_counter = 0
-	game.end_screen.visible = true
 	if Globals.winner == "1":
 		Globals.player_1_wins += 1
 		game.end_screen.set_winner_text("Player 1 Wins!")
 	else:
 		Globals.player_2_wins += 1
 		game.end_screen.set_winner_text("Player 2 Wins!")
-	call_deferred("disable_players")
+	Engine.time_scale = 0.1
+	await get_tree().create_timer(0.15).timeout
+	disable_players()
+	Engine.time_scale = 1
+	game.end_screen.visible = true
 
 func exit() -> void:
 	game.end_screen.visible = false

@@ -1,7 +1,7 @@
 extends GameState
 
 const COLLISION_HEALTH_SCALE_FACTOR = 0.125
-const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.1
+const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.06
 
 const COLLISION_TIMEOUT = 0.7 # Seconds
 var current_collision_timeout = 0

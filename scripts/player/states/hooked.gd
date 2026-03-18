@@ -23,6 +23,8 @@ func exit() -> void:
 
 
 func physics_update(delta: float) -> void:
+	if (Globals.winner != "" and Globals.winner != player.player_id):
+		return
 	if Input.is_action_just_pressed("shoot_"+player.player_id):
 		if player.get_contact_count() > 0:
 			finished.emit(ON_GROUND)
