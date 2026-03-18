@@ -33,16 +33,24 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_point: Vector2 = Vector2(0, 0)
 
-@onready var speed_bar: ProgressBar = $CanvasLayer/SpeedBar1 if player_id == Globals.PLAYER_1_ID else $CanvasLayer/SpeedBar2
+@onready var speed_bar: TextureProgressBar = $CanvasLayer/SpeedBar1 if player_id == Globals.PLAYER_1_ID else $CanvasLayer/SpeedBar2
 @onready var state: StateMachine = $State
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var flame_emitter:GPUParticles2D = $GPUParticles2D
+
+var shake_magnitude: float = 0.5
+var shake_duration: float = 0.5
+var shake_frequency: float = 30.0  # times per second
+var speed_shaking: bool = false
+var time_elapsed: float = 0.0
+var original_position: Vector2
 
 var prev_velocity: Vector2 = Vector2.ZERO
 
 signal player_collision(player_speeds: Dictionary)
 
 func _ready() -> void:
+	original_position = speed_bar.global_position
 	Globals.player_data[player_id] = Globals.PlayerData.new()
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
@@ -61,9 +69,30 @@ func _process(delta: float) -> void:
 		sprite.play("death")
 	else:
 		sprite.play("100_health")
+	
+	if speed_shaking:
+		time_elapsed += delta
+		if time_elapsed >= shake_duration:
+			speed_shaking = false
+			speed_bar.global_position = original_position
+		else:
+			var progress = time_elapsed / shake_duration
+			var dampening = 1.0 - progress  # optional: smooth fade out
+			var offset = Vector2(
+				randf_range(-1, 1),
+				randf_range(-1, 1)
+			) * shake_magnitude * dampening
+			speed_bar.global_position = original_position + offset
 
 func _physics_process(delta: float) -> void:
 	speed_bar.value = linear_velocity.length()
+	
+	if (linear_velocity.length() >= speed_bar.max_value):
+			shake_duration = 0.5
+			shake_magnitude = 2
+			time_elapsed = 0.0
+			speed_shaking = true
+	
 	if linear_velocity.length() < 400:
 		flame_emitter.amount_ratio = 0
 	else:

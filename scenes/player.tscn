@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=34 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://c47nxfe1mcanq" path="res://assets/sound effects/konk.wav" id="10_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://5ox2nuo77u3" path="res://assets/ui-element/Under_speed_bar_1.png" id="11_jej6c"]
+[ext_resource type="Texture2D" uid="uid://cibbbnsppywx5" path="res://assets/ui-element/Over_speed_bar_1.png" id="12_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://0fiqpretd4li" path="res://assets/ui-element/Progress_speed_bar_1.png" id="13_oprun"]
+[ext_resource type="Texture2D" uid="uid://clwccn8dirjvd" path="res://assets/ui-element/Under_speed_bar_2.png" id="14_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://clqoec61n3tka" path="res://assets/ui-element/Over_speed_bar_2.png" id="15_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://bjvhesfcj0hyr" path="res://assets/ui-element/Progress_speed_bar_2.png" id="16_fulsm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjrip"]
 rough = true
@@ -149,17 +155,6 @@ _data = {
 &"damage_player": SubResource("Animation_3v2ag")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v2ag"]
-bg_color = Color(0.66526, 0, 0.0216949, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jej6c"]
-bg_color = Color(0.372549, 0.619608, 0.627451, 1)
-
 [node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_fjrip")
 lock_rotation = true
@@ -223,24 +218,27 @@ libraries = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="SpeedBar1" type="ProgressBar" parent="CanvasLayer"]
+[node name="SpeedBar1" type="TextureProgressBar" parent="CanvasLayer"]
 visible = false
-offset_left = 13.0
-offset_top = 599.0
-offset_right = 159.0
-offset_bottom = 626.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_3v2ag")
-max_value = 600.0
-value = 10.0
-show_percentage = false
+offset_left = 10.000001
+offset_top = 548.0
+offset_right = 157.0
+offset_bottom = 588.0
+scale = Vector2(2.5, 2.5)
+max_value = 900.0
+texture_under = ExtResource("11_jej6c")
+texture_over = ExtResource("12_f1ej7")
+texture_progress = ExtResource("13_oprun")
 
-[node name="SpeedBar2" type="ProgressBar" parent="CanvasLayer"]
+[node name="SpeedBar2" type="TextureProgressBar" parent="CanvasLayer"]
 visible = false
-offset_left = 985.0
-offset_top = 601.0
-offset_right = 1131.0
-offset_bottom = 628.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_jej6c")
-max_value = 600.0
-value = 10.0
-show_percentage = false
+offset_left = 1056.0001
+offset_top = 548.00006
+offset_right = 1203.0001
+offset_bottom = 588.00006
+scale = Vector2(2.5, 2.5)
+max_value = 900.0
+fill_mode = 1
+texture_under = ExtResource("14_a8ls1")
+texture_over = ExtResource("15_qfm1y")
+texture_progress = ExtResource("16_fulsm")
