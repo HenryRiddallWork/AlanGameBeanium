@@ -27,8 +27,6 @@ func exit() -> void:
 
 
 func physics_update(delta: float) -> void:
-	if (Globals.winner != "" and Globals.winner != player.player_id):
-		return
 	if Input.is_action_just_pressed("shoot_"+player.player_id):
 		if player.get_contact_count() > 0:
 			finished.emit(ON_GROUND)
@@ -49,7 +47,7 @@ func physics_update(delta: float) -> void:
 		#player.pinjoint.node_b = player.get_path_to(player.hook)
 		#player.global_position = old_pos
 		var retract_vector = player.hook.global_position - player.global_position
-		var retract_force = retract_vector * 2000 / retract_vector.length()
+		var retract_force = retract_vector * 1500 / retract_vector.length()
 		player.apply_force(retract_force)
 		retracting = true
 	if Input.is_action_just_released("retract_"+player.player_id):
