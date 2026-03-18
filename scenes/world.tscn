@@ -79,7 +79,7 @@ hue_variation_curve = SubResource("CurveTexture_2lf6f")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ceco4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hyu"]
-size = Vector2(1620, 826)
+size = Vector2(1620, 1159.9136)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_7r4gi")
@@ -101,7 +101,7 @@ position = Vector2(234, 74)
 node_a = NodePath("../Player2")
 bias = 0.03
 disable_collision = false
-softness = 16.0
+softness = 5.0
 motor_target_velocity = 1.39626
 
 [node name="Player1PinJoint" type="PinJoint2D" parent="."]
@@ -109,7 +109,7 @@ position = Vector2(117, 37)
 node_a = NodePath("../Player1")
 bias = 0.03
 disable_collision = false
-softness = 16.0
+softness = 5.0
 motor_target_velocity = 1.39626
 
 [node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") groups=["Players"] instance=ExtResource("2_i7141")]
@@ -302,8 +302,8 @@ visible = false
 [node name="GameBoundary" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundary"]
-visible = false
-position = Vector2(582, 403)
+position = Vector2(582, 520.7375)
+scale = Vector2(1.28618, 0.90478724)
 shape = SubResource("RectangleShape2D_e3hyu")
 
 [node name="GameState" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

@@ -4,6 +4,8 @@ extends PlayerState
 # retracted pressed and it work as expected, so use this flag to toggle on/off
 var retracting: bool = false
 
+var max_length = null
+
 
 func enter(previous_state_path: String, data := {}) -> void:
 	var hook_pos = data["hook_global_pos"]
@@ -14,12 +16,14 @@ func enter(previous_state_path: String, data := {}) -> void:
 	var direction = hook_pos - player.global_position
 	player.hook.rotation = direction.angle()
 	retracting = false
+	max_length = (hook_pos - player.global_position).length()
 
 
 func exit() -> void:
 	player.line.clear_points()
 	player.pinjoint.node_b = NodePath("")
 	retracting = false
+	max_length = null
 
 
 func physics_update(delta: float) -> void:
@@ -32,10 +36,16 @@ func physics_update(delta: float) -> void:
 			finished.emit(IN_AIR)
 		return
 	
+	if (max_length != null and max_length < (player.hook.global_position - player.global_position).length()):
+		if (player.pinjoint.node_b == NodePath("")):
+			player.pinjoint.node_b = NodePath("")
+			player.pinjoint.node_b = player.get_path_to(player.hook)
+	else:
+		player.pinjoint.node_b = NodePath("")
+	
 	if Input.is_action_pressed("retract_"+player.player_id):#and not retracting:
 		#var old_pos = player.global_position
 		#player.global_position = player.hook.global_position
-		player.pinjoint.node_b = NodePath("")
 		#player.pinjoint.node_b = player.get_path_to(player.hook)
 		#player.global_position = old_pos
 		var retract_vector = player.hook.global_position - player.global_position
@@ -43,8 +53,7 @@ func physics_update(delta: float) -> void:
 		player.apply_force(retract_force)
 		retracting = true
 	if Input.is_action_just_released("retract_"+player.player_id):
-		player.pinjoint.node_b = NodePath("")
-		player.pinjoint.node_b = player.get_path_to(player.hook)
+		max_length = (player.hook.global_position - player.global_position).length()
 		retracting = false
 	
 	player.line.clear_points()
