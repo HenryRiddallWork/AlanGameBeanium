@@ -1,7 +1,7 @@
 extends Control
 
-@onready var progress_bar_1: ProgressBar = $Player1HealthBar
-@onready var progress_bar_2: ProgressBar = $Player2HealthBar
+@onready var progress_bar_1: TextureProgressBar = $Player1HealthBar
+@onready var progress_bar_2: TextureProgressBar = $Player2HealthBar
 
 func _ready() -> void:
 	progress_bar_1.max_value = Globals.MAX_PLAYER_HEALTH

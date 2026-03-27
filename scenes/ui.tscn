@@ -1,34 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://qtjp0d56wc6p"]
+[gd_scene load_steps=11 format=3 uid="uid://qtjp0d56wc6p"]
 
 [ext_resource type="Script" uid="uid://bjd76b5pcvrf2" path="res://ui.gd" id="1_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://dfua6ihhhxe2g" path="res://assets/ui-element/health_under.png" id="2_wm3ai"]
 [ext_resource type="FontFile" uid="uid://duqiyll52frl1" path="res://assets/font/PixelOperator.ttf" id="2_yev5y"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yev5y"]
-bg_color = Color(0.66526, 0, 0.0216949, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://dm8k6mexdqcy0" path="res://assets/ui-element/health_over.png" id="3_8dubc"]
+[ext_resource type="Texture2D" uid="uid://crp3nvwx2l8vo" path="res://assets/ui-element/health_full.png" id="4_p7vwb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x4jx1"]
 font_size = 32
-font_color = Color(0.545, 0, 0, 1)
+font_color = Color(1, 0, 0.3137255, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gdt2y"]
 font_size = 72
-font_color = Color(0.545, 0, 0, 1)
+font_color = Color(1, 0, 0.3137255, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yev5y"]
 font_size = 32
-font_color = Color(0.373, 0.62, 0.627, 1)
+font_color = Color(0.24705882, 0.28235295, 0.8, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wm3ai"]
 font_size = 72
-font_color = Color(0.373, 0.62, 0.627, 1)
+font_color = Color(0.24705882, 0.28235295, 0.8, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8dubc"]
@@ -44,38 +39,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x4jx1")
 
-[node name="Player1HealthBar" type="ProgressBar" parent="."]
+[node name="Player1HealthBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 11.0
-offset_right = 156.0
-offset_bottom = 38.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_yev5y")
+offset_left = 197.0
+offset_top = 1.0
+offset_right = 517.0
+offset_bottom = 65.0
 max_value = 10.0
-value = 10.0
-show_percentage = false
+step = 0.1
+value = 5.0
+fill_mode = 1
+texture_under = ExtResource("2_wm3ai")
+texture_over = ExtResource("3_8dubc")
+texture_progress = ExtResource("4_p7vwb")
+tint_under = Color(0.35105386, 0.24620228, 0.2073102, 1)
 
-[node name="Player2HealthBar" type="ProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -156.0
-offset_top = 11.0
-offset_right = -10.0
-offset_bottom = 38.0
-grow_horizontal = 0
-theme_override_styles/fill = SubResource("StyleBoxFlat_yev5y")
+[node name="Player2HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 1.0
+offset_right = 959.0
+offset_bottom = 65.0
 max_value = 10.0
-value = 10.0
-show_percentage = false
+step = 0.1
+value = 5.0
+texture_under = ExtResource("2_wm3ai")
+texture_over = ExtResource("3_8dubc")
+texture_progress = ExtResource("4_p7vwb")
+tint_under = Color(0.35105386, 0.24620228, 0.2073102, 1)
 
 [node name="Player1Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 42.0
-offset_right = 113.0
-offset_bottom = 109.0
+offset_left = 212.0
+offset_top = 60.0
+offset_right = 314.0
+offset_bottom = 127.0
 theme_override_fonts/font = ExtResource("2_yev5y")
 theme_override_font_sizes/font_size = 25
 text = "Player 1
@@ -103,10 +101,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -113.0
-offset_top = 42.0
-offset_right = -11.0
-offset_bottom = 84.0
+offset_left = -315.0
+offset_top = 66.0
+offset_right = -213.0
+offset_bottom = 108.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_yev5y")
 theme_override_font_sizes/font_size = 25
