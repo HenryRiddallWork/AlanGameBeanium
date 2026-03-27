@@ -185,7 +185,7 @@ offset = Vector2(1, -15)
 position = Vector2(0.625001, -7.375)
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_jej6c")
-animation = &"75_health"
+animation = &"death"
 autoplay = "100_health"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

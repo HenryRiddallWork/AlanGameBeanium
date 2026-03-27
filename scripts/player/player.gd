@@ -59,14 +59,15 @@ func _ready() -> void:
 	flame_emitter.process_material = flame_material
 
 func _process(delta: float) -> void:
-	if Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:
-		sprite.play("75_health")
-	elif Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.5:
-		sprite.play("50_health")
+
+	if Globals.player_data[player_id].health <=0:
+		sprite.play("death")
 	elif Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.25:
 		sprite.play("25_health")
-	elif Globals.player_data[player_id].health <=0:
-		sprite.play("death")
+	elif Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.5:
+		sprite.play("50_health")
+	elif Globals.player_data[player_id].health < Globals.MAX_PLAYER_HEALTH*0.75:
+		sprite.play("75_health")
 	else:
 		sprite.play("100_health")
 	
@@ -134,7 +135,7 @@ func _on_body_entered(body: Node) -> void:
 		get_tree().create_timer(cleanup_time).connect("timeout", Callable(particles, "queue_free"))	
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
-	if state.get_contact_count() >= 0:
+	if state.get_contact_count() > 0:
 		var point = state.get_contact_local_position(0)
 		collision_point = point
 		
