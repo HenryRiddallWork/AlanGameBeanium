@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 			collision_points = collision_points.filter(func(v): return v != null)
 			collision_points.sort_custom(
 				func(v1, v2):
-					return (v1[0].distance_to(player.global_position) * v1[1]) > (v2[0].distance_to(player.global_position) * v2[1])
+					return ((5000 - v1[0].distance_to(player.global_position)) * v1[1]) > ((5000 - v2[0].distance_to(player.global_position)) * v2[1])
 			)
 			
 			if collision_points.size() > 0:

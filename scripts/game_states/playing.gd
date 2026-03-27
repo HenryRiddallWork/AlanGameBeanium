@@ -32,7 +32,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player_2.linear_velocity = Vector2.ZERO
 	player_2.rotation = 0
 	player_2._ready()
-
+	
 func update(_delta: float) -> void:
 	Globals.time_elapsed += _delta
 	if current_collision_timeout > 0:

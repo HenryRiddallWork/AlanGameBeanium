@@ -156,6 +156,7 @@ _data = {
 }
 
 [node name="Player" type="RigidBody2D"]
+scale = Vector2(0.5, 0.5)
 physics_material_override = SubResource("PhysicsMaterial_fjrip")
 lock_rotation = true
 script = ExtResource("1_2kdwn")
@@ -184,12 +185,14 @@ offset = Vector2(1, -15)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.625001, -7.375)
-scale = Vector2(1.26172, 1.26172)
+scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_jej6c")
-animation = &"100_health"
+animation = &"75_health"
 autoplay = "100_health"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.9999999)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_6oxxb")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -224,7 +227,7 @@ offset_left = 10.000001
 offset_top = 548.0
 offset_right = 157.0
 offset_bottom = 588.0
-scale = Vector2(2.5, 2.5)
+scale = Vector2(4.711018, 2.910654)
 max_value = 900.0
 texture_under = ExtResource("11_jej6c")
 texture_over = ExtResource("12_f1ej7")
@@ -232,11 +235,11 @@ texture_progress = ExtResource("13_oprun")
 
 [node name="SpeedBar2" type="TextureProgressBar" parent="CanvasLayer"]
 visible = false
-offset_left = 1056.0001
-offset_top = 548.00006
-offset_right = 1203.0001
-offset_bottom = 588.00006
-scale = Vector2(2.5, 2.5)
+offset_left = 998.0
+offset_top = 542.0
+offset_right = 1145.0
+offset_bottom = 582.0
+scale = Vector2(4.711018, 2.910654)
 max_value = 900.0
 fill_mode = 1
 texture_under = ExtResource("14_a8ls1")

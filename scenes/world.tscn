@@ -113,7 +113,7 @@ softness = 5.0
 motor_target_velocity = 1.39626
 
 [node name="Player1" parent="." node_paths=PackedStringArray("hook", "pinjoint") groups=["Players"] instance=ExtResource("2_i7141")]
-position = Vector2(101, 224)
+position = Vector2(183, 220)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.2
 lock_rotation = false
@@ -129,7 +129,7 @@ player_id = "1"
 metadata/_edit_group_ = true
 
 [node name="Player2" parent="." node_paths=PackedStringArray("hook", "pinjoint") groups=["Players"] instance=ExtResource("2_i7141")]
-position = Vector2(963, 203)
+position = Vector2(970, 297)
 physics_material_override = SubResource("PhysicsMaterial_bolhf")
 gravity_scale = 2.2
 lock_rotation = false
@@ -145,10 +145,10 @@ player_id = "2"
 metadata/_edit_group_ = true
 
 [node name="PlayerSpawn1" type="Node2D" parent="."]
-position = Vector2(102, 225)
+position = Vector2(185, 223)
 
 [node name="PlayerSpawn2" type="Node2D" parent="."]
-position = Vector2(989, 432)
+position = Vector2(969, 298)
 
 [node name="Player2HookPoint" type="StaticBody2D" parent="."]
 
@@ -180,7 +180,8 @@ position = Vector2(-21, 0)
 position = Vector2(261, 43)
 
 [node name="platform" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(-100, 317)
+position = Vector2(52.999985, 333)
+scale = Vector2(0.7, 0.7)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform"]
 position = Vector2(937, -7.5000095)
@@ -193,7 +194,8 @@ scale = Vector2(0.37326837, 0.5585255)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 607.85046, 44.479736, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform2" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(-414, 135)
+position = Vector2(-261, 151)
+scale = Vector2(0.7, 0.7)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform2"]
 position = Vector2(267, 122)
@@ -205,7 +207,8 @@ scale = Vector2(0.719109, 0.536184)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform3" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(156, 101)
+position = Vector2(309, 117)
+scale = Vector2(0.7, 0.7)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform3"]
 position = Vector2(241.5, 122)
@@ -218,7 +221,8 @@ scale = Vector2(0.43040147, 0.4480615)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform5" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(-175, 113)
+position = Vector2(-22.000015, 129)
+scale = Vector2(0.7, 0.7)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform5"]
 position = Vector2(292.99997, 32.500015)
@@ -231,7 +235,8 @@ scale = Vector2(0.44182822, 0.384762)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 622.7382, 87.546326)
 
 [node name="platform6" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(-397, 362)
+position = Vector2(-244.00002, 378)
+scale = Vector2(0.7, 0.7)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform6"]
 position = Vector2(244, 53.5)
@@ -244,7 +249,8 @@ scale = Vector2(0.6071308, 0.6950536)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform7" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(231, 394)
+position = Vector2(384, 410)
+scale = Vector2(0.7, 0.7)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform7"]
 position = Vector2(243, 122)
@@ -257,13 +263,27 @@ scale = Vector2(0.9750688, 0.5101201)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
 
 [node name="platform8" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
-position = Vector2(473, 346)
+position = Vector2(626, 362)
+scale = Vector2(0.7, 0.7)
 
 [node name="platform" type="Sprite2D" parent="platforms/platform8"]
 position = Vector2(267, 122)
 texture = ExtResource("7_e3hyu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform8"]
+position = Vector2(-166, 65)
+scale = Vector2(0.719109, 0.536184)
+polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)
+
+[node name="platform9" type="StaticBody2D" parent="platforms" groups=["Hookable"]]
+position = Vector2(115.00003, 283)
+scale = Vector2(0.7, 0.7)
+
+[node name="platform" type="Sprite2D" parent="platforms/platform9"]
+position = Vector2(267, 122)
+texture = ExtResource("7_e3hyu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforms/platform9"]
 position = Vector2(-166, 65)
 scale = Vector2(0.719109, 0.536184)
 polygon = PackedVector2Array(547.9, 93.2515, 517.307, 76.4663, 514.526, 52.2209, 538.166, 42.8957, 671.664, 42.8957, 677.227, 50.3558, 678.617, 55.9509, 667.493, 80.1963, 639.68, 83.9264)

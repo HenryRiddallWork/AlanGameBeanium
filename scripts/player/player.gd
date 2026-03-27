@@ -25,7 +25,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 
 @export var raycast_count: int = 31
 # The factor by which the hook selection will prefer central angles to outside options
-@export var hook_selection_factor: float = 999999
+@export var hook_selection_factor: float = 2
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var line = $Line2D
 @onready var line_end = hook.get_node("Marker2D")
