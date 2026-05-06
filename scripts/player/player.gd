@@ -37,6 +37,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var state: StateMachine = $State
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var flame_emitter:GPUParticles2D = $GPUParticles2D
+@onready var thwip:RichTextLabel = $RichTextLabel
 
 var shake_magnitude: float = 0.5
 var shake_duration: float = 0.5
@@ -57,6 +58,7 @@ func _ready() -> void:
 	speed_bar.show()
 	body_entered.connect(_on_body_entered)
 	flame_emitter.process_material = flame_material
+	thwip.hide()
 
 func _process(delta: float) -> void:
 
@@ -162,3 +164,7 @@ func unhook():
 
 func play_damage_animation():
 	animation_player.play("damage_player")
+	
+func show_thwip():
+	thwip.show()
+	get_tree().create_timer(0.8).connect("timeout", Callable(thwip.hide))

@@ -200,11 +200,11 @@ shape = SubResource("CircleShape2D_6oxxb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 clip_contents = false
-offset_left = 14.0
-offset_top = 20.0
-offset_right = 74.0
-offset_bottom = 66.0
-scale = Vector2(0.99898833, 0.9818777)
+offset_left = 7.0
+offset_top = 15.0
+offset_right = 67.0
+offset_bottom = 61.0
+scale = Vector2(0.8867369, 0.9179764)
 theme = SubResource("Theme_a8ls1")
 text = "THWIP!"
 fit_content = true
@@ -224,7 +224,6 @@ script = ExtResource("6_tuyoq")
 script = ExtResource("7_fjrip")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-visible = false
 stream = ExtResource("10_y4r1p")
 script = SubResource("GDScript_d2wvv")
 

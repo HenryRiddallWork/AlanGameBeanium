@@ -6,6 +6,8 @@ var retracting: bool = false
 
 var max_length = null
 
+@onready var thwip:RichTextLabel = $RichTextLabel
+
 
 func enter(previous_state_path: String, data := {}) -> void:
 	var hook_pos = data["hook_global_pos"]
@@ -17,7 +19,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.hook.rotation = direction.angle()
 	retracting = false
 	max_length = (hook_pos - player.global_position).length()
-
+	player.show_thwip()
 
 func exit() -> void:
 	player.line.clear_points()
