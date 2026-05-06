@@ -20,6 +20,9 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @export var effect_threshold = 50
 @export var konk_sound_scaler = 0.01
 
+# Health points regenerated per second while moving at max speed.
+@export var max_speed_health_regen_per_second: float = 5.0
+
 # If changing this enum, also change the player IDs in globals
 @export_enum("1", "2") var player_id: String
 
@@ -46,6 +49,10 @@ var time_elapsed: float = 0.0
 var original_position: Vector2
 
 var prev_velocity: Vector2 = Vector2.ZERO
+
+# Fractional health accumulator used to smoothly regen the integer `health`
+# while moving at max speed.
+var _health_regen_accumulator: float = 0.0
 
 signal player_collision(player_speeds: Dictionary)
 
@@ -93,6 +100,9 @@ func _physics_process(delta: float) -> void:
 			shake_magnitude = 2
 			time_elapsed = 0.0
 			speed_shaking = true
+			_regen_health_at_max_speed(delta)
+	else:
+		_health_regen_accumulator = 0.0
 	
 	if linear_velocity.length() < 400:
 		flame_emitter.amount_ratio = 0
@@ -162,3 +172,17 @@ func unhook():
 
 func play_damage_animation():
 	animation_player.play("damage_player")
+
+# Slowly recover health while moving at max speed. Uses a fractional
+# accumulator so low regen rates still tick up the integer `health` smoothly.
+func _regen_health_at_max_speed(delta: float) -> void:
+	var data: Globals.PlayerData = Globals.player_data[player_id]
+	if data.health <= 0 or data.health >= Globals.MAX_PLAYER_HEALTH:
+		_health_regen_accumulator = 0.0
+		return
+	
+	_health_regen_accumulator += max_speed_health_regen_per_second * delta
+	if _health_regen_accumulator >= 1.0:
+		var whole_points: int = int(_health_regen_accumulator)
+		_health_regen_accumulator -= whole_points
+		data.health = min(Globals.MAX_PLAYER_HEALTH, data.health + whole_points)
