@@ -20,6 +20,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @export var max_particle_lifetime = 0.5
 @export var effect_threshold = 50
 @export var konk_sound_scaler = 0.01
+@export var is_boost_available = true
 
 # Health points regenerated per second while moving at max speed.
 @export var max_speed_health_regen_per_second: float = 5.0
@@ -38,6 +39,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @onready var collision_point: Vector2 = Vector2(0, 0)
 
 @onready var speed_bar: TextureProgressBar = $CanvasLayer/SpeedBar1 if player_id == Globals.PLAYER_1_ID else $CanvasLayer/SpeedBar2
+@onready var boost_icon: TextureRect = $CanvasLayer/Boost1 if player_id == Globals.PLAYER_1_ID else $CanvasLayer/Boost2
 @onready var state: StateMachine = $State
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var flame_emitter:GPUParticles2D = $GPUParticles2D
@@ -52,6 +54,9 @@ var original_position: Vector2
 
 var prev_velocity: Vector2 = Vector2.ZERO
 
+var original_boost_texture: Texture2D
+@export var empty_boost_texture: Texture2D
+
 # Fractional health accumulator used to smoothly regen the integer `health`
 # while moving at max speed.
 var _health_regen_accumulator: float = 0.0
@@ -64,11 +69,13 @@ func _ready() -> void:
 	line.clear_points()
 	pinjoint.node_b = NodePath("")
 	speed_bar.show()
+	boost_icon.show()
 	body_entered.connect(_on_body_entered)
 	flame_emitter.process_material = flame_material
 	thwip.add_theme_color_override("font_outline_color", thwip_color)
 	thwip.add_theme_constant_override("outline_size", 8)
 	thwip.hide()
+	original_boost_texture = boost_icon.texture
 
 func _process(delta: float) -> void:
 
@@ -96,9 +103,19 @@ func _process(delta: float) -> void:
 				randf_range(-1, 1)
 			) * shake_magnitude * dampening
 			speed_bar.global_position = original_position + offset
+			
+func set_boost_available() -> void:
+	is_boost_available = true
+	boost_icon.texture = original_boost_texture
 
 func _physics_process(delta: float) -> void:
 	speed_bar.value = linear_velocity.length()
+	
+	if Input.is_action_just_pressed("boost_"+player_id) && is_boost_available:
+		linear_velocity = linear_velocity * 2
+		is_boost_available = false
+		boost_icon.texture = empty_boost_texture
+		get_tree().create_timer(5).timeout.connect(set_boost_available)
 	
 	if (linear_velocity.length() >= speed_bar.max_value):
 			shake_duration = 0.5
