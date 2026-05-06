@@ -6,6 +6,8 @@ var retracting: bool = false
 
 var max_length = null
 
+var thwip_rotation_offset = 0
+
 @onready var thwip:RichTextLabel = $RichTextLabel
 
 
@@ -19,7 +21,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.hook.rotation = direction.angle()
 	retracting = false
 	max_length = (hook_pos - player.global_position).length()
-	player.show_thwip()
+	thwip_rotation_offset = deg_to_rad(randf_range(-45.0, 45.0))
+	player.thwip.rotation = -player.rotation + thwip_rotation_offset
+	player.thwip.show()
+	get_tree().create_timer(0.8).timeout.connect(player.thwip.hide)
 
 func exit() -> void:
 	player.line.clear_points()
@@ -29,6 +34,8 @@ func exit() -> void:
 
 
 func physics_update(delta: float) -> void:
+	if player.thwip.visible:
+		player.thwip.rotation = -player.rotation + thwip_rotation_offset	
 	if Input.is_action_just_pressed("shoot_"+player.player_id):
 		if player.get_contact_count() > 0:
 			finished.emit(ON_GROUND)

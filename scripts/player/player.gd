@@ -164,7 +164,3 @@ func unhook():
 
 func play_damage_animation():
 	animation_player.play("damage_player")
-	
-func show_thwip():
-	thwip.show()
-	get_tree().create_timer(0.8).connect("timeout", Callable(thwip.hide))
