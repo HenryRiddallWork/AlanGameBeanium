@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=34 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bl3l711mkcopc" path="res://assets/animations/konk/konk_deatg.png" id="3_fjrip"]
 [ext_resource type="Script" uid="uid://7ur74s2qji2d" path="res://scripts/state_machine.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://vwf0hw7scwoa" path="res://scripts/player/states/on_ground.gd" id="5_qlg0r"]
+[ext_resource type="FontFile" uid="uid://cloygibedlii5" path="res://assets/font/BadaboomBB_Reg.otf" id="6_oprun"]
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://c47nxfe1mcanq" path="res://assets/sound effects/konk.wav" id="10_y4r1p"]
@@ -112,6 +113,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oxxb"]
 radius = 27.4591
 
+[sub_resource type="Theme" id="Theme_a8ls1"]
+default_font = ExtResource("6_oprun")
+
 [sub_resource type="GDScript" id="GDScript_d2wvv"]
 script/source = "extends AudioStreamPlayer2D
 "
@@ -176,7 +180,6 @@ texture = ExtResource("2_smehm")
 texture_mode = 1
 
 [node name="DirectionHook" type="Sprite2D" parent="."]
-visible = false
 rotation = 3.12763
 texture = ExtResource("2_qhqgy")
 offset = Vector2(1, -15)
@@ -195,6 +198,18 @@ shape = SubResource("CircleShape2D_6oxxb")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = 14.0
+offset_top = 20.0
+offset_right = 74.0
+offset_bottom = 66.0
+scale = Vector2(0.99898833, 0.9818777)
+theme = SubResource("Theme_a8ls1")
+text = "THWIP!"
+fit_content = true
+scroll_active = false
+
 [node name="State" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_dqkch")
 initial_state = NodePath("OnGround")
@@ -209,6 +224,7 @@ script = ExtResource("6_tuyoq")
 script = ExtResource("7_fjrip")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("10_y4r1p")
 script = SubResource("GDScript_d2wvv")
 
