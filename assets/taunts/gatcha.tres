@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://kp0cbmthogno"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_vjsav"]
+[ext_resource type="AudioStream" uid="uid://brmnsdv4xo8oc" path="res://temp/gatcha.wav" id="2_2kgwb"]
+
+[resource]
+script = ExtResource("1_vjsav")
+text = "Gatcha!"
+sound = ExtResource("2_2kgwb")

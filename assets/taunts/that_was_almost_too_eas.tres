@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://dcrfg4bwfu8ho"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_jvpyg"]
+[ext_resource type="AudioStream" uid="uid://b6gefsy5as0o4" path="res://temp/that_was_almost_too_eas.wav" id="2_pmlvl"]
+
+[resource]
+script = ExtResource("1_jvpyg")
+text = "That Was Almost Too Eas!"
+sound = ExtResource("2_pmlvl")

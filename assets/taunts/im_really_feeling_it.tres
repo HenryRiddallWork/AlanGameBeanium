@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://cixhfjnn4atlk"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_0fw6f"]
+[ext_resource type="AudioStream" uid="uid://7fwurw60skii" path="res://temp/im_really_feeling_it.wav" id="2_h1xrj"]
+
+[resource]
+script = ExtResource("1_0fw6f")
+text = "Im Really Feeling It!"
+sound = ExtResource("2_h1xrj")

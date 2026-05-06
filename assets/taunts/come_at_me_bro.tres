@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://t2w3gvc25u0m"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_wgkko"]
+[ext_resource type="AudioStream" uid="uid://c4mowg3y85iy4" path="res://temp/come_at_me_bro.wav" id="2_s05cm"]
+
+[resource]
+script = ExtResource("1_wgkko")
+text = "Come At Me Bro!"
+sound = ExtResource("2_s05cm")

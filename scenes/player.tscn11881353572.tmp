@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=76 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
@@ -7,11 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bl3l711mkcopc" path="res://assets/animations/konk/konk_deatg.png" id="3_fjrip"]
 [ext_resource type="Script" uid="uid://7ur74s2qji2d" path="res://scripts/state_machine.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://vwf0hw7scwoa" path="res://scripts/player/states/on_ground.gd" id="5_qlg0r"]
-[ext_resource type="FontFile" uid="uid://cloygibedlii5" path="res://assets/font/BadaboomBB_Reg.otf" id="6_oprun"]
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://c47nxfe1mcanq" path="res://assets/sound effects/konk.wav" id="10_y4r1p"]
-[ext_resource type="AudioStream" uid="uid://cmifin2x7a16d" path="res://assets/sound effects/thwip.wav" id="12_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://cibbbnsppywx5" path="res://assets/ui-element/Over_speed_bar_1.png" id="12_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://0fiqpretd4li" path="res://assets/ui-element/Progress_speed_bar_1.png" id="13_oprun"]
 [ext_resource type="Texture2D" uid="uid://dlv1ty63jc6or" path="res://assets/ui-element/speech_bubble.png" id="15_oprun"]
@@ -19,47 +17,46 @@
 [ext_resource type="Script" uid="uid://c2751fr03ql7e" path="res://scenes/taunt_speech_bubble.gd" id="16_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://bjvhesfcj0hyr" path="res://assets/ui-element/Progress_speed_bar_2.png" id="16_fulsm"]
 [ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="17_fulsm"]
-[ext_resource type="Texture2D" uid="uid://b34fw8wms22to" path="res://assets/non-animations/bolt_red.png" id="18_4r5pv"]
-[ext_resource type="Resource" uid="uid://5jexoa570mnq" path="res://assets/taunts/allow_me_to_demonstrate.tres" id="18_8svfe"]
-[ext_resource type="Resource" uid="uid://cns2ey8hruatf" path="res://assets/taunts/awww_did_i_win.tres" id="19_2a3c5"]
-[ext_resource type="Resource" uid="uid://c6akn08yu6s4h" path="res://assets/taunts/banger_rap.tres" id="20_42b1b"]
-[ext_resource type="Resource" uid="uid://c37iekxru4xej" path="res://assets/taunts/boom.tres" id="21_h7ic4"]
-[ext_resource type="Resource" uid="uid://t2w3gvc25u0m" path="res://assets/taunts/come_at_me_bro.tres" id="22_au7lq"]
-[ext_resource type="Resource" uid="uid://cpwgkbbwnmq6i" path="res://assets/taunts/don't_try_me.tres" id="23_nubpm"]
-[ext_resource type="Resource" uid="uid://d01p06fttegte" path="res://assets/taunts/falcon_punch.tres" id="24_ua5cf"]
-[ext_resource type="Resource" uid="uid://dgrgl4cyr2fjq" path="res://assets/taunts/fight_me.tres" id="25_51ujp"]
-[ext_resource type="Resource" uid="uid://kp0cbmthogno" path="res://assets/taunts/gatcha.tres" id="26_tk41t"]
-[ext_resource type="Resource" uid="uid://caef50sqy607e" path="res://assets/taunts/goobye.tres" id="27_fuw3a"]
-[ext_resource type="Resource" uid="uid://ddg3kjky27d1" path="res://assets/taunts/hadoken.tres" id="28_8txt3"]
-[ext_resource type="Resource" uid="uid://b4oglas7fmdbq" path="res://assets/taunts/heh.tres" id="29_2w11d"]
-[ext_resource type="Resource" uid="uid://dcqik5vwqxyr8" path="res://assets/taunts/ima_get_yah.tres" id="30_770dr"]
-[ext_resource type="Resource" uid="uid://4jyoxyy24lhb" path="res://assets/taunts/ima_gonna_win.tres" id="31_8f1cb"]
-[ext_resource type="Resource" uid="uid://cixhfjnn4atlk" path="res://assets/taunts/im_really_feeling_it.tres" id="32_vdulj"]
-[ext_resource type="Resource" uid="uid://b6cqj0n8nfl34" path="res://assets/taunts/I_cannot_lose.tres" id="33_vau08"]
-[ext_resource type="Resource" uid="uid://d2yfxpgb77hg5" path="res://assets/taunts/konk.tres" id="34_qsb7e"]
-[ext_resource type="Resource" uid="uid://2n3lsu5abfic" path="res://assets/taunts/konk_yah_mum.tres" id="35_qjsmb"]
-[ext_resource type="Resource" uid="uid://dt137v6i5d1pg" path="res://assets/taunts/let_the_lesson_begin.tres" id="36_mwp2n"]
-[ext_resource type="Resource" uid="uid://iic6e5sr4owx" path="res://assets/taunts/my_battle_ends_here.tres" id="37_0yhus"]
-[ext_resource type="Resource" uid="uid://gfwjey4vqyes" path="res://assets/taunts/okay.tres" id="38_jlll7"]
-[ext_resource type="Resource" uid="uid://dfasfahhabpo5" path="res://assets/taunts/oopsy.tres" id="39_qk6i7"]
-[ext_resource type="Resource" uid="uid://bb3ijs30wk3q8" path="res://assets/taunts/perfect.tres" id="40_6c3st"]
-[ext_resource type="Resource" uid="uid://bgnugcfjqtn6h" path="res://assets/taunts/piece_of_cake.tres" id="41_1da1t"]
-[ext_resource type="Resource" uid="uid://dakw65daabv4c" path="res://assets/taunts/PK_fire.tres" id="42_p21yu"]
-[ext_resource type="Resource" uid="uid://7r6xpk2nguja" path="res://assets/taunts/prepare_yourself.tres" id="43_irpag"]
-[ext_resource type="Resource" uid="uid://7sh4i3exodvw" path="res://assets/taunts/quack.tres" id="44_bpsgo"]
-[ext_resource type="Resource" uid="uid://b0af1yd48ls0j" path="res://assets/taunts/rip_brother.tres" id="45_jx8is"]
-[ext_resource type="Resource" uid="uid://bdovjxx7hnoiu" path="res://assets/taunts/show_me_your_moves.tres" id="46_vx63k"]
-[ext_resource type="Resource" uid="uid://dlwc205sqxhw6" path="res://assets/taunts/swing_harder_coward.tres" id="47_lw0jh"]
-[ext_resource type="Resource" uid="uid://doqwtui2jpp4o" path="res://assets/taunts/thank_you.tres" id="48_ry8ed"]
-[ext_resource type="Resource" uid="uid://dcrfg4bwfu8ho" path="res://assets/taunts/that_was_almost_too_eas.tres" id="49_au8ao"]
-[ext_resource type="Resource" uid="uid://c1dchcbl3xvof" path="res://assets/taunts/the_fight_is_on.tres" id="50_w5j5w"]
-[ext_resource type="Resource" uid="uid://dxxcs8o58fdae" path="res://assets/taunts/wahoo.tres" id="51_cbf1i"]
-[ext_resource type="Resource" uid="uid://ordpfkwmprgn" path="res://assets/taunts/whats_the_matter_scared.tres" id="52_4vfid"]
-[ext_resource type="Resource" uid="uid://cxse6qnnwvj2q" path="res://assets/taunts/yee-haw.tres" id="53_ljgr3"]
-[ext_resource type="Resource" uid="uid://bb66rqvwc0n6n" path="res://assets/taunts/yo.tres" id="54_fr8ja"]
-[ext_resource type="Resource" uid="uid://dqf3xm1qup70l" path="res://assets/taunts/youre_mums_so_tree.tres" id="55_gvmy4"]
-[ext_resource type="Resource" uid="uid://bgnhs0in13u5c" path="res://assets/taunts/youre_too_slow.tres" id="56_fcu33"]
-[ext_resource type="Resource" uid="uid://c7yo6kyvckorc" path="res://assets/taunts/you_smell.tres" id="57_qmsq4"]
+[ext_resource type="Resource" path="res://assets/taunts/allow_me_to_demonstrate.tres" id="18_8svfe"]
+[ext_resource type="Resource" path="res://assets/taunts/awww_did_i_win.tres" id="19_2a3c5"]
+[ext_resource type="Resource" path="res://assets/taunts/banger_rap.tres" id="20_42b1b"]
+[ext_resource type="Resource" path="res://assets/taunts/boom.tres" id="21_h7ic4"]
+[ext_resource type="Resource" path="res://assets/taunts/come_at_me_bro.tres" id="22_au7lq"]
+[ext_resource type="Resource" path="res://assets/taunts/don't_try_me.tres" id="23_nubpm"]
+[ext_resource type="Resource" path="res://assets/taunts/falcon_punch.tres" id="24_ua5cf"]
+[ext_resource type="Resource" path="res://assets/taunts/fight_me.tres" id="25_51ujp"]
+[ext_resource type="Resource" path="res://assets/taunts/gatcha.tres" id="26_tk41t"]
+[ext_resource type="Resource" path="res://assets/taunts/goobye.tres" id="27_fuw3a"]
+[ext_resource type="Resource" path="res://assets/taunts/hadoken.tres" id="28_8txt3"]
+[ext_resource type="Resource" path="res://assets/taunts/heh.tres" id="29_2w11d"]
+[ext_resource type="Resource" path="res://assets/taunts/ima_get_yah.tres" id="30_770dr"]
+[ext_resource type="Resource" path="res://assets/taunts/ima_gonna_win.tres" id="31_8f1cb"]
+[ext_resource type="Resource" path="res://assets/taunts/im_really_feeling_it.tres" id="32_vdulj"]
+[ext_resource type="Resource" path="res://assets/taunts/I_cannot_lose.tres" id="33_vau08"]
+[ext_resource type="Resource" path="res://assets/taunts/konk.tres" id="34_qsb7e"]
+[ext_resource type="Resource" path="res://assets/taunts/konk_yah_mum.tres" id="35_qjsmb"]
+[ext_resource type="Resource" path="res://assets/taunts/let_the_lesson_begin.tres" id="36_mwp2n"]
+[ext_resource type="Resource" path="res://assets/taunts/my_battle_ends_here.tres" id="37_0yhus"]
+[ext_resource type="Resource" path="res://assets/taunts/okay.tres" id="38_jlll7"]
+[ext_resource type="Resource" path="res://assets/taunts/oopsy.tres" id="39_qk6i7"]
+[ext_resource type="Resource" path="res://assets/taunts/perfect.tres" id="40_6c3st"]
+[ext_resource type="Resource" path="res://assets/taunts/piece_of_cake.tres" id="41_1da1t"]
+[ext_resource type="Resource" path="res://assets/taunts/PK_fire.tres" id="42_p21yu"]
+[ext_resource type="Resource" path="res://assets/taunts/prepare_yourself.tres" id="43_irpag"]
+[ext_resource type="Resource" path="res://assets/taunts/quack.tres" id="44_bpsgo"]
+[ext_resource type="Resource" path="res://assets/taunts/rip_brother.tres" id="45_jx8is"]
+[ext_resource type="Resource" path="res://assets/taunts/show_me_your_moves.tres" id="46_vx63k"]
+[ext_resource type="Resource" path="res://assets/taunts/swing_harder_coward.tres" id="47_lw0jh"]
+[ext_resource type="Resource" path="res://assets/taunts/thank_you.tres" id="48_ry8ed"]
+[ext_resource type="Resource" path="res://assets/taunts/that_was_almost_too_eas.tres" id="49_au8ao"]
+[ext_resource type="Resource" path="res://assets/taunts/the_fight_is_on.tres" id="50_w5j5w"]
+[ext_resource type="Resource" path="res://assets/taunts/wahoo.tres" id="51_cbf1i"]
+[ext_resource type="Resource" path="res://assets/taunts/whats_the_matter_scared.tres" id="52_4vfid"]
+[ext_resource type="Resource" path="res://assets/taunts/yee-haw.tres" id="53_ljgr3"]
+[ext_resource type="Resource" path="res://assets/taunts/yo.tres" id="54_fr8ja"]
+[ext_resource type="Resource" path="res://assets/taunts/youre_mums_so_tree.tres" id="55_gvmy4"]
+[ext_resource type="Resource" path="res://assets/taunts/youre_too_slow.tres" id="56_fcu33"]
+[ext_resource type="Resource" path="res://assets/taunts/you_smell.tres" id="57_qmsq4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjrip"]
 rough = true
@@ -158,10 +155,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6oxxb"]
 radius = 27.4591
 
-[sub_resource type="Theme" id="Theme_a8ls1"]
-default_font = ExtResource("6_oprun")
-default_font_size = 20
-
 [sub_resource type="GDScript" id="GDScript_d2wvv"]
 script/source = "extends AudioStreamPlayer2D
 "
@@ -230,6 +223,7 @@ texture = ExtResource("2_smehm")
 texture_mode = 1
 
 [node name="DirectionHook" type="Sprite2D" parent="."]
+visible = false
 rotation = 3.12763
 texture = ExtResource("2_qhqgy")
 offset = Vector2(1, -15)
@@ -248,21 +242,6 @@ shape = SubResource("CircleShape2D_6oxxb")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-clip_contents = false
-offset_left = -22.0
-offset_top = -44.0
-offset_right = 38.0
-offset_bottom = 2.0
-scale = Vector2(0.73861784, 0.8981814)
-pivot_offset = Vector2(22, 44)
-theme = SubResource("Theme_a8ls1")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "THWIP!"
-fit_content = true
-scroll_active = false
-
 [node name="State" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_dqkch")
 initial_state = NodePath("OnGround")
@@ -279,10 +258,6 @@ script = ExtResource("7_fjrip")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_y4r1p")
 script = SubResource("GDScript_d2wvv")
-
-[node name="ThwipAudio" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(2, 2)
-stream = ExtResource("12_a8ls1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -315,23 +290,6 @@ value = 500.0
 fill_mode = 1
 texture_over = ExtResource("15_qfm1y")
 texture_progress = ExtResource("16_fulsm")
-
-[node name="Boost2" type="TextureRect" parent="CanvasLayer"]
-visible = false
-offset_left = 971.0
-offset_top = 563.00006
-offset_right = 1010.99994
-offset_bottom = 603.00006
-scale = Vector2(1.9424309, 1.9557573)
-
-[node name="Boost1" type="TextureRect" parent="CanvasLayer"]
-visible = false
-offset_left = 103.00001
-offset_top = 566.00006
-offset_right = 142.99997
-offset_bottom = 606.00006
-scale = Vector2(1.9424309, 1.9557573)
-texture = ExtResource("18_4r5pv")
 
 [node name="TauntLayer" type="CanvasLayer" parent="."]
 
@@ -383,4 +341,3 @@ autowrap_mode = 3
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TauntLayer/NinePatchRect"]
 volume_db = 7.879
 pitch_scale = 0.68
-bus = &"Taunt"

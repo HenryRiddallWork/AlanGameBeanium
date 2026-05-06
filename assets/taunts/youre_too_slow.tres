@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://bgnhs0in13u5c"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_3ne2y"]
+[ext_resource type="AudioStream" uid="uid://b64y28wqt2j0w" path="res://temp/youre_too_slow.wav" id="2_5yf5j"]
+
+[resource]
+script = ExtResource("1_3ne2y")
+text = "Youre Too Slow!"
+sound = ExtResource("2_5yf5j")

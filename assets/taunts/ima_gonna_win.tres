@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://4jyoxyy24lhb"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_yjbta"]
+[ext_resource type="AudioStream" uid="uid://dmcb5ix6np1b3" path="res://temp/ima_gonna_win.wav" id="2_xwt3w"]
+
+[resource]
+script = ExtResource("1_yjbta")
+text = "Ima Gonna Win!"
+sound = ExtResource("2_xwt3w")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://ordpfkwmprgn"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_ymc32"]
+[ext_resource type="AudioStream" uid="uid://bfo285aieicib" path="res://temp/whats_the_matter_scared.wav" id="2_r4rdy"]
+
+[resource]
+script = ExtResource("1_ymc32")
+text = "Whats The Matter Scared!"
+sound = ExtResource("2_r4rdy")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://b0af1yd48ls0j"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_dvb52"]
+[ext_resource type="AudioStream" uid="uid://bm81wwstb2c11" path="res://temp/rip_brother.wav" id="2_76uwf"]
+
+[resource]
+script = ExtResource("1_dvb52")
+text = "Rip Brother!"
+sound = ExtResource("2_76uwf")

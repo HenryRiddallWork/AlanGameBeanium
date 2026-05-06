@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://iic6e5sr4owx"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_hxpxe"]
+[ext_resource type="AudioStream" uid="uid://bn4dcv5v0m21c" path="res://temp/my_battle_ends_here.wav" id="2_j3a5a"]
+
+[resource]
+script = ExtResource("1_hxpxe")
+text = "My Battle Ends Here!"
+sound = ExtResource("2_j3a5a")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://cpwgkbbwnmq6i"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_3x7is"]
+[ext_resource type="AudioStream" uid="uid://xrmpklhnogd0" path="res://temp/don't_try_me.wav" id="2_vlccb"]
+
+[resource]
+script = ExtResource("1_3x7is")
+text = "Don't Try Me!"
+sound = ExtResource("2_vlccb")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://b6cqj0n8nfl34"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_5wf70"]
+[ext_resource type="AudioStream" uid="uid://s4l4s5xe3kw1" path="res://temp/I_cannot_lose.wav" id="2_arb5u"]
+
+[resource]
+script = ExtResource("1_5wf70")
+text = "I Cannot Lose!"
+sound = ExtResource("2_arb5u")

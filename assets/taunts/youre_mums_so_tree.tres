@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://dqf3xm1qup70l"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_05m1k"]
+[ext_resource type="AudioStream" uid="uid://ddmbmyb8fiiam" path="res://temp/youre_mums_so_tree.wav" id="2_4hwpo"]
+
+[resource]
+script = ExtResource("1_05m1k")
+text = "Youre Mums So Tree!"
+sound = ExtResource("2_4hwpo")

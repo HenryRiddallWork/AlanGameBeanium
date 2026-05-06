@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://doqwtui2jpp4o"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_o2vi6"]
+[ext_resource type="AudioStream" uid="uid://c4ab71ljs4gb3" path="res://temp/thank_you.wav" id="2_ovsxe"]
+
+[resource]
+script = ExtResource("1_o2vi6")
+text = "Thank You!"
+sound = ExtResource("2_ovsxe")

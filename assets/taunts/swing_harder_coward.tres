@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://dlwc205sqxhw6"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_qvqa4"]
+[ext_resource type="AudioStream" uid="uid://7qqoe8cetaji" path="res://temp/swing_harder_coward.wav" id="2_5bkq4"]
+
+[resource]
+script = ExtResource("1_qvqa4")
+text = "Swing Harder Coward!"
+sound = ExtResource("2_5bkq4")

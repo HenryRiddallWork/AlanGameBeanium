@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Taunt" load_steps=3 format=3 uid="uid://c37iekxru4xej"]
+
+[ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="1_2oorh"]
+[ext_resource type="AudioStream" uid="uid://dh2pa6tcw15h" path="res://temp/boom.wav" id="2_p3lqm"]
+
+[resource]
+script = ExtResource("1_2oorh")
+text = "Boom!"
+sound = ExtResource("2_p3lqm")
