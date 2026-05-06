@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=81 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://clqoec61n3tka" path="res://assets/ui-element/Over_speed_bar_2.png" id="15_qfm1y"]
 [ext_resource type="Script" uid="uid://c2751fr03ql7e" path="res://scenes/taunt_speech_bubble.gd" id="16_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://bjvhesfcj0hyr" path="res://assets/ui-element/Progress_speed_bar_2.png" id="16_fulsm"]
+[ext_resource type="Texture2D" uid="uid://ds7ujbd6mv0o1" path="res://assets/non-animations/bolt_blue.png" id="17_au7lq"]
 [ext_resource type="Script" uid="uid://d4awjng0s7f75" path="res://Taunt.gd" id="17_fulsm"]
 [ext_resource type="Texture2D" uid="uid://b34fw8wms22to" path="res://assets/non-animations/bolt_red.png" id="18_4r5pv"]
 [ext_resource type="Resource" uid="uid://5jexoa570mnq" path="res://assets/taunts/allow_me_to_demonstrate.tres" id="18_8svfe"]
@@ -317,15 +318,14 @@ texture_over = ExtResource("15_qfm1y")
 texture_progress = ExtResource("16_fulsm")
 
 [node name="Boost2" type="TextureRect" parent="CanvasLayer"]
-visible = false
 offset_left = 971.0
 offset_top = 563.00006
 offset_right = 1010.99994
 offset_bottom = 603.00006
 scale = Vector2(1.9424309, 1.9557573)
+texture = ExtResource("17_au7lq")
 
 [node name="Boost1" type="TextureRect" parent="CanvasLayer"]
-visible = false
 offset_left = 103.00001
 offset_top = 566.00006
 offset_right = 142.99997
