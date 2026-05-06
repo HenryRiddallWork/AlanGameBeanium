@@ -125,6 +125,7 @@ angular_damp = 0.001
 flame_material = SubResource("ParticleProcessMaterial_f1ej7")
 hook = NodePath("../Player1HookPoint")
 pinjoint = NodePath("../Player1PinJoint")
+thwip_color = Color(1, 0, 0.3137255, 1)
 player_id = "1"
 metadata/_edit_group_ = true
 
@@ -141,6 +142,7 @@ angular_damp = 0.001
 flame_material = SubResource("ParticleProcessMaterial_7iits")
 hook = NodePath("../Player2HookPoint")
 pinjoint = NodePath("../Player2PinJoint")
+thwip_color = Color(0.24705882, 0.28235295, 0.8, 1)
 player_id = "2"
 metadata/_edit_group_ = true
 
