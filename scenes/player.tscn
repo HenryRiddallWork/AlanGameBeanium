@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ca2mjl3kgpx36"]
+[gd_scene load_steps=35 format=3 uid="uid://ca2mjl3kgpx36"]
 
 [ext_resource type="Script" uid="uid://bjlctw6a8iajw" path="res://scripts/player/player.gd" id="1_2kdwn"]
 [ext_resource type="Texture2D" uid="uid://cllc6xge6vj3a" path="res://hook.png" id="2_qhqgy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bv2m4bxt3r6ra" path="res://scripts/player/states/in_air.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://deqniykv5cndc" path="res://scripts/player/states/hooked.gd" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://c47nxfe1mcanq" path="res://assets/sound effects/konk.wav" id="10_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://cmifin2x7a16d" path="res://assets/sound effects/thwip.wav" id="12_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://cibbbnsppywx5" path="res://assets/ui-element/Over_speed_bar_1.png" id="12_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://0fiqpretd4li" path="res://assets/ui-element/Progress_speed_bar_1.png" id="13_oprun"]
 [ext_resource type="Texture2D" uid="uid://clqoec61n3tka" path="res://assets/ui-element/Over_speed_bar_2.png" id="15_qfm1y"]
@@ -115,6 +116,7 @@ radius = 27.4591
 
 [sub_resource type="Theme" id="Theme_a8ls1"]
 default_font = ExtResource("6_oprun")
+default_font_size = 20
 
 [sub_resource type="GDScript" id="GDScript_d2wvv"]
 script/source = "extends AudioStreamPlayer2D
@@ -200,13 +202,15 @@ shape = SubResource("CircleShape2D_6oxxb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 clip_contents = false
-offset_left = -12.0
-offset_top = -38.0
-offset_right = 48.0
-offset_bottom = 8.0
+offset_left = -22.0
+offset_top = -44.0
+offset_right = 38.0
+offset_bottom = 2.0
 scale = Vector2(0.73861784, 0.8981814)
-pivot_offset = Vector2(12, 34)
+pivot_offset = Vector2(22, 44)
 theme = SubResource("Theme_a8ls1")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "THWIP!"
 fit_content = true
 scroll_active = false
@@ -227,6 +231,10 @@ script = ExtResource("7_fjrip")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_y4r1p")
 script = SubResource("GDScript_d2wvv")
+
+[node name="ThwipAudio" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(2, 2)
+stream = ExtResource("12_a8ls1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

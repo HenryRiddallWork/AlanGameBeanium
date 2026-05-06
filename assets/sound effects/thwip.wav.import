@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmifin2x7a16d"
+path="res://.godot/imported/thwip.wav-90b072f6dd4fb060a996ade5bf0df1ee.sample"
+
+[deps]
+
+source_file="res://assets/sound effects/thwip.wav"
+dest_files=["res://.godot/imported/thwip.wav-90b072f6dd4fb060a996ade5bf0df1ee.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

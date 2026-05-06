@@ -8,8 +8,8 @@ var max_length = null
 
 var thwip_rotation_offset = 0
 
-@onready var thwip:RichTextLabel = $RichTextLabel
-
+@export var thwip_sound_scaler = 0.01
+@onready var thwip_audio: AudioStreamPlayer2D = $"../../ThwipAudio"
 
 func enter(previous_state_path: String, data := {}) -> void:
 	var hook_pos = data["hook_global_pos"]
@@ -23,8 +23,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 	max_length = (hook_pos - player.global_position).length()
 	thwip_rotation_offset = deg_to_rad(randf_range(-45.0, 45.0))
 	player.thwip.rotation = -player.rotation + thwip_rotation_offset
+	thwip_audio.volume_db = thwip_sound_scaler
+	thwip_audio.play()
 	player.thwip.show()
-	get_tree().create_timer(0.8).timeout.connect(player.thwip.hide)
+	get_tree().create_timer(0.25).timeout.connect(player.thwip.hide)
 
 func exit() -> void:
 	player.line.clear_points()

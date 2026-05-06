@@ -10,6 +10,7 @@ const COLLISION_SCREEN_SHAKE_SCALE_FACTOR = 0.02
 @export var speed: int = 15
 @export var swing_speed: int = 10
 @export var hook_range: int = 1000
+@export var thwip_color: Color
 
 @export var particle_scene: PackedScene
 @export var impact_particle_amount_scale = 0.1
@@ -58,6 +59,8 @@ func _ready() -> void:
 	speed_bar.show()
 	body_entered.connect(_on_body_entered)
 	flame_emitter.process_material = flame_material
+	thwip.add_theme_color_override("font_outline_color", thwip_color)
+	thwip.add_theme_constant_override("outline_size", 8)
 	thwip.hide()
 
 func _process(delta: float) -> void:
